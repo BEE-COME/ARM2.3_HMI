@@ -1,0 +1,12 @@
+.\RAM\main.o: main.c
+.\RAM\main.o: C:\Keil\ARM\INC\NXP\Lpc17xx.h
+.\RAM\main.o: C:\Keil\\ARM\RV31\INC\core_cm3.h
+.\RAM\main.o: C:\Keil\\ARM\RV31\INC\stdint.h
+.\RAM\main.o: C:\Keil\ARM\INC\NXP\system_LPC17xx.h
+.\RAM\main.o: main.h
+.\RAM\main.o: C:\Keil\\ARM\RV31\INC\math.h
+.\RAM\main.o: type.h
+.\RAM\main.o: timer.h
+.\RAM\main.o: dma.h
+.\RAM\main.o: dma.c
+.\RAM\main.o: type.h

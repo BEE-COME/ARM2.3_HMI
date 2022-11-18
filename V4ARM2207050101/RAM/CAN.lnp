@@ -1,0 +1,4 @@
+--device DARMP1 ".\ram\startup_lpc17xx.o" ".\ram\system_lpc17xx.o" ".\ram\main.o" --strict --scatter ".\RAM\CAN.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\RAM\CAN.map" -o ".\RAM\CAN.axf"

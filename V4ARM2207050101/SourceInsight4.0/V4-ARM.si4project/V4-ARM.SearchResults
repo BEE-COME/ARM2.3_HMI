@@ -1,0 +1,4 @@
+---- RTC_IRQHandler Matches (3 in 2 files) ----
+rtc.c (D:\Users\yaopu\Working\V4\Trunk\V4-28377-ARM\ARM\ARM17004-M0-V1708180101) line 16 : ** Function name:		RTC_IRQHandler
+rtc.c (D:\Users\yaopu\Working\V4\Trunk\V4-28377-ARM\ARM\ARM17004-M0-V1708180101) line 25 : void RTC_IRQHandler (void) 
+rtc.h (D:\Users\yaopu\Working\V4\Trunk\V4-28377-ARM\ARM\ARM17004-M0-V1708180101) line 523 : extern void RTC_IRQHandler (void);

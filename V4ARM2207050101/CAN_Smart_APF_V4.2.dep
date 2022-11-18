@@ -1,0 +1,26 @@
+Dependencies for Project 'CAN', Target 'Smart_APF_V4.2': (DO NOT MODIFY !)
+F (.\common\src\startup_LPC17xx.s)(0x5ACC7B6B)(--cpu Cortex-M3 -g --apcs=interwork -I F:\Keil\ARM\RV31\INC-I F:\Keil\ARM\CMSIS\Include-I F:\Keil\ARM\Inc\NXP--list .\flash\startup_lpc17xx.lst --xref -o .\flash\startup_lpc17xx.o --depend .\flash\startup_lpc17xx.d)
+F (.\common\src\system_LPC17xx.c)(0x5927E9D1)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -IF:\Keil\ARM\INC\NXP\LPC17xx -IF:\Keil\ARM\INC\NXP\LPC17xx-I F:\Keil\ARM\RV31\INC-I F:\Keil\ARM\CMSIS\Include-I F:\Keil\ARM\Inc\NXP-o .\flash\system_lpc17xx.o --omf_browse .\flash\system_lpc17xx.crf --depend .\flash\system_lpc17xx.d)
+I (F:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7C554)
+I (F:\Keil\ARM\INC\NXP\LPC17xx\LPC17xx.h)(0x532BF40C)
+I (F:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x532BF7C2)
+I (F:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x532BF7C2)
+I (F:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x532BF7C2)
+I (F:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h)(0x532BF40C)
+F (.\main.c)(0x62D76545)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -IF:\Keil\ARM\INC\NXP\LPC17xx -IF:\Keil\ARM\INC\NXP\LPC17xx-I F:\Keil\ARM\RV31\INC-I F:\Keil\ARM\CMSIS\Include-I F:\Keil\ARM\Inc\NXP-o .\flash\main.o --omf_browse .\flash\main.crf --depend .\flash\main.d)
+I (F:\Keil\ARM\INC\NXP\LPC17xx\Lpc17xx.h)(0x532BF40C)
+I (F:\Keil\ARM\CMSIS\Include\core_cm3.h)(0x532BF7C2)
+I (F:\Keil\ARM\ARMCC\include\stdint.h)(0x51C7C554)
+I (F:\Keil\ARM\CMSIS\Include\core_cmInstr.h)(0x532BF7C2)
+I (F:\Keil\ARM\CMSIS\Include\core_cmFunc.h)(0x532BF7C2)
+I (F:\Keil\ARM\INC\NXP\LPC17xx\system_LPC17xx.h)(0x532BF40C)
+I (F:\Keil\ARM\ARMCC\include\math.h)(0x51C7C554)
+I (type.h)(0x4A306424)
+I (ssp.c)(0x62C406DF)
+I (IAP.h)(0x56DD24B4)
+I (IAP.c)(0x56CFF313)
+I (rtc.h)(0x634E65BB)
+I (uart.c)(0x634E65B9)
+I (rtc.c)(0x566FD13A)
+I (WDT.c)(0x5A3905F0)
+F (.\Abstract.txt)(0x4A2242BA)()

@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\FLASH\CAN.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\flash\startup_lpc17xx.o"'
+### List of Objects: adding '".\flash\system_lpc17xx.o"'
+### List of Objects: adding '".\flash\main.o"'
+### ADS-LD Command completed:
+--device DARMP1 ".\flash\startup_lpc17xx.o" ".\flash\system_lpc17xx.o" ".\flash\main.o" --strict --scatter ".\FLASH\CAN.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\FLASH\CAN.map" -o ".\FLASH\CAN.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\FLASH\CAN.axf'
+### ADS-LD Command File: '.\FLASH\CAN.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\FLASH\CAN.lnp', Handle=0x0000015C
+### Writing '.lnp' file
+### ADS-LD Command file '.\FLASH\CAN.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

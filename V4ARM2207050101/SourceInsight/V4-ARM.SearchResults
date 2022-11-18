@@ -1,0 +1,16 @@
+---- APFStatus Matches (15 in 2 files) ----
+Ssp.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):extern	uint16	APFStatus;
+Ssp.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):	//APFStatus= RecvSpiBuf[1];
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):uint16				APFStatus,CommunStatus,SlaveStatus[16];										//设备运行状态，通讯状态
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if(SaveOrReadFlag==2 && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteSelectedtimesFlag=1;}
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteSelectedtimesFlag=1;DUGSWriteMainParameterFlag=1;DUGSWritePassiveParameterFlag=1;}	
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteMainParameterFlag=1;DUGSWritePassiveParameterFlag=1;}
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if((SaveOrReadFlag==3||SaveOrReadFlag==4) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteSlaveParameterFlag=1;}
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby)
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby)
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			if(SaveOrReadFlag==3 && APFStatus<=SystemStandby)
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):		else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteMainParameterFlag=1;DUGSWritePassiveParameterFlag=1;DUGSWriteSlaveParameterFlag=1;SlaveID=0;}
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):	APFStatus		=0;						//系统自检中
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):	APFStatus =dsp_data[78];
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):		switch(APFStatus)
+Uart.c (d:\users\yaopu\working\v4\trunk\v4-28377-arm\arm\arm17004-m0-v1708180101):			switch(APFStatus)

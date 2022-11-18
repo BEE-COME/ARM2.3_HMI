@@ -1,0 +1,21 @@
+*** Creating Trace Output File '.\FLASH\testV1.0.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\flash\startup_lpc17xx.o"'
+### List of Objects: adding '".\flash\system_lpc17xx.o"'
+### List of Objects: adding '".\flash\main.o"'
+### ADS-LD Command completed:
+--device DARMP1 ".\flash\startup_lpc17xx.o" ".\flash\system_lpc17xx.o" ".\flash\main.o" --strict --scatter ".\FLASH\testV1.0.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\FLASH\testV1.map" -o ".\FLASH\testV1.0.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\FLASH\testV1.0.axf'
+### ADS-LD Command File: '.\FLASH\testV1.0.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\FLASH\testV1.0.lnp', Handle=0x00000458
+### Writing '.lnp' file
+### ADS-LD Command file '.\FLASH\testV1.0.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
