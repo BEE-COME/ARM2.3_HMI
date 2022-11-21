@@ -7312,14 +7312,19 @@ for(i=1;i<50;i++)
 	// HoldingRegister[193] =test_time;						//体验设置时间
 /****************************Table7 高级参数组********************************************/
 	HoldingRegister[255]=Remote_Password;
-	HoldingRegister[256]=main_parameter[18];
-	HoldingRegister[257]=main_parameter[19];
-	HoldingRegister[258]=main_parameter[21];
-	for(i=0;i<78;i++)
+
+	for(i=0;i<60;i++)
 	{
-		HoldingRegister[259+i]=main_parameter[22+i];
+		HoldingRegister[256+i] =spcial_parameter[i];
 	}
-	HoldingRegister[307]=SetupMode;		//直控模式
+	// HoldingRegister[256]=main_parameter[18];
+	// HoldingRegister[257]=main_parameter[19];
+	// HoldingRegister[258]=main_parameter[21];
+	// for(i=0;i<78;i++)
+	// {
+	// 	HoldingRegister[259+i]=main_parameter[22+i];
+	// }
+//	HoldingRegister[307]=SetupMode;		//直控模式
 	HoldingRegister[337]=xiuzhen_dianliujibian;//电流畸变率修正
 	HoldingRegister[338]=xiuzhen_fuzhi;//2-50次幅值修正2
 	HoldingRegister[339]=xiuzhen_pf;//pf修正
@@ -7330,10 +7335,7 @@ for(i=1;i<50;i++)
 	HoldingRegister[344]=xiuzhen_dianyajibian;//电流畸变率修正
 
 	
-	for(i=0;i<70;i++)
-	{
-		HoldingRegister[344+i] =spcial_parameter[i];
-	}
+	
 /****************************Table8 从机参数组********************************************/
 	for(i=0;i<100;i++)
 	{

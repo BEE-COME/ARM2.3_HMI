@@ -1911,9 +1911,10 @@ uint8 SPI_CommumWithDSP(void)
 	else if(WriteSpcialParameterFlag==1)
 	{
 		CurrentAddr =22;
-		for(i=0;i<100;i++)
+		SendSpiBuf[3]=0xAAAA;
+		for(i=0;i<60;i++)
 		{
-			SendSpiBuf[3+i] =spcial_parameter[i];
+			SendSpiBuf[4+i] =spcial_parameter[i];
 		}
 		NextReceFrameID =21;
 		SpiWrite_Enable;
