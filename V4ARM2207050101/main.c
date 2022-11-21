@@ -844,15 +844,15 @@ void Parameter_init(void)
 	{
 		slave_Enable[i]= main_parameter[i+89];															//从机使能
 	}*/
-	for(i=0;i<50;i++)
-	{
-		Selected_parameter[i] =0;																		//选次参数
-	}
-	for(i=0;i<19;i++)																	//将选择要补偿的频段打开
-	{
-		j=main_parameter[31+i];
-		if(j>0)Selected_parameter[j-1]=1;
-	}
+	// for(i=0;i<50;i++)
+	// {
+	// 	Selected_parameter[i] =0;																		//选次参数
+	// }
+	// for(i=0;i<19;i++)																	//将选择要补偿的频段打开
+	// {
+	// 	j=main_parameter[31+i];
+	// 	if(j>0)Selected_parameter[j-1]=1;
+	// }
 	for(i=0; i<100; i++)	
 	{
 		load_correctionA[i] =	(Init_parameter[2*i+400]<<8)|Init_parameter[2*i+401];
@@ -878,23 +878,26 @@ void Parameter_init(void)
 		//RemoteOnOff =1;
 	}
 	
-	AlarmTime1[0]=(Init_parameter[1008]<<8|Init_parameter[1009]);//定时1	使能
-	AlarmTime1[1]=(Init_parameter[1010]<<8|Init_parameter[1011]);//定时1	时
-	AlarmTime1[2]=(Init_parameter[1012]<<8|Init_parameter[1013]);//定时1	分
-	AlarmTime1[3]=(Init_parameter[1014]<<8|Init_parameter[1015]);//定时1	使能
-	AlarmTime1[4]=(Init_parameter[1016]<<8|Init_parameter[1017]);//定时1	时
+	CT_MAIN1=(Init_parameter[1008]<<8|Init_parameter[1009]);//CT1
+	CT_MAIN2=(Init_parameter[1010]<<8|Init_parameter[1011]);//CT2
+
+	// AlarmTime1[0]=(Init_parameter[1008]<<8|Init_parameter[1009]);//定时1	使能
+	// AlarmTime1[1]=(Init_parameter[1010]<<8|Init_parameter[1011]);//定时1	时
+	// AlarmTime1[2]=(Init_parameter[1012]<<8|Init_parameter[1013]);//定时1	分
+	// AlarmTime1[3]=(Init_parameter[1014]<<8|Init_parameter[1015]);//定时1	使能
+	// AlarmTime1[4]=(Init_parameter[1016]<<8|Init_parameter[1017]);//定时1	时
 	
-	AlarmTime2[0]=(Init_parameter[1018]<<8|Init_parameter[1019]);//定时2	使能
-	AlarmTime2[1]=(Init_parameter[1020]<<8|Init_parameter[1021]);//定时2	时
-	AlarmTime2[2]=(Init_parameter[1022]<<8|Init_parameter[1023]);//定时2	分
-	AlarmTime2[3]=(Init_parameter[1024]<<8|Init_parameter[1025]);//定时2	时					
-	AlarmTime2[4]=(Init_parameter[1026]<<8|Init_parameter[1027]);//定时2	分
+	// AlarmTime2[0]=(Init_parameter[1018]<<8|Init_parameter[1019]);//定时2	使能
+	// AlarmTime2[1]=(Init_parameter[1020]<<8|Init_parameter[1021]);//定时2	时
+	// AlarmTime2[2]=(Init_parameter[1022]<<8|Init_parameter[1023]);//定时2	分
+	// AlarmTime2[3]=(Init_parameter[1024]<<8|Init_parameter[1025]);//定时2	时					
+	// AlarmTime2[4]=(Init_parameter[1026]<<8|Init_parameter[1027]);//定时2	分
 	
-	AlarmTime3[0]=(Init_parameter[1028]<<8|Init_parameter[1029]);//定时3	时
-	AlarmTime3[1]=(Init_parameter[1030]<<8|Init_parameter[1031]);//定时3	分	
-	AlarmTime3[2]=(Init_parameter[1032]<<8|Init_parameter[1033]);//定时3 使能
-	AlarmTime3[3]=(Init_parameter[1034]<<8|Init_parameter[1035]);//定时3	时
-	AlarmTime3[4]=(Init_parameter[1036]<<8|Init_parameter[1037]);//定时3	分	
+	// AlarmTime3[0]=(Init_parameter[1028]<<8|Init_parameter[1029]);//定时3	时
+	// AlarmTime3[1]=(Init_parameter[1030]<<8|Init_parameter[1031]);//定时3	分	
+	// AlarmTime3[2]=(Init_parameter[1032]<<8|Init_parameter[1033]);//定时3 使能
+	// AlarmTime3[3]=(Init_parameter[1034]<<8|Init_parameter[1035]);//定时3	时
+	// AlarmTime3[4]=(Init_parameter[1036]<<8|Init_parameter[1037]);//定时3	分	
 
 	ntc_type=Init_parameter[1038];
 	//不使用
@@ -904,11 +907,11 @@ void Parameter_init(void)
 //	AlarmTime4[3]=(Init_parameter[1044]<<8|Init_parameter[1045]);//定时4	时
 //	AlarmTime4[4]=(Init_parameter[1046]<<8|Init_parameter[1047]);//定时4	分
 	
-	ActiveBal =(Init_parameter[1048]<<8|Init_parameter[1049]);//有功不平衡
-	ReactiveBal=(Init_parameter[1050]<<8|Init_parameter[1051]);//无功不平衡
-	HarmonicBal=(Init_parameter[1052]<<8|Init_parameter[1053]);//谐波不平衡
-	ApparentBal=(Init_parameter[1054]<<8|Init_parameter[1055]);//视在不平衡
-	SetupMode=(Init_parameter[1056]<<8|Init_parameter[1057]);
+	// ActiveBal =(Init_parameter[1048]<<8|Init_parameter[1049]);//有功不平衡
+	// ReactiveBal=(Init_parameter[1050]<<8|Init_parameter[1051]);//无功不平衡
+	// HarmonicBal=(Init_parameter[1052]<<8|Init_parameter[1053]);//谐波不平衡
+	// ApparentBal=(Init_parameter[1054]<<8|Init_parameter[1055]);//视在不平衡
+	// SetupMode=(Init_parameter[1056]<<8|Init_parameter[1057]);
 	xiuzhen_dianliujibian=(Init_parameter[1058]<<8|Init_parameter[1059]);
 	xiuzhen_fuzhi=(Init_parameter[1060]<<8|Init_parameter[1061]);
 	xiuzhen_pf=(Init_parameter[1062]<<8|Init_parameter[1063]);
@@ -927,71 +930,71 @@ void Parameter_init(void)
 	tmp64Val =(uint64) (ProjectNo)*tmp64Val;
 	SerialNumber = 2000000000000000+tmp64Val+ProductionNo;
 	
-	Position[0]=(Init_parameter[1092]<<8|Init_parameter[1093]);
-	Group[0]=(Init_parameter[1094]<<8|Init_parameter[1095]);
-	Capacitance[0]=(Init_parameter[1096]<<8|Init_parameter[1097]);
+	// Position[0]=(Init_parameter[1092]<<8|Init_parameter[1093]);
+	// Group[0]=(Init_parameter[1094]<<8|Init_parameter[1095]);
+	// Capacitance[0]=(Init_parameter[1096]<<8|Init_parameter[1097]);
 
-	Position[1]=(Init_parameter[1098]<<8|Init_parameter[1099]);
-	Group[1]=(Init_parameter[1100]<<8|Init_parameter[1101]);
-	Capacitance[1]=(Init_parameter[1102]<<8|Init_parameter[1103]);
+	// Position[1]=(Init_parameter[1098]<<8|Init_parameter[1099]);
+	// Group[1]=(Init_parameter[1100]<<8|Init_parameter[1101]);
+	// Capacitance[1]=(Init_parameter[1102]<<8|Init_parameter[1103]);
 
-	Position[2]=(Init_parameter[1104]<<8|Init_parameter[1105]);
-	Group[2]=(Init_parameter[1106]<<8|Init_parameter[1107]);
-	Capacitance[2]=(Init_parameter[1108]<<8|Init_parameter[1109]);
+	// Position[2]=(Init_parameter[1104]<<8|Init_parameter[1105]);
+	// Group[2]=(Init_parameter[1106]<<8|Init_parameter[1107]);
+	// Capacitance[2]=(Init_parameter[1108]<<8|Init_parameter[1109]);
 
-	Position[3]=(Init_parameter[1110]<<8|Init_parameter[1111]);
-	Group[3]=(Init_parameter[1112]<<8|Init_parameter[1113]);
-	Capacitance[3]=(Init_parameter[1114]<<8|Init_parameter[1115]);
+	// Position[3]=(Init_parameter[1110]<<8|Init_parameter[1111]);
+	// Group[3]=(Init_parameter[1112]<<8|Init_parameter[1113]);
+	// Capacitance[3]=(Init_parameter[1114]<<8|Init_parameter[1115]);
 
-	Position[4]=(Init_parameter[1116]<<8|Init_parameter[1117]);
-	Group[4]=(Init_parameter[1118]<<8|Init_parameter[1119]);
-	Capacitance[4]=(Init_parameter[1120]<<8|Init_parameter[1121]);
+	// Position[4]=(Init_parameter[1116]<<8|Init_parameter[1117]);
+	// Group[4]=(Init_parameter[1118]<<8|Init_parameter[1119]);
+	// Capacitance[4]=(Init_parameter[1120]<<8|Init_parameter[1121]);
 
-	Position[5]=(Init_parameter[1122]<<8|Init_parameter[1123]);
-	Group[5]=(Init_parameter[1124]<<8|Init_parameter[1125]);
-	Capacitance[5]=(Init_parameter[1126]<<8|Init_parameter[1127]);
+	// Position[5]=(Init_parameter[1122]<<8|Init_parameter[1123]);
+	// Group[5]=(Init_parameter[1124]<<8|Init_parameter[1125]);
+	// Capacitance[5]=(Init_parameter[1126]<<8|Init_parameter[1127]);
 
-	Position[6]=(Init_parameter[1128]<<8|Init_parameter[1129]);
-	Group[6]=(Init_parameter[1130]<<8|Init_parameter[1131]);
-	Capacitance[6]=(Init_parameter[1132]<<8|Init_parameter[1133]);
+	// Position[6]=(Init_parameter[1128]<<8|Init_parameter[1129]);
+	// Group[6]=(Init_parameter[1130]<<8|Init_parameter[1131]);
+	// Capacitance[6]=(Init_parameter[1132]<<8|Init_parameter[1133]);
 
-	Position[7]=(Init_parameter[1134]<<8|Init_parameter[1135]);
-	Group[7]=(Init_parameter[1136]<<8|Init_parameter[1137]);
-	Capacitance[7]=(Init_parameter[1138]<<8|Init_parameter[1139]);
+	// Position[7]=(Init_parameter[1134]<<8|Init_parameter[1135]);
+	// Group[7]=(Init_parameter[1136]<<8|Init_parameter[1137]);
+	// Capacitance[7]=(Init_parameter[1138]<<8|Init_parameter[1139]);
 
-	Position[8]=(Init_parameter[1140]<<8|Init_parameter[1141]);
-	Group[8]=(Init_parameter[1142]<<8|Init_parameter[1143]);
-	Capacitance[8]=(Init_parameter[1144]<<8|Init_parameter[1145]);
+	// Position[8]=(Init_parameter[1140]<<8|Init_parameter[1141]);
+	// Group[8]=(Init_parameter[1142]<<8|Init_parameter[1143]);
+	// Capacitance[8]=(Init_parameter[1144]<<8|Init_parameter[1145]);
 
-	OutCTDirectionA=(Init_parameter[1146]<<8|Init_parameter[1147]);
-	OutCTDirectionB=(Init_parameter[1148]<<8|Init_parameter[1149]);
-	OutCTDirectionC=(Init_parameter[1150]<<8|Init_parameter[1151]);
+	// OutCTDirectionA=(Init_parameter[1146]<<8|Init_parameter[1147]);
+	// OutCTDirectionB=(Init_parameter[1148]<<8|Init_parameter[1149]);
+	// OutCTDirectionC=(Init_parameter[1150]<<8|Init_parameter[1151]);
 	
-	Position[9]=(Init_parameter[1152]<<8|Init_parameter[1153]);
-	Group[9]=(Init_parameter[1154]<<8|Init_parameter[1155]);
-	Capacitance[9]=(Init_parameter[1156]<<8|Init_parameter[1157]);
+	// Position[9]=(Init_parameter[1152]<<8|Init_parameter[1153]);
+	// Group[9]=(Init_parameter[1154]<<8|Init_parameter[1155]);
+	// Capacitance[9]=(Init_parameter[1156]<<8|Init_parameter[1157]);
 
-	Position[10]=(Init_parameter[1158]<<8|Init_parameter[1159]);
-	Group[10]=(Init_parameter[1160]<<8|Init_parameter[1161]);
-	Capacitance[10]=(Init_parameter[1162]<<8|Init_parameter[1163]);
+	// Position[10]=(Init_parameter[1158]<<8|Init_parameter[1159]);
+	// Group[10]=(Init_parameter[1160]<<8|Init_parameter[1161]);
+	// Capacitance[10]=(Init_parameter[1162]<<8|Init_parameter[1163]);
 
-	Position[11]=(Init_parameter[1164]<<8|Init_parameter[1165]);
-	Group[11]=(Init_parameter[1166]<<8|Init_parameter[1167]);
-	Capacitance[11]=(Init_parameter[1168]<<8|Init_parameter[1169]);
+	// Position[11]=(Init_parameter[1164]<<8|Init_parameter[1165]);
+	// Group[11]=(Init_parameter[1166]<<8|Init_parameter[1167]);
+	// Capacitance[11]=(Init_parameter[1168]<<8|Init_parameter[1169]);
 
-	Position[12]=(Init_parameter[1170]<<8|Init_parameter[1171]);
-	Group[12]=(Init_parameter[1172]<<8|Init_parameter[1173]);
-	Capacitance[12]=(Init_parameter[1174]<<8|Init_parameter[1175]);
+	// Position[12]=(Init_parameter[1170]<<8|Init_parameter[1171]);
+	// Group[12]=(Init_parameter[1172]<<8|Init_parameter[1173]);
+	// Capacitance[12]=(Init_parameter[1174]<<8|Init_parameter[1175]);
 
-	Position[13]=(Init_parameter[1176]<<8|Init_parameter[1177]);
-	Group[13]=(Init_parameter[1178]<<8|Init_parameter[1179]);
-	Capacitance[13]=(Init_parameter[1180]<<8|Init_parameter[1181]);
+	// Position[13]=(Init_parameter[1176]<<8|Init_parameter[1177]);
+	// Group[13]=(Init_parameter[1178]<<8|Init_parameter[1179]);
+	// Capacitance[13]=(Init_parameter[1180]<<8|Init_parameter[1181]);
 
-	Position[14]=(Init_parameter[1182]<<8|Init_parameter[1183]);
-	Group[14]=(Init_parameter[1184]<<8|Init_parameter[1185]);
-	Capacitance[14]=(Init_parameter[1186]<<8|Init_parameter[1187]);
+	// Position[14]=(Init_parameter[1182]<<8|Init_parameter[1183]);
+	// Group[14]=(Init_parameter[1184]<<8|Init_parameter[1185]);
+	// Capacitance[14]=(Init_parameter[1186]<<8|Init_parameter[1187]);
 	xiuzhen_jibian=(Init_parameter[1188]<<8|Init_parameter[1189]);
-	AI_select=Init_parameter[1190];
+	// AI_select=Init_parameter[1190];
 	enhance=Init_parameter[1191];
 	xiuzhen_rongliang=(Init_parameter[1192]<<8|Init_parameter[1193]);
 	xiuzhen_mode=Init_parameter[1194];
@@ -1000,28 +1003,34 @@ void Parameter_init(void)
 	ini_version_a=(Init_parameter[1196]<<8|Init_parameter[1197]);
 	xiuzhen_dianyajibian=(Init_parameter[1198]<<8|Init_parameter[1199]);
 	
+	//智能投切
+	for(i=0;i<100;i++)
+	{
+		spcial_parameter[i]=(Init_parameter[1200+2*i]<<8|Init_parameter[1201+2*i]);
+	}
+
 	
-	for(i=0;i<32;i++)
-	{
-		PassiveChannel[i]=(Init_parameter[1200+2*i]<<8|Init_parameter[1201+2*i]);
-	}
-	for(i=0;i<32;i++)
-	{
-		PassiveValue[i]=(Init_parameter[1264+2*i]<<8|Init_parameter[1265+2*i]);
-	}
-	PassiveCom =(Init_parameter[1328]<<8|Init_parameter[1329]);
+	// for(i=0;i<32;i++)
+	// {
+	// 	PassiveChannel[i]=(Init_parameter[1200+2*i]<<8|Init_parameter[1201+2*i]);
+	// }
+	// for(i=0;i<32;i++)
+	// {
+	// 	PassiveValue[i]=(Init_parameter[1264+2*i]<<8|Init_parameter[1265+2*i]);
+	// }
+	// PassiveCom =(Init_parameter[1328]<<8|Init_parameter[1329]);
 	/*for(i=0;i<11;i++)
 	{
 		CorrectParam[i]=(Init_parameter[1330+2*i]<<8|Init_parameter[1331+2*i]);
 	}*/
-	if(SetupMode==0)
-	{
-		CabinProcess();
-	}
-	if(SetupMode==1)
-	{
-		ChannelProcess();
-	}
+	// if(SetupMode==0)
+	// {
+	// 	CabinProcess();
+	// }
+	// if(SetupMode==1)
+	// {
+	// 	ChannelProcess();
+	// }
 	//ProjectNo =2016072801;
 	//ProductionNo =1;
 	

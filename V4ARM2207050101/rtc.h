@@ -393,8 +393,10 @@
 #define EepARMParamddr			EepCorrectionAddr+600	//1000	修正参数Eeprom地址
 #define ARMParamNumMax 			200						//ARM参数最大数量+ 版本校验	
 
-#define EepARMCorrectAddr		EepARMParamddr+128		//1328	ARM修正参数Eeprom地址
+#define EepARMCorrectAddr		EepARMParamddr+200		//1200	ARM修正参数Eeprom地址
 #define ARMCorrectNumMax 			22						//ARM参数最大数量+ 版本校验
+
+//1400 
 
 #define EepFaultDataAddr		EepParameterAddr+1600	//1600	故障数据
 #define FaultDataNumMax			160						//故障数据总数 1+20*7+1

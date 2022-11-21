@@ -6417,35 +6417,38 @@ void ReadyData(void)
 	tmp31=dsp_data[47]*10000/xiuzhen_jibian2;
 	InputRegister[336]=(uint16)(tmp31);//畸变功率
 	
-	InputRegister[362] =Ubalance;
-	InputRegister[363] =dsp_data[60];
-	InputRegister[364] = SlaveStatus[10];
-	InputRegister[365] = SlaveErrorCode[10];//
-	InputRegister[366] = SlaveStatus[11];
-	InputRegister[367] = SlaveErrorCode[11];//
-	InputRegister[368] = SlaveStatus[12];
-	InputRegister[369] = SlaveErrorCode[12];//
+
 	InputRegister[370] = SlaveStatus[13];
-	InputRegister[371] = SlaveErrorCode[13];//
-	InputRegister[372] = SlaveStatus[14];
-	InputRegister[373] = SlaveErrorCode[14];//
-	InputRegister[374] = SlaveStatus[15];
-	InputRegister[375] = SlaveErrorCode[15];//
-	InputRegister[376] = CTSyscurA;
-	InputRegister[377] = CTSyscurB;
-	InputRegister[378] = CTSyscurC;
-	InputRegister[379] = CTOutcurA;
-	InputRegister[380] = CTOutcurB;
-	InputRegister[381] = CTOutcurC;
-	InputRegister[382] = HighVolA;
-	InputRegister[381] = HighVolB;
-	InputRegister[384] = HighVolC;
-	InputRegister[385] =dsp_data[90];
-	InputRegister[386] =dsp_data[94];
-	InputRegister[387] =dsp_data[91];
-	InputRegister[388] =dsp_data[95];
-	InputRegister[389] =dsp_data[92];
-	InputRegister[390] =dsp_data[96];
+
+	// InputRegister[362] =Ubalance;
+	// InputRegister[363] =dsp_data[60];
+	// InputRegister[364] = SlaveStatus[10];
+	// InputRegister[365] = SlaveErrorCode[10];//
+	// InputRegister[366] = SlaveStatus[11];
+	// InputRegister[367] = SlaveErrorCode[11];//
+	// InputRegister[368] = SlaveStatus[12];
+	// InputRegister[369] = SlaveErrorCode[12];//
+	// InputRegister[370] = SlaveStatus[13];
+	// InputRegister[371] = SlaveErrorCode[13];//
+	// InputRegister[372] = SlaveStatus[14];
+	// InputRegister[373] = SlaveErrorCode[14];//
+	// InputRegister[374] = SlaveStatus[15];
+	// InputRegister[375] = SlaveErrorCode[15];//
+	// InputRegister[376] = CTSyscurA;
+	// InputRegister[377] = CTSyscurB;
+	// InputRegister[378] = CTSyscurC;
+	// InputRegister[379] = CTOutcurA;
+	// InputRegister[380] = CTOutcurB;
+	// InputRegister[381] = CTOutcurC;
+	// InputRegister[382] = HighVolA;
+	// InputRegister[381] = HighVolB;
+	// InputRegister[384] = HighVolC;
+	// InputRegister[385] =dsp_data[90];
+	// InputRegister[386] =dsp_data[94];
+	// InputRegister[387] =dsp_data[91];
+	// InputRegister[388] =dsp_data[95];
+	// InputRegister[389] =dsp_data[92];
+	// InputRegister[390] =dsp_data[96];
 /****************************Table2********************************************/
 InputRegister[512]=system_currentA[0];
 InputRegister[612]=system_currentB[0];
@@ -7167,28 +7170,28 @@ for(i=1;i<50;i++)
 	HoldingRegister[6] =(uint16)((tmp8[0]<<8)|tmp8[1]);
 	HoldingRegister[7] =(uint16)local_time.RTC_Sec;;
 	HoldingRegister[8] =main_parameter[0];
-	HoldingRegister[9] =main_parameter[1];
-	HoldingRegister[10]=dsp_data[93];			//总额定电流
-	HoldingRegister[11]=main_parameter[3];
-	HoldingRegister[12]=main_parameter[4];
-	HoldingRegister[13]=main_parameter[5];
-	HoldingRegister[14]=main_parameter[6];
-	HoldingRegister[15]=main_parameter[7];
-	HoldingRegister[16]=main_parameter[8];
+	HoldingRegister[9] =main_parameter[11];
+	HoldingRegister[10]=main_parameter[12];		//总额定电流
+	HoldingRegister[11]=main_parameter[10]%10;
+	HoldingRegister[12]=main_parameter[18];
+	HoldingRegister[13]=main_parameter[19];
+	HoldingRegister[14]=main_parameter[15]%10;
+	HoldingRegister[15]=main_parameter[5];
+	HoldingRegister[16]=main_parameter[2];
 	HoldingRegister[17]=main_parameter[9];
-	HoldingRegister[18]=main_parameter[10];
-	HoldingRegister[19]=main_parameter[11];
-	HoldingRegister[20]=main_parameter[12];
-	HoldingRegister[21]=main_parameter[13];
-	HoldingRegister[22]=main_parameter[14];
-	HoldingRegister[23]=main_parameter[15];
-	HoldingRegister[24]=main_parameter[16];
-	HoldingRegister[25]=main_parameter[17]*10;	//智能电容波特率
-	HoldingRegister[26]=main_parameter[20];
-	for(i=0;i<50;i++)
-	{
-		HoldingRegister[27+i]=Selected_parameter[i];//选次参数
-	}
+	HoldingRegister[18]=main_parameter[6];
+	HoldingRegister[19]=main_parameter[17];
+	HoldingRegister[20]=main_parameter[69];
+	HoldingRegister[21]=main_parameter[93];
+	HoldingRegister[22]=main_parameter[94];
+	HoldingRegister[23]=main_parameter[95];
+	HoldingRegister[24]=main_parameter[96];
+	HoldingRegister[25]=main_parameter[97];	
+	// HoldingRegister[26]=main_parameter[20];
+	// for(i=0;i<50;i++)
+	// {
+	// 	HoldingRegister[27+i]=Selected_parameter[i];//选次参数
+	// }
 	//HoldingRegister[77]=Remote_Password;
 /****************************Table6 ARM 参数组********************************************/
 	HoldingRegister[77] = LocalAddr;
@@ -7202,23 +7205,23 @@ for(i=1;i<50;i++)
 	
 	HoldingRegister[85] =OnOffStatus;
 		
-	HoldingRegister[86] =AlarmTime1[0];
-	HoldingRegister[87] =AlarmTime1[1];
-	HoldingRegister[88] =AlarmTime1[2];			
-	HoldingRegister[89] =AlarmTime1[3];
-	HoldingRegister[90] =AlarmTime1[4];
+	HoldingRegister[86] =CT_MAIN1;
+	HoldingRegister[87] =CT_MAIN2;
+	// HoldingRegister[88] =AlarmTime1[2];			
+	// HoldingRegister[89] =AlarmTime1[3];
+	// HoldingRegister[90] =AlarmTime1[4];
 			
-	HoldingRegister[91] =AlarmTime2[0];
-	HoldingRegister[92] =AlarmTime2[1];
-	HoldingRegister[93] =AlarmTime2[2];
-	HoldingRegister[94] =AlarmTime2[3];
-	HoldingRegister[95] =AlarmTime2[4];
+	// HoldingRegister[91] =AlarmTime2[0];
+	// HoldingRegister[92] =AlarmTime2[1];
+	// HoldingRegister[93] =AlarmTime2[2];
+	// HoldingRegister[94] =AlarmTime2[3];
+	// HoldingRegister[95] =AlarmTime2[4];
 			
-	HoldingRegister[96] =AlarmTime3[0];
-	HoldingRegister[97] =AlarmTime3[1];
-	HoldingRegister[98] =AlarmTime3[2];
-	HoldingRegister[99] =AlarmTime3[3];
-	HoldingRegister[100] =AlarmTime3[4];
+	// HoldingRegister[96] =AlarmTime3[0];
+	// HoldingRegister[97] =AlarmTime3[1];
+	// HoldingRegister[98] =AlarmTime3[2];
+	// HoldingRegister[99] =AlarmTime3[3];
+	// HoldingRegister[100] =AlarmTime3[4];
 		
 	HoldingRegister[101] =ntc_type;//AlarmTime4[0];
 	HoldingRegister[102] =0;//AlarmTime4[1];
@@ -7242,65 +7245,71 @@ for(i=1;i<50;i++)
 	HoldingRegister[118] =(uint16)ProjectNo;
 	HoldingRegister[119] =ProductionNo;
 
-	HoldingRegister[120] =VolOnOffEnable;		//电压开机使能//058F
-	HoldingRegister[121] =CurOnOffEnable;		//电流开机使能//0590
 
-	HoldingRegister[122] =MainCTLocation;		//主互感器位置//0591
-	HoldingRegister[123] =MainCTDirectionA;		//主互感器方向//0592
-	HoldingRegister[124] =MainCTDirectionB;		//主互感器相序//0593
+	for(i=0;i<100;i++)
+	{
+		HoldingRegister[120+i]=main_parameter[i];//
+	}
 
-	HoldingRegister[125] =MainCTDirectionC;		//辅助互感器位置//0594
-	HoldingRegister[126] =MainCTPhase; 			//辅助互感器方向//0595
-	HoldingRegister[127] =OutCTPhase; 			//辅助互感器相序//0596
+	// HoldingRegister[120] =VolOnOffEnable;		//电压开机使能//058F
+	// HoldingRegister[121] =CurOnOffEnable;		//电流开机使能//0590
+
+	// HoldingRegister[122] =MainCTLocation;		//主互感器位置//0591
+	// HoldingRegister[123] =MainCTDirectionA;		//主互感器方向//0592
+	// HoldingRegister[124] =MainCTDirectionB;		//主互感器相序//0593
+
+	// HoldingRegister[125] =MainCTDirectionC;		//辅助互感器位置//0594
+	// HoldingRegister[126] =MainCTPhase; 			//辅助互感器方向//0595
+	// HoldingRegister[127] =OutCTPhase; 			//辅助互感器相序//0596
 			
-	HoldingRegister[128] =Position[0];			//仓位2	
-	HoldingRegister[129] =Group[0];				//组2
-	HoldingRegister[130] =Capacitance[0];		//容值2
+	// HoldingRegister[128] =Position[0];			//仓位2	
+	// HoldingRegister[129] =Group[0];				//组2
+	// HoldingRegister[130] =Capacitance[0];		//容值2
 
-	HoldingRegister[131] =Position[1];			//仓位3	
-	HoldingRegister[132] =Group[1];				//组3
-	HoldingRegister[133] =Capacitance[1];		//容值3
+	// HoldingRegister[131] =Position[1];			//仓位3	
+	// HoldingRegister[132] =Group[1];				//组3
+	// HoldingRegister[133] =Capacitance[1];		//容值3
 
-	HoldingRegister[134] =Position[2];			//仓位4	
-	HoldingRegister[135] =Group[2];				//组4
-	HoldingRegister[136] =Capacitance[2];		//容值4
+	// HoldingRegister[134] =Position[2];			//仓位4	
+	// HoldingRegister[135] =Group[2];				//组4
+	// HoldingRegister[136] =Capacitance[2];		//容值4
 
-	HoldingRegister[137] =Position[3];			//仓位5	
-	HoldingRegister[138] =Group[3];				//组5
-	HoldingRegister[139] =Capacitance[3];		//容值5
+	// HoldingRegister[137] =Position[3];			//仓位5	
+	// HoldingRegister[138] =Group[3];				//组5
+	// HoldingRegister[139] =Capacitance[3];		//容值5
 
-	HoldingRegister[140] =Position[4];			//仓位6	
-	HoldingRegister[141] =Group[4];				//组6
-	HoldingRegister[142] =Capacitance[4];		//容值6
+	// HoldingRegister[140] =Position[4];			//仓位6	
+	// HoldingRegister[141] =Group[4];				//组6
+	// HoldingRegister[142] =Capacitance[4];		//容值6
 
-	HoldingRegister[143] =Position[5];			//仓位7	
-	HoldingRegister[144] =Group[5];				//组7
-	HoldingRegister[145] =Capacitance[5];		//容值7
+	// HoldingRegister[143] =Position[5];			//仓位7	
+	// HoldingRegister[144] =Group[5];				//组7
+	// HoldingRegister[145] =Capacitance[5];		//容值7
 
-	HoldingRegister[146] =Position[6];			//仓位8	
-	HoldingRegister[147] =Group[6];				//组8
-	HoldingRegister[148] =Capacitance[6];		//容值8
+	// HoldingRegister[146] =Position[6];			//仓位8	
+	// HoldingRegister[147] =Group[6];				//组8
+	// HoldingRegister[148] =Capacitance[6];		//容值8
 
-	HoldingRegister[149] =Position[7];			//仓位9	
-	HoldingRegister[150] =Group[7];				//组9
-	HoldingRegister[151] =Capacitance[7];		//容值9
+	// HoldingRegister[149] =Position[7];			//仓位9	
+	// HoldingRegister[150] =Group[7];				//组9
+	// HoldingRegister[151] =Capacitance[7];		//容值9
 
-	HoldingRegister[152] =Position[8];			//仓位10	
-	HoldingRegister[153] =Group[8];				//组10
-	HoldingRegister[154] =Capacitance[8];		//容值10
+	// HoldingRegister[152] =Position[8];			//仓位10	
+	// HoldingRegister[153] =Group[8];				//组10
+	// HoldingRegister[154] =Capacitance[8];		//容值10
 
 	
-	for(i=0;i<32;i++)
-	{
-		HoldingRegister[155+i]=ManualPassive_aisle[i];	//手动无源通道
-	}
-	HoldingRegister[187] =main_parameter[70];		//无源使能					已更改70
-	HoldingRegister[188] =OutCTDirectionA;		//输出互感器方向A//
-	HoldingRegister[189] =OutCTDirectionB;		//输出互感器相序B//
-	HoldingRegister[190] =OutCTDirectionC;		//输出互感器位置C//
-	HoldingRegister[191] =Testtime_function;						//体验功能开关
-	HoldingRegister[192] =Testtime;						//已体验时间
-	HoldingRegister[193] =test_time;						//体验设置时间
+	// for(i=0;i<32;i++)
+	// {
+	// 	HoldingRegister[155+i]=ManualPassive_aisle[i];	//手动无源通道
+	// }
+	// HoldingRegister[187] =main_parameter[70];		//无源使能					已更改70
+	// HoldingRegister[188] =OutCTDirectionA;		//输出互感器方向A//
+	// HoldingRegister[189] =OutCTDirectionB;		//输出互感器相序B//
+	// HoldingRegister[190] =OutCTDirectionC;		//输出互感器位置C//
+	// HoldingRegister[191] =Testtime_function;						//体验功能开关
+	// HoldingRegister[192] =Testtime;						//已体验时间
+	// HoldingRegister[193] =test_time;						//体验设置时间
 /****************************Table7 高级参数组********************************************/
 	HoldingRegister[255]=Remote_Password;
 	HoldingRegister[256]=main_parameter[18];
@@ -7319,16 +7328,11 @@ for(i=1;i<50;i++)
 	HoldingRegister[342]=xiuzhen_wugong;//无功功率修正
 	HoldingRegister[343]=xiuzhen_jibian;//畸变功率修正
 	HoldingRegister[344]=xiuzhen_dianyajibian;//电流畸变率修正
-		
-//	for(i=0;i<100;i++)
-//	{
-//		swj_param[i]=main_parameter[i];
-//	}
+
 	
-	
-	for(i=0;i<100;i++)
+	for(i=0;i<70;i++)
 	{
-		HoldingRegister[344+i] =Reserved;
+		HoldingRegister[344+i] =spcial_parameter[i];
 	}
 /****************************Table8 从机参数组********************************************/
 	for(i=0;i<100;i++)
@@ -8959,16 +8963,16 @@ void SendDataload(uint32 Framehead)
 			// CommunWithDUGS.Databuff[31] =HarmonicBal;		//0583
 			// CommunWithDUGS.Databuff[32] =ApparentBal;		//0584
 			// CommunWithDUGS.Databuff[33] =SetupMode;		//0585
-			// CommunWithDUGS.Databuff[34] =enhance;		//0586
+			CommunWithDUGS.Databuff[34] =enhance;		//0586
 			// CommunWithDUGS.Databuff[35] =0;		//0587
 			// CommunWithDUGS.Databuff[36] =0;		//0588
 			// CommunWithDUGS.Databuff[37] =0;		//0589
 			// CommunWithDUGS.Databuff[38] =0;		//058A
 			// CommunWithDUGS.Databuff[39] =0;		//058B
 
-			// CommunWithDUGS.Databuff[40] =(uint16)(ProjectNo>>16);//058C
-			// CommunWithDUGS.Databuff[41] =(uint16)ProjectNo;		//058D
-			// CommunWithDUGS.Databuff[42] =ProductionNo;			//058E
+			CommunWithDUGS.Databuff[40] =(uint16)(ProjectNo>>16);//058C
+			CommunWithDUGS.Databuff[41] =(uint16)ProjectNo;		//058D
+			CommunWithDUGS.Databuff[42] =ProductionNo;			//058E
 
 			// //VolOnOffEnable =main_parameter[73]%10;
 			// CommunWithDUGS.Databuff[43] =0;						//电压开机使能//058F
@@ -9201,12 +9205,14 @@ void SendDataload(uint32 Framehead)
 				{
 					CommunWithDUGS.Databuff[i]=spcial_parameter[i];
 				}
-			}
-			
-
-			
-			
-			
+			}	
+			else
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=main_parameter[i];
+				}
+			}		
 			break;
 
 
@@ -10152,7 +10158,7 @@ void RecvDataFromDUGS(void)
 					if(CT_MAIN1>0)main_parameter[10]=CT_MAIN1;//主互感器安装位置
 					if(CT_MAIN2>0)main_parameter[15]=CT_MAIN2;//辅助互感器安装位置
 
-					//main_parameter[17] = RecvDatabuff[17]/10;					//智能电容波特率
+					
 					// if(main_parameter[72]==2)//如果为手动投切
 					// {
 					// 	ManualPassiveSwitchFlag=1;
@@ -10244,7 +10250,7 @@ void RecvDataFromDUGS(void)
 					// main_parameter[6] =ActiveBal+ReactiveBal*10+HarmonicBal*100;
 					// SetupMode =RecvDatabuff[33];//安装配置方式
 					
-					// enhance=RecvDatabuff[34];//增强模式
+					enhance=RecvDatabuff[34];//增强模式
 					/*slave_Reset[4] =RecvDatabuff[34];//定时5	分
 					slave_Reset[5] =RecvDatabuff[35];//定时5	分
 					slave_Reset[6] =RecvDatabuff[36];//定时5	分
@@ -10252,12 +10258,12 @@ void RecvDataFromDUGS(void)
 					slave_Reset[8] =RecvDatabuff[38];//定时5	分
 					slave_Reset[9] =RecvDatabuff[39];//定时5	分*/
 
-					// ProjectNo=(uint32)((RecvDatabuff[40]<<16)|RecvDatabuff[41]);//项目号
+					ProjectNo=(uint32)((RecvDatabuff[40]<<16)|RecvDatabuff[41]);//项目号
 					
-					// ProductionNo =RecvDatabuff[42];//生产号
-					// tmp64Val=1000;
-					// tmp64Val =(uint64) (ProjectNo)*tmp64Val;
-					// SerialNumber = 2000000000000000+tmp64Val+ProductionNo;
+					ProductionNo =RecvDatabuff[42];//生产号
+					tmp64Val=1000;
+					tmp64Val =(uint64) (ProjectNo)*tmp64Val;
+					SerialNumber = 2000000000000000+tmp64Val+ProductionNo;
 					//word=(uint16)(SerialNumber%9999);									//获取密码
 
 					// VolOnOffEnable =RecvDatabuff[43];
@@ -10588,23 +10594,193 @@ void RecvDataFromDUGS(void)
 		case 0x831A00:
 				if(ParameterError==0)
 				{
-					for(i=0;i<RecvDatalengh;i++)
-					{
-						if((i>9&&i<43))continue;				//跳过补偿容量和地址
-						Passive_parameter[i] = RecvDatabuff[i];//无源参数
-					}
-					if(SaveOrReadFlag==3)
-					{
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
 
-						I2C_write;														//写入I2C
-					   	WriteEeprom(EepPassiveAddr,RecvDUGSBuf+7,RecvDatalengh<<1);  				//将出厂参数写到正式参数中
-						I2C_read;														//读取I2C
+					//根据密码发送当前参数
+					if(CurrentPageID==0x0042)//主机参数
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							main_parameter[i] = RecvDatabuff[i];
+						}
+
+						if(SaveOrReadFlag==3)
+						{
+							WriteMainParameterFlag=1;
+							WriteCorrectionParameterFlag=1;
+							WriteCorrectionParameter2Flag=1;
+							WriteCorrectionParameter3Flag=1;
+							WritePassiveParameterFlag =1;
+							j=0;
+							for(i=0;i<100;i++)
+							{
+								Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+								Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+							}							
+							I2C_write;													//写入I2C
+							WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+							I2C_read;													//读取I2C
+						}
 					}
+					else if(CurrentPageID==0x0043)//从机参数
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							slave_parameter[SlaveID][i] = RecvDatabuff[i];
+						}
+						if(SaveOrReadFlag==3)
+						{
+							switch(SlaveID)
+							{
+								case 0:WriteSlaveParameterFlag=1;break;
+								case 1:WriteSlaveParameter2Flag=1;break;
+								case 2:WriteSlaveParameter3Flag=1;break;
+								case 3:WriteSlaveParameter4Flag=1;break;
+								case 4:WriteSlaveParameter5Flag=1;break;
+								case 5:WriteSlaveParameter6Flag=1;break;
+								case 6:WriteSlaveParameter7Flag=1;break;
+								case 7:WriteSlaveParameter8Flag=1;break;
+								case 8:WriteSlaveParameter9Flag=1;break;
+								case 9:WriteSlaveParameter10Flag=1;break;
+								case 10:WriteSlaveParameter11Flag=1;break;
+								case 11:WriteSlaveParameter12Flag=1;break;
+								case 12:WriteSlaveParameter13Flag=1;break;
+								case 13:WriteSlaveParameter14Flag=1;break;
+								case 14:WriteSlaveParameter15Flag=1;break;
+	//							case 15:WriteSlaveParameter16Flag=1;break;
+								default:break;
+							}
+						}
+						
+					}
+					else if(CurrentPageID==0x0044)//ARM参数
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							ARM_param[i] = RecvDatabuff[i];
+						}
+						if(SaveOrReadFlag==3)
+						{
+							WriteMainParameterFlag=1;
+							SaveARMParaProcess();
+						}
+					}
+					else if(CurrentPageID==0x0045)//修正参数1
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							load_correctionA[i] = RecvDatabuff[i];
+						}
+						if(SaveOrReadFlag==3)
+						{
+							WriteCorrectionParameterFlag=1;
+							WriteCorrectionParameter2Flag=1;
+							WriteCorrectionParameter3Flag=1;
+
+							j=0;
+							for(i=0;i<100;i++)
+							{
+								Eeptempbuff[j++] =(uint8)(load_correctionA[i]>>8);
+								Eeptempbuff[j++] =(uint8)(load_correctionA[i]);
+							}
+							
+
+							I2C_write;
+							WriteEeprom(EepCorrectionAddr,Eeptempbuff,200);  				//将出厂参数写到正式参数中
+							I2C_read;														//读取I2C
+						}
+
+					}
+					else if(CurrentPageID==0x0046)//修正参数2
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							load_correctionB[i] = RecvDatabuff[i];
+						}
+						if(SaveOrReadFlag==3)
+						{
+							WriteCorrectionParameterFlag=1;
+							WriteCorrectionParameter2Flag=1;
+							WriteCorrectionParameter3Flag=1;
+
+							j=0;
+							for(i=0;i<100;i++)
+							{
+								Eeptempbuff[j++] =(uint8)(load_correctionB[i]>>8);
+								Eeptempbuff[j++] =(uint8)(load_correctionB[i]);
+							}
+							
+
+							I2C_write;
+							WriteEeprom(EepCorrectionAddr+200,Eeptempbuff,200);  				//将出厂参数写到正式参数中
+							I2C_read;														//读取I2C
+						}
+					}
+					else if(CurrentPageID==0x0047)//修正参数3
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							load_correctionC[i] = RecvDatabuff[i];
+						}
+						if(SaveOrReadFlag==3)
+						{
+							WriteCorrectionParameterFlag=1;
+							WriteCorrectionParameter2Flag=1;
+							WriteCorrectionParameter3Flag=1;
+
+							j=0;
+							for(i=0;i<100;i++)
+							{
+								Eeptempbuff[j++] =(uint8)(load_correctionC[i]>>8);
+								Eeptempbuff[j++] =(uint8)(load_correctionC[i]);
+							}
+							I2C_write;
+							WriteEeprom(EepCorrectionAddr+400,Eeptempbuff,200);  				//将出厂参数写到正式参数中
+							I2C_read;														//读取I2C
+						}
+					}
+					else if(CurrentPageID==0x0048)//电容投切 8007
+					{
+						for(i=0;i<RecvDatalengh;i++)
+						{
+							spcial_parameter[i] = RecvDatabuff[i];
+						}
+
+						if(SaveOrReadFlag==3)
+						{
+							WriteSpcialParameterFlag=1;
+
+							if(APFStatus<=SystemStandby)//待机情况下保存
+							{
+								j=0;
+								for(i=0;i<100;i++)
+								{
+									Eeptempbuff[j++] =(uint8)(spcial_parameter[i]>>8);
+									Eeptempbuff[j++] =(uint8)(spcial_parameter[i]);
+								}
+								I2C_write;														//写入I2C
+								WriteEeprom(EepARMParamddr+200,Eeptempbuff,200);  				//将出厂参数写到正式参数中
+								I2C_read;
+							}					
+						}					
+					}
+
+					// for(i=0;i<RecvDatalengh;i++)
+					// {
+					// 	if((i>9&&i<43))continue;				//跳过补偿容量和地址
+					// 	Passive_parameter[i] = RecvDatabuff[i];//无源参数
+					// }
+					// if(SaveOrReadFlag==3)
+					// {
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+
+					// 	I2C_write;														//写入I2C
+					//    	WriteEeprom(EepPassiveAddr,RecvDUGSBuf+7,RecvDatalengh<<1);  				//将出厂参数写到正式参数中
+					// 	I2C_read;														//读取I2C
+					// }
 				}
 				break;
 		case 0x831A64:															//手动无源投切
@@ -10616,7 +10792,7 @@ void RecvDataFromDUGS(void)
 					}
 					ManualPassiveSwitch =0;
 					for(i=0;i<32;i++)
-					{		
+					{
 						ManualPassiveSwitch |= ManualPassive_aisle[i]<<i;
 					}
 				}
@@ -10697,31 +10873,31 @@ void RecvDataFromDUGS(void)
 				}
 				break;
 		case 0x831D00://直控配置
-				if(ParameterError==0)
-				{
-					for(i=0;i<32;i++)
-					{
-						PassiveChannel[i] = RecvDatabuff[2*i];//无源通道模式
-						PassiveValue[i] = RecvDatabuff[2*i+1];//无源通道容量
-					}
-					PassiveCom =RecvDatabuff[64];
-					j=0;
-					for(i=0;i<32;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(PassiveChannel[i]>>8);
-						Eeptempbuff[j++] =(uint8)(PassiveChannel[i]);
-					}
-					for(i=0;i<32;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(PassiveValue[i]>>8);
-						Eeptempbuff[j++] =(uint8)(PassiveValue[i]);
-					}
-					Eeptempbuff[j++] =(uint8)(PassiveCom>>8);
-					Eeptempbuff[j++] =(uint8)(PassiveCom);
-					I2C_write;														//写入I2C
-					WriteEeprom(EepARMParamddr+200,Eeptempbuff,130);  				//将出厂参数写到正式参数中
-					I2C_read;
-				}
+				// if(ParameterError==0)
+				// {
+				// 	for(i=0;i<32;i++)
+				// 	{
+				// 		PassiveChannel[i] = RecvDatabuff[2*i];//无源通道模式
+				// 		PassiveValue[i] = RecvDatabuff[2*i+1];//无源通道容量
+				// 	}
+				// 	PassiveCom =RecvDatabuff[64];
+				// 	j=0;
+				// 	for(i=0;i<32;i++)
+				// 	{
+				// 		Eeptempbuff[j++] =(uint8)(PassiveChannel[i]>>8);
+				// 		Eeptempbuff[j++] =(uint8)(PassiveChannel[i]);
+				// 	}
+				// 	for(i=0;i<32;i++)
+				// 	{
+				// 		Eeptempbuff[j++] =(uint8)(PassiveValue[i]>>8);
+				// 		Eeptempbuff[j++] =(uint8)(PassiveValue[i]);
+				// 	}
+				// 	Eeptempbuff[j++] =(uint8)(PassiveCom>>8);
+				// 	Eeptempbuff[j++] =(uint8)(PassiveCom);
+				// 	I2C_write;														//写入I2C
+				// 	WriteEeprom(EepARMParamddr+200,Eeptempbuff,130);  				//将出厂参数写到正式参数中
+				// 	I2C_read;
+				// }
 				break;
 		case 0x831AAA://修正写入
 				if(ParameterError==0)
