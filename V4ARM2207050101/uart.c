@@ -8127,22 +8127,27 @@ uint32 Frameheadload(void)
 		DUGSReadSlaveDataFlag =0;
 		NoNeedWaitingFlag =1;
 	}
-	// else if(Readfunction==1)//读取密码和功能码
-	// {
-	//  	CommunWithDUGS.Funcode= 0x83;											//协议功能码
-	//   CommunWithDUGS.StartAddr=0x0997;										//地址
-	//   CurrentFramehead =(uint32)((CommunWithDUGS.Funcode <<16)|CommunWithDUGS.StartAddr);
-	// 	Readfunction =0;
-		
-	// }
-	// else if(DUGSReadfunction==1)//读取密码和功能码
-	// {
-	//  	CommunWithDUGS.Funcode= 0x82;											//协议功能码
-	//   CommunWithDUGS.StartAddr=0x0997;										//地址
-	//   CurrentFramehead =(uint32)((CommunWithDUGS.Funcode <<16)|CommunWithDUGS.StartAddr);
-	// 	DUGSReadfunction =0;
-	// 	NoNeedWaitingFlag =1;		
-	// }	
+	else if(DUGSReadParameterFlag==1)	//读取8001-8007参数
+	{
+		CommunWithDUGS.Funcode= 0x82;
+		CommunWithDUGS.StartAddr= 0x1A00;
+
+		CurrentFramehead =(uint32)((CommunWithDUGS.Funcode <<16)|CommunWithDUGS.StartAddr);	
+		RecoverProcessFlag =1;
+		DUGSReadParameterFlag =0;
+
+		NoNeedWaitingFlag =1;
+	}	
+	else if(DUGSWriteParameterFlag==1)//保存8001-8007参数
+	{
+		CommunWithDUGS.Funcode= 0x83;
+		CommunWithDUGS.StartAddr= 0x1A00;
+
+		CurrentFramehead =(uint32)((CommunWithDUGS.Funcode <<16)|CommunWithDUGS.StartAddr);	
+		RecoverProcessFlag =1;
+		DUGSWriteParameterFlag =0;
+		NoNeedWaitingFlag =0;
+	}
 	else if(DUGSReadSlaveMaxMinFlag==1)//读取从机高级数据
 	{
 		CommunWithDUGS.Funcode= 0x82;
@@ -8192,12 +8197,7 @@ uint32 Frameheadload(void)
 	}
 	else if(DUGSWriteMainParameterFlag==1)//保存主机参数
 	{
-		if(CurrentFramehead==0x831D00)
-		{
-			CommunWithDUGS.Funcode= 0x83;
-			CommunWithDUGS.StartAddr= 0x1564;			//先写ARM参数
-		}
-		else if(CurrentFramehead==0x831564)
+		if(CurrentFramehead==0x831564)
 		{
 			CommunWithDUGS.Funcode= 0x83;
 			CommunWithDUGS.StartAddr= 0x1500;			//再写主机参数
@@ -8208,13 +8208,9 @@ uint32 Frameheadload(void)
 		else
 		{
 			CommunWithDUGS.Funcode= 0x83;
-			CommunWithDUGS.StartAddr= 0x1d00;			//先写第二组ARM参数
+			CommunWithDUGS.StartAddr= 0x1564;			//先写ARM参数
 		}
-
 		CurrentFramehead =(uint32)((CommunWithDUGS.Funcode <<16)|CommunWithDUGS.StartAddr);	
-		//DUGSWriteARMParameterFlag =1;
-		//DUGSWriteMainParameterFlag =0;
-
 		NoNeedWaitingFlag =0;
 	}
 	else if(DUGSTimesetFlag==1)		//保存时间
@@ -9155,12 +9151,65 @@ void SendDataload(uint32 Framehead)
 			CommunWithDUGS.Framelength =PassiveParameterNUM;
 			CommunWithDUGS.Funcode= 0x82;
 			CommunWithDUGS.StartAddr= 0x1A00;
-			
-			for(i=0;i<100;i++)
+
+			//根据密码发送当前参数
+			if(CurrentPageID==0x0042)//主机参数
 			{
-				CommunWithDUGS.Databuff[i]=Passive_parameter[i];
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=main_parameter[i];
+				}
 			}
+			else if(CurrentPageID==0x0043)//从机参数
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=slave_parameter[SlaveID][i];
+				}
+			}
+			else if(CurrentPageID==0x0044)//ARM参数
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=ARM_param[i];
+				}
+			}
+			else if(CurrentPageID==0x0045)//修正参数1
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=load_correctionA[i];
+				}
+			}
+			else if(CurrentPageID==0x0046)//修正参数2
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=load_correctionB[i];
+				}
+			}
+			else if(CurrentPageID==0x0047)//修正参数3
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=load_correctionC[i];
+				}
+			}
+			else if(CurrentPageID==0x0048)//电容投切 8007
+			{
+				for(i=0;i<100;i++)
+				{
+					CommunWithDUGS.Databuff[i]=spcial_parameter[i];
+				}
+			}
+			
+
+			
+			
+			
 			break;
+
+
 		case 0x821A64:
 			CommunWithDUGS.Framelength =ManualPassiveNUM;
 			CommunWithDUGS.Funcode= 0x82;
