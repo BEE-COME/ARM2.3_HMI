@@ -2256,8 +2256,6 @@ void SPIReadyData(void)
 ******************************************************************************/
 int main()
 {
-	
-
  	SystemInit();                                  	//系统频率初始化(主晶振12MHz,RTC时钟频率32KHz,内部RC频率4M Hz)
  	GPIO_init();                                   	//管脚初始化
 	TIME_init(0);                                   //定时器0初始化
@@ -2307,8 +2305,7 @@ int main()
 			{
 				ini_version_flag=1;
 				DUGSWriteCorrectionParameter2Flag=1;
-			}
-			
+			}			
 		}			
 						
 		puyaotest2 =5;

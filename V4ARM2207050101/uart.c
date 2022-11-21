@@ -118,7 +118,7 @@ uint16	LocalAddr; 										// 串口地址
 uint16 	UART_BPS;     			                        // 串口波特率
 uint16	OnOffStatus;									// 默认开关机状态
 uint16	puyaotest,puyaotest2,puyaotest3,puyaotest4,puyaotesttmp[10],puyaotestfault;
-
+uint16 CT_MAIN1,CT_MAIN2;//主、辅助互感器安装位置
 uint8 SPIError;
 
 uint8 	xiazai,duqv;
@@ -138,7 +138,7 @@ volatile uint8		SlaveWindowFlag;							//从机数据界面
 volatile uint8		EventLogWindowFlag;							//事件记录界面
 volatile uint8		PassiveWindowFlag;							//无源投切界面
 volatile uint8		DataLogWindowFlag;							//历史数据记录界面
-
+volatile uint8		WindowbakFlag;								//参数界面
 
 volatile uint8		FirstEnterWindowFlag;						//首次进入界面
 volatile uint8		FirstCommunSuccess;							//首次通讯成功
@@ -193,10 +193,10 @@ volatile uint8		WriteMainParameterFlag,			WriteSelectedtimesFlag,		  WriteUserPa
 					WriteSlaveParameter13Flag,	  	WriteSlaveParameter14Flag, 	WriteSlaveParameter15Flag,		WriteSlaveParameter16Flag,WriteSpcialParameterFlag,
 //						谐波参数标志位
 					WriteHrmonicParameterFlag;
-volatile uint8		DUGSReadMainParameterFlag,			DUGSReadSelectedtimesFlag,		DUGSReadCorrectionParameterFlag,	DUGSReadCorrectionParameter2Flag,	DUGSReadARMCorrectFlag,
+volatile uint8		DUGSReadMainParameterFlag,			DUGSReadSelectedtimesFlag,		DUGSReadCorrectionParameterFlag,	DUGSReadCorrectionParameter2Flag,	DUGSReadARMCorrectFlag,DUGSReadParameterFlag,
 					DUGSReadCorrectionParameter3Flag,	DUGSReadSlaveParameterFlag,		DUGSReadSlaveDataFlag,				DUGSReadSlaveMaxMinFlag,			DUGSReadPassiveParameterFlag;
 
-volatile uint8		DUGSWriteMainParameterFlag,			DUGSWriteARMParameterFlag,			DUGSWriteARMCorrectFlag,		DUGSWriteSelectedtimesFlag,		DUGSWriteCorrectionParameterFlag,
+volatile uint8		DUGSWriteMainParameterFlag,			DUGSWriteARMParameterFlag,			DUGSWriteARMCorrectFlag,		DUGSWriteSelectedtimesFlag,		DUGSWriteCorrectionParameterFlag,DUGSWriteParameterFlag,
 					DUGSWriteCorrectionParameter2Flag,	DUGSWriteCorrectionParameter3Flag,	DUGSWriteSlaveParameterFlag,	DUGSWritePassiveParameterFlag;
 volatile uint8		DUGSTimesetFlag;					
 volatile uint8		DUGSInitFlag,DUGSInitFinishFlag,RecoverProcessFlag,RestoreProcessFlag,SetPageIDFlag;
@@ -6559,29 +6559,9 @@ for(i=1;i<50;i++)
 	{
 		InputRegister[i+512+1150] =votage_phaseC[i];
 	}
-	for(i=0;i<50;i++)
+	for(i=0;i<300;i++)
 	{
-		InputRegister[i+512+1200] =capa_currentA[i];
-	}
-	for(i=0;i<50;i++)
-	{
-		InputRegister[i+512+1250] =capa_phaseA[i];
-	}
-	for(i=0;i<50;i++)
-	{
-		InputRegister[i+512+1300] =capa_currentB[i];
-	}
-	for(i=0;i<50;i++)
-	{
-		InputRegister[i+512+1350] =capa_phaseB[i];
-	}
-	for(i=0;i<50;i++)
-	{
-		InputRegister[i+512+1400] =capa_currentC[i];
-	}
-	for(i=0;i<50;i++)
-	{
-		InputRegister[i+512+1450] =capa_phaseC[i];
+		InputRegister[i+512+1200] =capa[i];
 	}
 	InputRegister[2012] =Reserved;
 	InputRegister[2013] =Reserved;
@@ -7842,14 +7822,6 @@ uint32 Frameheadload(void)
 			}
 			else if(NextFramehead==0x821200)
 			{
-				CommunWithDUGS.Funcode= 0x82;
-				CommunWithDUGS.StartAddr= 0X1A84;
-					
-				NoNeedWaitingFlag =1;
-
-			}
-			else if(NextFramehead==0x821A84)
-			{
 				if(ManualPassiveSwitchFlag==1)	//启动手动无源投切
 				{
 					ManualPassiveSwitchFlagBak=1;
@@ -8207,14 +8179,6 @@ uint32 Frameheadload(void)
 			CommunWithDUGS.Funcode= 0x82;
 			CommunWithDUGS.StartAddr= 0x1564;
 			
-			//RecoverProcessFlag =1;
-			//DUGSReadMainParameterFlag =0;
-		}
-		else if(CurrentFramehead==0x821564)
-		{
-			CommunWithDUGS.Funcode= 0x82;
-			CommunWithDUGS.StartAddr= 0x1d00;
-			
 			RecoverProcessFlag =1;
 			DUGSReadMainParameterFlag =0;
 		}
@@ -8233,7 +8197,7 @@ uint32 Frameheadload(void)
 			CommunWithDUGS.Funcode= 0x83;
 			CommunWithDUGS.StartAddr= 0x1564;			//先写ARM参数
 		}
-		else if(CurrentFramehead==0x830564)
+		else if(CurrentFramehead==0x831564)
 		{
 			CommunWithDUGS.Funcode= 0x83;
 			CommunWithDUGS.StartAddr= 0x1500;			//再写主机参数
@@ -8853,79 +8817,62 @@ void SendDataload(uint32 Framehead)
 
 			for(i=0;i<50;i++)
 			{
-				switch(PrimevalID)
+				switch(HistogramPageID)
 				{
-					case 0:
+					case 10:
 						CommunWithDUGS.Databuff[i] =votageA[i];
 						CommunWithDUGS.Databuff[i+50] =votage_phaseA[i];
 						break;
-					case 1:
+					case 11:
 						CommunWithDUGS.Databuff[i] =votageB[i];
 						CommunWithDUGS.Databuff[i+50] =votage_phaseB[i];
 						break;
-					case 2:
+					case 12:
 						CommunWithDUGS.Databuff[i] =votageC[i];
 						CommunWithDUGS.Databuff[i+50] =votage_phaseC[i];
 						break;
-					case 3:
+					case 13:
 						CommunWithDUGS.Databuff[0] =system_currentA[0];						
 					  if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(system_currentA[i]*10000/xiuzhen_fuzhi2);
 						else CommunWithDUGS.Databuff[i] =system_currentA[i];
 						CommunWithDUGS.Databuff[i+50] =system_phaseA[i];
 						break;
-					case 4:
+					case 14:
 						CommunWithDUGS.Databuff[0] =system_currentB[0];
 						if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(system_currentB[i]*10000/xiuzhen_fuzhi2);
 						else CommunWithDUGS.Databuff[i] =system_currentB[i];
 						CommunWithDUGS.Databuff[i+50] =system_phaseB[i];
 						break;
-					case 5:
+					case 15:
 						CommunWithDUGS.Databuff[0] =system_currentC[0];
 						if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(system_currentC[i]*10000/xiuzhen_fuzhi2);
 						else CommunWithDUGS.Databuff[i] =system_currentC[i];
 						CommunWithDUGS.Databuff[i+50] =system_phaseC[i];
 						break;
-					case 6:
-						CommunWithDUGS.Databuff[i] =load_currentA[i];
-						CommunWithDUGS.Databuff[i+50] =load_phaseA[i];
+					case 16:
+						//从机数据
+						if(i<10)
+						{
+							CommunWithDUGS.Databuff[i] =slave_data[SlaveID][i];
+							CommunWithDUGS.Databuff[i+50] =slave_Maxmin[SlaveID][i];
+						}						
 						break;
-					case 7:
-						CommunWithDUGS.Databuff[i] =load_currentB[i];
-						CommunWithDUGS.Databuff[i+50] =load_phaseB[i];
+					case 17:
+						//dsp数据
+						CommunWithDUGS.Databuff[i] =dsp_data[i];
+						CommunWithDUGS.Databuff[i+50] =dsp_data[50+i];
 						break;
-					case 8:
-						CommunWithDUGS.Databuff[i] =load_currentC[i];
-						CommunWithDUGS.Databuff[i+50] =load_phaseC[i];
+					case 18:
+						CommunWithDUGS.Databuff[i] =capa[i];
+						CommunWithDUGS.Databuff[i+50] =capa[50+i];
 						break;
-					case 9:
-						CommunWithDUGS.Databuff[0] =out_currentA[0];
-						if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(out_currentA[i]*xiuzhen_fuzhi2/10000);
-						else CommunWithDUGS.Databuff[i] =out_currentA[i];
-						CommunWithDUGS.Databuff[i+50] =out_phaseA[i];
+					case 19:
+						CommunWithDUGS.Databuff[i] =capa[100+i];
+						CommunWithDUGS.Databuff[i+50] =capa[150+i];
 						break;
-					case 10:
-						CommunWithDUGS.Databuff[0] =out_currentB[0];
-						if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(out_currentB[i]*xiuzhen_fuzhi2/10000);
-						else CommunWithDUGS.Databuff[i] =out_currentB[i];
-						CommunWithDUGS.Databuff[i+50] =out_phaseB[i];
-						break;
-					case 11:
-						CommunWithDUGS.Databuff[0] =out_currentC[0];
-						if(Selected_parameter[i]==1)	CommunWithDUGS.Databuff[i] =(uint16)(out_currentC[i]*xiuzhen_fuzhi2/10000);
-						else CommunWithDUGS.Databuff[i] =out_currentC[i];
-						CommunWithDUGS.Databuff[i+50] =out_phaseC[i];
-						break;					
-					case 12:
-						CommunWithDUGS.Databuff[i] =capa_currentA[i];
-						CommunWithDUGS.Databuff[i+50] =capa_phaseA[i];
-						break;	
-					case 13:
-						CommunWithDUGS.Databuff[i] =capa_currentB[i];
-						CommunWithDUGS.Databuff[i+50] =capa_phaseB[i];
-						break;	
-					case 14:
-						CommunWithDUGS.Databuff[i] =capa_currentC[i];
-						CommunWithDUGS.Databuff[i+50] =capa_phaseC[i];
+					case 20:
+						CommunWithDUGS.Databuff[i] =capa[200+i];
+						CommunWithDUGS.Databuff[i+50] =capa[250+i];
 						break;
 					default:
 						CommunWithDUGS.Databuff[i] =votageA[i];
@@ -8962,23 +8909,15 @@ void SendDataload(uint32 Framehead)
 			for(i=0;i<100;i++)
 			{
 				CommunWithDUGS.Databuff[i]=main_parameter[i];
-			}
-			if(main_parameter[17]==240)CommunWithDUGS.Databuff[17]=0;
-			else if(main_parameter[17]==480)CommunWithDUGS.Databuff[17]=1;
-			else if(main_parameter[17]==960)CommunWithDUGS.Databuff[17]=2;
-			else if(main_parameter[17]==1920)CommunWithDUGS.Databuff[17]=3;
-			else if(main_parameter[17]==11520)CommunWithDUGS.Databuff[17]=4;
-			else CommunWithDUGS.Databuff[17]=0;
-			//CommunWithDUGS.Databuff[17]=main_parameter[17]*10;	//智能电容波特率
-			//CommunWithDUGS.Databuff[2]=dsp_data[93];			//总额定电流
-			
-			
+			}	
+			CommunWithDUGS.Databuff[10] =main_parameter[10]%10;//主互感器
+			CommunWithDUGS.Databuff[15] =main_parameter[15]%10;//辅助互感器
+
 			break;
 		case 0x821564:
 			CommunWithDUGS.Framelength =ARMParameterNUM;
 			CommunWithDUGS.Funcode= 0x82;
 			CommunWithDUGS.StartAddr= 0x1564;
-
 			
 			CommunWithDUGS.Databuff[0] = LocalAddr;				//0564
 			CommunWithDUGS.Databuff[1] = UART_BPS;				//0565
@@ -8987,143 +8926,142 @@ void SendDataload(uint32 Framehead)
 			CommunWithDUGS.Databuff[4] =local_time.RTC_Mon;		//0568
 			CommunWithDUGS.Databuff[5] =local_time.RTC_Mday;	//0569
 			CommunWithDUGS.Databuff[6] =local_time.RTC_Hour;	//056A
-			CommunWithDUGS.Databuff[7] =local_time.RTC_Min;		//056B
-			
+			CommunWithDUGS.Databuff[7] =local_time.RTC_Min;		//056B			
 			CommunWithDUGS.Databuff[8] =OnOffStatus;			//056C
 			
-			CommunWithDUGS.Databuff[9] =AlarmTime1[0];			//056D
-			CommunWithDUGS.Databuff[10] =AlarmTime1[1];			//056E
-			CommunWithDUGS.Databuff[11] =AlarmTime1[2];			//056F
-			CommunWithDUGS.Databuff[12] =AlarmTime1[3];			//0570
-			CommunWithDUGS.Databuff[13] =AlarmTime1[4];			//0571
+			CommunWithDUGS.Databuff[9] =CT_MAIN1;			//056D CT位置1
+			CommunWithDUGS.Databuff[10] =CT_MAIN2;			//056E CT位置2
+			// CommunWithDUGS.Databuff[11] =1;								//056F 
+			// CommunWithDUGS.Databuff[12] =main_parameter[0];			//0570 
+			// CommunWithDUGS.Databuff[13] =main_parameter[93];		//0571 
 			
-			CommunWithDUGS.Databuff[14] =AlarmTime2[0];			//0572
-			CommunWithDUGS.Databuff[15] =AlarmTime2[1];			//0573
-			CommunWithDUGS.Databuff[16] =AlarmTime2[2];			//0574
-			CommunWithDUGS.Databuff[17] =AlarmTime2[3];			//0575
-			CommunWithDUGS.Databuff[18] =AlarmTime2[4];			//0576
+			// CommunWithDUGS.Databuff[14] =AlarmTime2[0];			//0572 
+			// CommunWithDUGS.Databuff[15] =AlarmTime2[1];			//0573
+			// CommunWithDUGS.Databuff[16] =AlarmTime2[2];			//0574
+			// CommunWithDUGS.Databuff[17] =AlarmTime2[3];			//0575
+			// CommunWithDUGS.Databuff[18] =AlarmTime2[4];			//0576
 			
-			CommunWithDUGS.Databuff[19] =AlarmTime3[0];			//0577
-			CommunWithDUGS.Databuff[20] =AlarmTime3[1];			//0578
-			CommunWithDUGS.Databuff[21] =AlarmTime3[2];			//0579
-			CommunWithDUGS.Databuff[22] =AlarmTime3[3];			//057A
-			CommunWithDUGS.Databuff[23] =AlarmTime3[4];			//057B
+			// CommunWithDUGS.Databuff[19] =AlarmTime3[0];			//0577
+			// CommunWithDUGS.Databuff[20] =AlarmTime3[1];			//0578
+			// CommunWithDUGS.Databuff[21] =AlarmTime3[2];			//0579
+			// CommunWithDUGS.Databuff[22] =AlarmTime3[3];			//057A
+			// CommunWithDUGS.Databuff[23] =AlarmTime3[4];			//057B
 		
-			CommunWithDUGS.Databuff[24] =ntc_type;//AlarmTime4[0];			//057C
-			CommunWithDUGS.Databuff[25] =0;			//057D
-			CommunWithDUGS.Databuff[26] =0;			//057E
-			CommunWithDUGS.Databuff[27] =0;			//057F
-			CommunWithDUGS.Databuff[28] =0;			//0580
+			 CommunWithDUGS.Databuff[24] =ntc_type;//AlarmTime4[0];			//057C
+			// CommunWithDUGS.Databuff[25] =0;			//057D
+			// CommunWithDUGS.Databuff[26] =0;			//057E
+			// CommunWithDUGS.Databuff[27] =0;			//057F
+			// CommunWithDUGS.Databuff[28] =0;			//0580
 
-			HarmonicBal =main_parameter[6]/100;tmp16 =main_parameter[6]%100;
-			ReactiveBal =tmp16/10;			   tmp16 =main_parameter[6]%10;
-			ActiveBal	=tmp16;
-			if(ReactiveBal==1||HarmonicBal==1)ApparentBal=1;
+			// HarmonicBal =main_parameter[6]/100;tmp16 =main_parameter[6]%100;
+			// ReactiveBal =tmp16/10;			   tmp16 =main_parameter[6]%10;
+			// ActiveBal	=tmp16;
+			// if(ReactiveBal==1||HarmonicBal==1)ApparentBal=1;
 			
-			CommunWithDUGS.Databuff[29] =ActiveBal;			//0581
-			CommunWithDUGS.Databuff[30] =ReactiveBal;		//0582
-			CommunWithDUGS.Databuff[31] =HarmonicBal;		//0583
-			CommunWithDUGS.Databuff[32] =ApparentBal;		//0584
-			CommunWithDUGS.Databuff[33] =SetupMode;		//0585
-			CommunWithDUGS.Databuff[34] =enhance;		//0586
-			CommunWithDUGS.Databuff[35] =0;		//0587
-			CommunWithDUGS.Databuff[36] =0;		//0588
-			CommunWithDUGS.Databuff[37] =0;		//0589
-			CommunWithDUGS.Databuff[38] =0;		//058A
-			CommunWithDUGS.Databuff[39] =0;		//058B
+			// CommunWithDUGS.Databuff[29] =ActiveBal;			//0581
+			// CommunWithDUGS.Databuff[30] =ReactiveBal;		//0582
+			// CommunWithDUGS.Databuff[31] =HarmonicBal;		//0583
+			// CommunWithDUGS.Databuff[32] =ApparentBal;		//0584
+			// CommunWithDUGS.Databuff[33] =SetupMode;		//0585
+			// CommunWithDUGS.Databuff[34] =enhance;		//0586
+			// CommunWithDUGS.Databuff[35] =0;		//0587
+			// CommunWithDUGS.Databuff[36] =0;		//0588
+			// CommunWithDUGS.Databuff[37] =0;		//0589
+			// CommunWithDUGS.Databuff[38] =0;		//058A
+			// CommunWithDUGS.Databuff[39] =0;		//058B
 
-			CommunWithDUGS.Databuff[40] =(uint16)(ProjectNo>>16);//058C
-			CommunWithDUGS.Databuff[41] =(uint16)ProjectNo;		//058D
-			CommunWithDUGS.Databuff[42] =ProductionNo;			//058E
+			// CommunWithDUGS.Databuff[40] =(uint16)(ProjectNo>>16);//058C
+			// CommunWithDUGS.Databuff[41] =(uint16)ProjectNo;		//058D
+			// CommunWithDUGS.Databuff[42] =ProductionNo;			//058E
 
-			//VolOnOffEnable =main_parameter[73]%10;
-			CommunWithDUGS.Databuff[43] =0;						//电压开机使能//058F
-			CurOnOffEnable =main_parameter[73]/10;
-			CommunWithDUGS.Databuff[44] =CurOnOffEnable;		//电流开机使能//0590
+			// //VolOnOffEnable =main_parameter[73]%10;
+			// CommunWithDUGS.Databuff[43] =0;						//电压开机使能//058F
+			// CurOnOffEnable =main_parameter[73]/10;
+			// CommunWithDUGS.Databuff[44] =CurOnOffEnable;		//电流开机使能//0590
 
-			MainCTPhase =main_parameter[10]/10000;tmp16 =main_parameter[10]%10000;
-			MainCTDirectionC=tmp16/1000;tmp16 =main_parameter[10]%1000;
-			MainCTDirectionB=tmp16/100;tmp16 =main_parameter[10]%100;
-			MainCTDirectionA=tmp16/10;tmp16 =main_parameter[10]%10;
-			MainCTLocation  =tmp16;
+			// MainCTPhase =main_parameter[10]/10000;tmp16 =main_parameter[10]%10000;
+			// MainCTDirectionC=tmp16/1000;tmp16 =main_parameter[10]%1000;
+			// MainCTDirectionB=tmp16/100;tmp16 =main_parameter[10]%100;
+			// MainCTDirectionA=tmp16/10;tmp16 =main_parameter[10]%10;
+			// MainCTLocation  =tmp16;
 			
-			CommunWithDUGS.Databuff[45] =MainCTLocation;		//主互感器位置//0591
-			CommunWithDUGS.Databuff[46] =MainCTDirectionA;		//主互感器方向A//0592
-			CommunWithDUGS.Databuff[47] =MainCTDirectionB;		//主互感器方向B//0593
-			CommunWithDUGS.Databuff[48] =MainCTDirectionC;		//主互感器方向C//0594
-			CommunWithDUGS.Databuff[49] =MainCTPhase; 			//主互感器相序//0595
+			// CommunWithDUGS.Databuff[45] =MainCTLocation;		//主互感器位置//0591
+			// CommunWithDUGS.Databuff[46] =MainCTDirectionA;		//主互感器方向A//0592
+			// CommunWithDUGS.Databuff[47] =MainCTDirectionB;		//主互感器方向B//0593
+			// CommunWithDUGS.Databuff[48] =MainCTDirectionC;		//主互感器方向C//0594
+			// CommunWithDUGS.Databuff[49] =MainCTPhase; 			//主互感器相序//0595
 			
-			OutCTPhase =main_parameter[15]/10000;tmp16 =main_parameter[15]%10000;
-			OutCTDirectionC=tmp16/1000;tmp16 =main_parameter[15]%1000;
-			OutCTDirectionB=tmp16/100;tmp16 =main_parameter[15]%100;
-			OutCTDirectionA=tmp16/10;tmp16 =main_parameter[15]%10;
+			// OutCTPhase =main_parameter[15]/10000;tmp16 =main_parameter[15]%10000;
+			// OutCTDirectionC=tmp16/1000;tmp16 =main_parameter[15]%1000;
+			// OutCTDirectionB=tmp16/100;tmp16 =main_parameter[15]%100;
+			// OutCTDirectionA=tmp16/10;tmp16 =main_parameter[15]%10;
 			
-			CommunWithDUGS.Databuff[50] =OutCTPhase; 			//辅助互感器相序//0596
+			// CommunWithDUGS.Databuff[50] =OutCTPhase; 			//辅助互感器相序//0596
 			
-			CommunWithDUGS.Databuff[51] =Position[0];			//仓位2	
-			CommunWithDUGS.Databuff[52] =Group[0];				//组2
-			CommunWithDUGS.Databuff[53] =Capacitance[0];		//容值2
+			// CommunWithDUGS.Databuff[51] =Position[0];			//仓位2	
+			// CommunWithDUGS.Databuff[52] =Group[0];				//组2
+			// CommunWithDUGS.Databuff[53] =Capacitance[0];		//容值2
 
-			CommunWithDUGS.Databuff[54] =Position[1];			//仓位3	
-			CommunWithDUGS.Databuff[55] =Group[1];				//组3
-			CommunWithDUGS.Databuff[56] =Capacitance[1];		//容值3
+			// CommunWithDUGS.Databuff[54] =Position[1];			//仓位3	
+			// CommunWithDUGS.Databuff[55] =Group[1];				//组3
+			// CommunWithDUGS.Databuff[56] =Capacitance[1];		//容值3
 
-			CommunWithDUGS.Databuff[57] =Position[2];			//仓位4	
-			CommunWithDUGS.Databuff[58] =Group[2];				//组4
-			CommunWithDUGS.Databuff[59] =Capacitance[2];		//容值4
+			// CommunWithDUGS.Databuff[57] =Position[2];			//仓位4	
+			// CommunWithDUGS.Databuff[58] =Group[2];				//组4
+			// CommunWithDUGS.Databuff[59] =Capacitance[2];		//容值4
 
-			CommunWithDUGS.Databuff[60] =Position[3];			//仓位5	
-			CommunWithDUGS.Databuff[61] =Group[3];				//组5
-			CommunWithDUGS.Databuff[62] =Capacitance[3];		//容值5
+			// CommunWithDUGS.Databuff[60] =Position[3];			//仓位5	
+			// CommunWithDUGS.Databuff[61] =Group[3];				//组5
+			// CommunWithDUGS.Databuff[62] =Capacitance[3];		//容值5
 
-			CommunWithDUGS.Databuff[63] =Position[4];			//仓位6	
-			CommunWithDUGS.Databuff[64] =Group[4];				//组6
-			CommunWithDUGS.Databuff[65] =Capacitance[4];		//容值6
+			// CommunWithDUGS.Databuff[63] =Position[4];			//仓位6	
+			// CommunWithDUGS.Databuff[64] =Group[4];				//组6
+			// CommunWithDUGS.Databuff[65] =Capacitance[4];		//容值6
 
-			CommunWithDUGS.Databuff[66] =Position[5];			//仓位7	
-			CommunWithDUGS.Databuff[67] =Group[5];				//组7
-			CommunWithDUGS.Databuff[68] =Capacitance[5];		//容值7
+			// CommunWithDUGS.Databuff[66] =Position[5];			//仓位7	
+			// CommunWithDUGS.Databuff[67] =Group[5];				//组7
+			// CommunWithDUGS.Databuff[68] =Capacitance[5];		//容值7
 
-			CommunWithDUGS.Databuff[69] =Position[6];			//仓位8	
-			CommunWithDUGS.Databuff[70] =Group[6];				//组8
-			CommunWithDUGS.Databuff[71] =Capacitance[6];		//容值8
+			// CommunWithDUGS.Databuff[69] =Position[6];			//仓位8	
+			// CommunWithDUGS.Databuff[70] =Group[6];				//组8
+			// CommunWithDUGS.Databuff[71] =Capacitance[6];		//容值8
 
-			CommunWithDUGS.Databuff[72] =Position[7];			//仓位9	
-			CommunWithDUGS.Databuff[73] =Group[7];				//组9
-			CommunWithDUGS.Databuff[74] =Capacitance[7];		//容值9
+			// CommunWithDUGS.Databuff[72] =Position[7];			//仓位9	
+			// CommunWithDUGS.Databuff[73] =Group[7];				//组9
+			// CommunWithDUGS.Databuff[74] =Capacitance[7];		//容值9
 
-			CommunWithDUGS.Databuff[75] =Position[8];			//仓位10	
-			CommunWithDUGS.Databuff[76] =Group[8];				//组10
-			CommunWithDUGS.Databuff[77] =Capacitance[8];		//容值10
+			// CommunWithDUGS.Databuff[75] =Position[8];			//仓位10	
+			// CommunWithDUGS.Databuff[76] =Group[8];				//组10
+			// CommunWithDUGS.Databuff[77] =Capacitance[8];		//容值10
 
-			CommunWithDUGS.Databuff[78] =OutCTDirectionA;		//输出互感器方向A
-			CommunWithDUGS.Databuff[79] =OutCTDirectionB;		//输出互感器方向B
-			CommunWithDUGS.Databuff[80] =OutCTDirectionC;		//输出互感器方向C
+			// CommunWithDUGS.Databuff[78] =OutCTDirectionA;		//输出互感器方向A
+			// CommunWithDUGS.Databuff[79] =OutCTDirectionB;		//输出互感器方向B
+			// CommunWithDUGS.Databuff[80] =OutCTDirectionC;		//输出互感器方向C
 
-			CommunWithDUGS.Databuff[81] =Position[9];			//仓位11	
-			CommunWithDUGS.Databuff[82] =Group[9];				//组11
-			CommunWithDUGS.Databuff[83] =Capacitance[9];		//容值11
+			// CommunWithDUGS.Databuff[81] =Position[9];			//仓位11	
+			// CommunWithDUGS.Databuff[82] =Group[9];				//组11
+			// CommunWithDUGS.Databuff[83] =Capacitance[9];		//容值11
 
-			CommunWithDUGS.Databuff[84] =Position[10];			//仓位12	
-			CommunWithDUGS.Databuff[85] =Group[10];				//组12
-			CommunWithDUGS.Databuff[86] =Capacitance[10];		//容值12
+			// CommunWithDUGS.Databuff[84] =Position[10];			//仓位12	
+			// CommunWithDUGS.Databuff[85] =Group[10];				//组12
+			// CommunWithDUGS.Databuff[86] =Capacitance[10];		//容值12
 
-			CommunWithDUGS.Databuff[87] =Position[11];			//仓位13	
-			CommunWithDUGS.Databuff[88] =Group[11];				//组13
-			CommunWithDUGS.Databuff[89] =Capacitance[11];		//容值13
+			// CommunWithDUGS.Databuff[87] =Position[11];			//仓位13	
+			// CommunWithDUGS.Databuff[88] =Group[11];				//组13
+			// CommunWithDUGS.Databuff[89] =Capacitance[11];		//容值13
 
-			CommunWithDUGS.Databuff[90] =Position[12];			//仓位14	
-			CommunWithDUGS.Databuff[91] =Group[12];				//组14
-			CommunWithDUGS.Databuff[92] =Capacitance[12];		//容值14
+			// CommunWithDUGS.Databuff[90] =Position[12];			//仓位14	
+			// CommunWithDUGS.Databuff[91] =Group[12];				//组14
+			// CommunWithDUGS.Databuff[92] =Capacitance[12];		//容值14
 
-			CommunWithDUGS.Databuff[93] =Position[13];			//仓位15	
-			CommunWithDUGS.Databuff[94] =Group[13];				//组15
-			CommunWithDUGS.Databuff[95] =Capacitance[13];		//容值15
+			// CommunWithDUGS.Databuff[93] =Position[13];			//仓位15	
+			// CommunWithDUGS.Databuff[94] =Group[13];				//组15
+			// CommunWithDUGS.Databuff[95] =Capacitance[13];		//容值15
 
-			CommunWithDUGS.Databuff[96] =Position[14];			//仓位16
-			CommunWithDUGS.Databuff[97] =Group[14];				//组16
-			CommunWithDUGS.Databuff[98] =Capacitance[14];		//组16
-			CommunWithDUGS.Databuff[99] =0;						//预留
+			// CommunWithDUGS.Databuff[96] =Position[14];			//仓位16
+			// CommunWithDUGS.Databuff[97] =Group[14];				//组16
+			// CommunWithDUGS.Databuff[98] =Capacitance[14];		//组16
+			// CommunWithDUGS.Databuff[99] =0;						//预留
 			
 			for(i=0; i<100; i++)	
 			{
@@ -10160,33 +10098,29 @@ void RecvDataFromDUGS(void)
 				{
 					for(i=0;i<100;i++)
 					{
-						if((i>29&&i<50)||(i==6)||(i==10)||(i==15)||(i==99))continue;
 						main_parameter[i] = RecvDatabuff[i];						//主参数	
 					}
-					if(RecvDatabuff[17]==0)main_parameter[17]=240;
-					else if(RecvDatabuff[17]==1)main_parameter[17]=480;
-					else if(RecvDatabuff[17]==2)main_parameter[17]=960;
-					else if(RecvDatabuff[17]==3)main_parameter[17]=1920;
-					else if(RecvDatabuff[17]==4)main_parameter[17]=11520;
-					else main_parameter[17]=240;
+					if(CT_MAIN1>0)main_parameter[10]=CT_MAIN1;//主互感器安装位置
+					if(CT_MAIN2>0)main_parameter[15]=CT_MAIN2;//辅助互感器安装位置
+
 					//main_parameter[17] = RecvDatabuff[17]/10;					//智能电容波特率
-					if(main_parameter[72]==2)//如果为手动投切
-					{
-						ManualPassiveSwitchFlag=1;
-					}
-					else 
-					{
-						ManualPassiveSwitchFlag =0;//自动投切
-						OnekeyClean =1;//一键切除
-					}
+					// if(main_parameter[72]==2)//如果为手动投切
+					// {
+					// 	ManualPassiveSwitchFlag=1;
+					// }
+					// else 
+					// {
+					// 	ManualPassiveSwitchFlag =0;//自动投切
+					// 	OnekeyClean =1;//一键切除
+					// }
 					
 					if(SaveOrReadFlag==3)
 					{	
 						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
+						// WriteCorrectionParameterFlag=1;
+						// WriteCorrectionParameter2Flag=1;
+						// WriteCorrectionParameter3Flag=1;
+						// WritePassiveParameterFlag =1;
 						j=0;
 						for(i=0;i<100;i++)
 						{
@@ -10221,23 +10155,23 @@ void RecvDataFromDUGS(void)
 
 					OnOffStatus =RecvDatabuff[8];
 					
-					AlarmTime1[0]=RecvDatabuff[9];//定时1 	使能
-					AlarmTime1[1]=RecvDatabuff[10];//定时1 	时
-					AlarmTime1[2]=RecvDatabuff[11];//定时1	分	
-					AlarmTime1[3]=RecvDatabuff[12];//定时1 	时
-					AlarmTime1[4]=RecvDatabuff[13];//定时1	分	
+					CT_MAIN1=RecvDatabuff[9];//主互感器安装位置
+					CT_MAIN2=RecvDatabuff[10];//辅助互感器安装位置
+					// AlarmTime1[2]=RecvDatabuff[11];//定时1	分	
+					// AlarmTime1[3]=RecvDatabuff[12];//定时1 	时
+					// AlarmTime1[4]=RecvDatabuff[13];//定时1	分	
 					
-					AlarmTime2[0]=RecvDatabuff[14];//定时2	使能
-					AlarmTime2[1]=RecvDatabuff[15];//定时2 	时
-					AlarmTime2[2]=RecvDatabuff[16];//定时2	分
-					AlarmTime2[3]=RecvDatabuff[17];//定时2	时					
-					AlarmTime2[4]=RecvDatabuff[18];//定时2 	分
+					// AlarmTime2[0]=RecvDatabuff[14];//定时2	使能
+					// AlarmTime2[1]=RecvDatabuff[15];//定时2 	时
+					// AlarmTime2[2]=RecvDatabuff[16];//定时2	分
+					// AlarmTime2[3]=RecvDatabuff[17];//定时2	时					
+					// AlarmTime2[4]=RecvDatabuff[18];//定时2 	分
 					
-					AlarmTime3[0]=RecvDatabuff[19];//定时3	使能
-					AlarmTime3[1]=RecvDatabuff[20];//定时3	时
-					AlarmTime3[2]=RecvDatabuff[21];//定时3 	分
-					AlarmTime3[3]=RecvDatabuff[22];//定时3	时
-					AlarmTime3[4]=RecvDatabuff[23];//定时3	分	
+					// AlarmTime3[0]=RecvDatabuff[19];//定时3	使能
+					// AlarmTime3[1]=RecvDatabuff[20];//定时3	时
+					// AlarmTime3[2]=RecvDatabuff[21];//定时3 	分
+					// AlarmTime3[3]=RecvDatabuff[22];//定时3	时
+					// AlarmTime3[4]=RecvDatabuff[23];//定时3	分	
 
 					ntc_type=RecvDatabuff[24];//NTC模式，0为默认，1为690新增
 //					AlarmTime4[0]=RecvDatabuff[24];//定时4 使能
@@ -10246,22 +10180,22 @@ void RecvDataFromDUGS(void)
 //					AlarmTime4[3]=RecvDatabuff[27];//定时4	时
 //					AlarmTime4[4]=RecvDatabuff[28];//定时4	分
 					
-					ActiveBal=RecvDatabuff[29];//有功不平衡
-					ReactiveBal=RecvDatabuff[30];//无功不平衡
-					HarmonicBal=RecvDatabuff[31];//谐波不平衡
-					ApparentBal=RecvDatabuff[32];//视在不平衡
+					// ActiveBal=RecvDatabuff[29];//有功不平衡
+					// ReactiveBal=RecvDatabuff[30];//无功不平衡
+					// HarmonicBal=RecvDatabuff[31];//谐波不平衡
+					// ApparentBal=RecvDatabuff[32];//视在不平衡
 
-					if(ApparentBal2!=ApparentBal)
-					{
-						if(ApparentBal==1){HarmonicBal=1;ReactiveBal=1;}				
-						else {HarmonicBal=0;ReactiveBal=0;}
-						ApparentBal2=ApparentBal;
-					}			
+					// if(ApparentBal2!=ApparentBal)
+					// {
+					// 	if(ApparentBal==1){HarmonicBal=1;ReactiveBal=1;}				
+					// 	else {HarmonicBal=0;ReactiveBal=0;}
+					// 	ApparentBal2=ApparentBal;
+					// }			
 										
-					main_parameter[6] =ActiveBal+ReactiveBal*10+HarmonicBal*100;
-					SetupMode =RecvDatabuff[33];//安装配置方式
+					// main_parameter[6] =ActiveBal+ReactiveBal*10+HarmonicBal*100;
+					// SetupMode =RecvDatabuff[33];//安装配置方式
 					
-					enhance=RecvDatabuff[34];//增强模式
+					// enhance=RecvDatabuff[34];//增强模式
 					/*slave_Reset[4] =RecvDatabuff[34];//定时5	分
 					slave_Reset[5] =RecvDatabuff[35];//定时5	分
 					slave_Reset[6] =RecvDatabuff[36];//定时5	分
@@ -10269,110 +10203,110 @@ void RecvDataFromDUGS(void)
 					slave_Reset[8] =RecvDatabuff[38];//定时5	分
 					slave_Reset[9] =RecvDatabuff[39];//定时5	分*/
 
-					ProjectNo=(uint32)((RecvDatabuff[40]<<16)|RecvDatabuff[41]);//项目号
+					// ProjectNo=(uint32)((RecvDatabuff[40]<<16)|RecvDatabuff[41]);//项目号
 					
-					ProductionNo =RecvDatabuff[42];//生产号
-					tmp64Val=1000;
-					tmp64Val =(uint64) (ProjectNo)*tmp64Val;
-					SerialNumber = 2000000000000000+tmp64Val+ProductionNo;
-					word=(uint16)(SerialNumber%9999);									//获取密码
+					// ProductionNo =RecvDatabuff[42];//生产号
+					// tmp64Val=1000;
+					// tmp64Val =(uint64) (ProjectNo)*tmp64Val;
+					// SerialNumber = 2000000000000000+tmp64Val+ProductionNo;
+					//word=(uint16)(SerialNumber%9999);									//获取密码
 
-					VolOnOffEnable =RecvDatabuff[43];
-					CurOnOffEnable =RecvDatabuff[44];
-					main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;	//个位数：
-																			//0：设备不启用电压开关机条件
-																			//1：设备启用电压开关机条件
+					// VolOnOffEnable =RecvDatabuff[43];
+					// CurOnOffEnable =RecvDatabuff[44];
+					// main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;	//个位数：
+					// 														//0：设备不启用电压开关机条件
+					// 														//1：设备启用电压开关机条件
 
-																			//十位数
-																			//0：设备不启用电流开关机条件
-																			//1：设备启用电流开关机条件
-					MainCTLocation 	=RecvDatabuff[45];
-					MainCTDirectionA =RecvDatabuff[46];
-					MainCTDirectionB =RecvDatabuff[47];
-					MainCTDirectionC =RecvDatabuff[48];
-					MainCTPhase 	=RecvDatabuff[49];
-					main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionC*1000+MainCTPhase*10000;	
+					// 														//十位数
+					// 														//0：设备不启用电流开关机条件
+					// 														//1：设备启用电流开关机条件
+					// MainCTLocation 	=RecvDatabuff[45];
+					// MainCTDirectionA =RecvDatabuff[46];
+					// MainCTDirectionB =RecvDatabuff[47];
+					// MainCTDirectionC =RecvDatabuff[48];
+					// MainCTPhase 	=RecvDatabuff[49];
+					// main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionC*1000+MainCTPhase*10000;	
 					//AidCTLocation 	=RecvDatabuff[48];
 					//AidCTDirection 	=RecvDatabuff[49];
-					OutCTPhase 		=RecvDatabuff[50];
+					// OutCTPhase 		=RecvDatabuff[50];
 					
-					OutCTDirectionA =RecvDatabuff[78];
-					OutCTDirectionB =RecvDatabuff[79];
-					OutCTDirectionC =RecvDatabuff[80];
-					main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
+					// OutCTDirectionA =RecvDatabuff[78];
+					// OutCTDirectionB =RecvDatabuff[79];
+					// OutCTDirectionC =RecvDatabuff[80];
+					// main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
 					
-					Position[0] 	=RecvDatabuff[51];										//仓位2
-					Group[0] 		=RecvDatabuff[52];										//组2
-					Capacitance[0]	=RecvDatabuff[53];										//容值2
+					// Position[0] 	=RecvDatabuff[51];										//仓位2
+					// Group[0] 		=RecvDatabuff[52];										//组2
+					// Capacitance[0]	=RecvDatabuff[53];										//容值2
 
-					Position[1] 	=RecvDatabuff[54];										//仓位3
-					Group[1] 		=RecvDatabuff[55];										//组3
-					Capacitance[1]	=RecvDatabuff[56];										//容值3
+					// Position[1] 	=RecvDatabuff[54];										//仓位3
+					// Group[1] 		=RecvDatabuff[55];										//组3
+					// Capacitance[1]	=RecvDatabuff[56];										//容值3
 
-					Position[2] 	=RecvDatabuff[57];										//仓位4
-					Group[2] 		=RecvDatabuff[58];										//组4
-					Capacitance[2]	=RecvDatabuff[59];										//容值4
+					// Position[2] 	=RecvDatabuff[57];										//仓位4
+					// Group[2] 		=RecvDatabuff[58];										//组4
+					// Capacitance[2]	=RecvDatabuff[59];										//容值4
 
-					Position[3] 	=RecvDatabuff[60];										//仓位5
-					Group[3] 		=RecvDatabuff[61];										//组5
-					Capacitance[3]	=RecvDatabuff[62];										//容值5
+					// Position[3] 	=RecvDatabuff[60];										//仓位5
+					// Group[3] 		=RecvDatabuff[61];										//组5
+					// Capacitance[3]	=RecvDatabuff[62];										//容值5
 
-					Position[4] 	=RecvDatabuff[63];										//仓位6
-					Group[4] 		=RecvDatabuff[64];										//组6
-					Capacitance[4]	=RecvDatabuff[65];										//容值6
+					// Position[4] 	=RecvDatabuff[63];										//仓位6
+					// Group[4] 		=RecvDatabuff[64];										//组6
+					// Capacitance[4]	=RecvDatabuff[65];										//容值6
 
-					Position[5] 	=RecvDatabuff[66];										//仓位7
-					Group[5] 		=RecvDatabuff[67];										//组7
-					Capacitance[5]	=RecvDatabuff[68];										//容值7
+					// Position[5] 	=RecvDatabuff[66];										//仓位7
+					// Group[5] 		=RecvDatabuff[67];										//组7
+					// Capacitance[5]	=RecvDatabuff[68];										//容值7
 
-					Position[6] 	=RecvDatabuff[69];										//仓位8
-					Group[6] 		=RecvDatabuff[70];										//组8
-					Capacitance[6]	=RecvDatabuff[71];										//容值8
+					// Position[6] 	=RecvDatabuff[69];										//仓位8
+					// Group[6] 		=RecvDatabuff[70];										//组8
+					// Capacitance[6]	=RecvDatabuff[71];										//容值8
 
-					Position[7] 	=RecvDatabuff[72];										//仓位9
-					Group[7] 		=RecvDatabuff[73];										//组9
-					Capacitance[7]	=RecvDatabuff[74];										//容值9
+					// Position[7] 	=RecvDatabuff[72];										//仓位9
+					// Group[7] 		=RecvDatabuff[73];										//组9
+					// Capacitance[7]	=RecvDatabuff[74];										//容值9
 
-					Position[8] 	=RecvDatabuff[75];										//仓位10
-					Group[8] 		=RecvDatabuff[76];										//组10
-					Capacitance[8]	=RecvDatabuff[77];										//容值10
+					// Position[8] 	=RecvDatabuff[75];										//仓位10
+					// Group[8] 		=RecvDatabuff[76];										//组10
+					// Capacitance[8]	=RecvDatabuff[77];										//容值10
 
 					//OutCTDirectionA =RecvDatabuff[78];
 					//OutCTDirectionB =RecvDatabuff[79];
 					//OutCTDirectionC =RecvDatabuff[80];
 
 					
-					Position[9] 	=RecvDatabuff[81];										//仓位11
-					Group[9] 		=RecvDatabuff[82];										//组11
-					Capacitance[9]	=RecvDatabuff[83];										//容值11
+					// Position[9] 	=RecvDatabuff[81];										//仓位11
+					// Group[9] 		=RecvDatabuff[82];										//组11
+					// Capacitance[9]	=RecvDatabuff[83];										//容值11
 
-					Position[10] 	=RecvDatabuff[84];										//仓位12
-					Group[10] 		=RecvDatabuff[85];										//组12
-					Capacitance[10]	=RecvDatabuff[86];										//容值12
+					// Position[10] 	=RecvDatabuff[84];										//仓位12
+					// Group[10] 		=RecvDatabuff[85];										//组12
+					// Capacitance[10]	=RecvDatabuff[86];										//容值12
 
-					Position[11] 	=RecvDatabuff[87];										//仓位13
-					Group[11] 		=RecvDatabuff[88];										//组13
-					Capacitance[11]	=RecvDatabuff[89];										//容值13
+					// Position[11] 	=RecvDatabuff[87];										//仓位13
+					// Group[11] 		=RecvDatabuff[88];										//组13
+					// Capacitance[11]	=RecvDatabuff[89];										//容值13
 
-					Position[12] 	=RecvDatabuff[90];										//仓位14
-					Group[12] 		=RecvDatabuff[91];										//组14
-					Capacitance[12]	=RecvDatabuff[92];										//容值14
+					// Position[12] 	=RecvDatabuff[90];										//仓位14
+					// Group[12] 		=RecvDatabuff[91];										//组14
+					// Capacitance[12]	=RecvDatabuff[92];										//容值14
 
-					Position[13] 	=RecvDatabuff[93];										//仓位15
-					Group[13] 		=RecvDatabuff[94];										//组15
-					Capacitance[13]	=RecvDatabuff[95];										//容值15
+					// Position[13] 	=RecvDatabuff[93];										//仓位15
+					// Group[13] 		=RecvDatabuff[94];										//组15
+					// Capacitance[13]	=RecvDatabuff[95];										//容值15
 
-					Position[14] 	=RecvDatabuff[96];										//仓位16
-					Group[14] 		=RecvDatabuff[97];										//组16
-					Capacitance[14]	=RecvDatabuff[98];										//容值16
-					if(SetupMode==0)
-					{
-						CabinProcess();			//智能配置
-					}
-					if(SetupMode==1)
-					{	
-						ChannelProcess();			//直控
-					}
+					// Position[14] 	=RecvDatabuff[96];										//仓位16
+					// Group[14] 		=RecvDatabuff[97];										//组16
+					// Capacitance[14]	=RecvDatabuff[98];										//容值16
+					// if(SetupMode==0)
+					// {
+					// 	CabinProcess();			//智能配置
+					// }
+					// if(SetupMode==1)
+					// {	
+					// 	ChannelProcess();			//直控
+					// }
 					if(SaveOrReadFlag==3)
 					{	
 						SaveARMParaProcess();
@@ -10857,6 +10791,7 @@ void DUGSProcess(void)//屏幕界面处理
 		EventLogWindowFlag =0;						//事件记录页面
 		PassiveWindowFlag =0;						//无源投切页面
 		DataLogWindowFlag =0;						//数据记录页面
+		WindowbakFlag=0;
 		//FirstEnterPageFlag =1;			// 首次进入界面
 	}
 	if(SlaveIDbak !=SlaveID)	//两次不在同一从机ID，则重新读取从机数据和参数
@@ -10882,19 +10817,7 @@ void DUGSProcess(void)//屏幕界面处理
 
 		//智能电容
 		case	0x0020:
-			if(SaveOrReadFlag==1)
-			{
-				ChangeStatus(ReadParameters);
-				DUGSReadSelectedtimesFlag=1;
-				DUGSReadMainParameterFlag=1;
-				DUGSReadSelectedtimesFlag=1;
-				DUGSReadCorrectionParameterFlag=1;
-				DUGSReadCorrectionParameter2Flag=1;
-				DUGSReadCorrectionParameter3Flag=1;
-				DUGSReadPassiveParameterFlag=1;
-				ParameterError =0;
-			}
-			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteSelectedtimesFlag=1;DUGSWriteMainParameterFlag=1;DUGSWritePassiveParameterFlag=1;}	
+
 			break;
 		//记录信息
 		case	0x0030:
@@ -10912,6 +10835,58 @@ void DUGSProcess(void)//屏幕界面处理
 			}
 			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby){ChangeStatus(WriteParameters);DUGSWriteSelectedtimesFlag=1;DUGSWriteMainParameterFlag=1;DUGSWritePassiveParameterFlag=1;}	
 			break;
+
+		case	0x0040://用户参数8888
+			if(SaveOrReadFlag==1)
+			{
+				ChangeStatus(ReadParameters);
+				DUGSReadMainParameterFlag=1;
+				ParameterError =0;
+			}
+			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby)
+			{
+				ChangeStatus(WriteParameters);
+				DUGSWriteMainParameterFlag=1;
+			}
+			break;
+
+		case	0x0041://高级操作1234	
+			break;
+
+		case	0x0042://主机参数8001
+		case	0x0043://从机参数8002
+		case	0x0044://ARM参数8003
+		case	0x0045://修正1参数8004
+		case	0x0046://修正2参数8005
+		case	0x0047://修正3参数8006
+			if(SaveOrReadFlag==1)
+			{
+				ChangeStatus(ReadParameters);
+				DUGSReadParameterFlag=1;
+				ParameterError =0;
+			}
+			else if((SaveOrReadFlag==2||SaveOrReadFlag==3) && APFStatus<=SystemStandby)
+			{
+				ChangeStatus(WriteParameters);
+				DUGSWriteParameterFlag=1;
+			}
+			break;
+		
+		case	0x0048://投切参数8007 
+			if(SaveOrReadFlag==1)
+			{
+				ChangeStatus(ReadParameters);
+				DUGSReadParameterFlag=1;
+				ParameterError =0;
+			}
+			else if((SaveOrReadFlag==2||SaveOrReadFlag==3))
+			{
+				ChangeStatus(WriteParameters);
+				DUGSWriteParameterFlag=1;
+			}
+			break;
+		
+
 
 
 //////////////////////////////////////////主机参数///////////////////////////////////////////////			
