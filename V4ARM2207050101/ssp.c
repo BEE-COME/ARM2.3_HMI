@@ -1918,6 +1918,8 @@ uint8 SPI_CommumWithDSP(void)
 		}
 		NextReceFrameID =21;
 		SpiWrite_Enable;
+
+		WriteSpcialParameterFlag=0;
 	}
 	else 	
 	{
