@@ -9400,6 +9400,25 @@ void SendDataload(uint32 Framehead)
 					}
 				}
 			}
+			else if(CurrentPageID==0x0032)
+			{
+				if(Event_Logging[0]==0)
+				{
+		  			CommunWithDUGS.Databuff[0]=0xA3AD;
+					CommunWithDUGS.Databuff[1]=0xA3AD;
+		  			for(i=2;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else if(DR_LOG[0]<(4*(FaultRecordID-1)))
+				{
+					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else
+				{
+					{
+						i =FaultProcess(FaultRecordID,0,5);
+					}
+				}
+			}
 			
 			break;
 
@@ -9433,6 +9452,23 @@ void SendDataload(uint32 Framehead)
 		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
 				}
 				else if(Event_Logging[0]<(4*(FaultRecordID-1)))
+				{
+					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else
+				{
+					{
+						i =FaultProcess(FaultRecordID,1,5);
+					}
+				}
+			}
+			else if(CurrentPageID==0x0032)
+			{
+				if(Event_Logging[0]==0)
+				{
+		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else if(DR_LOG[0]<(4*(FaultRecordID-1)))
 				{
 					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
 				}
@@ -9485,6 +9521,23 @@ void SendDataload(uint32 Framehead)
 					}
 				}
 			}
+			else if(CurrentPageID==0x0032)
+			{
+				if(Event_Logging[0]==0)
+				{
+		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else if(DR_LOG[0]<(4*(FaultRecordID-1)))
+				{
+					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else
+				{
+					{
+						i =FaultProcess(FaultRecordID,2,5);
+					}
+				}
+			}
 			break;
 		case 0x82107B://第四行故障
 			CommunWithDUGS.Framelength =21;
@@ -9527,6 +9580,23 @@ void SendDataload(uint32 Framehead)
 					}
 				}
 			}
+			else if(CurrentPageID==0x0032)
+			{
+				if(Event_Logging[0]==0)
+				{
+		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else if(DR_LOG[0]<(4*(FaultRecordID-1)))
+				{
+					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else
+				{
+					{
+						i =FaultProcess(FaultRecordID,3,5);
+					}
+				}
+			}
 			break;
 		case 0x8210A4://第五行故障
 			CommunWithDUGS.Framelength =21;
@@ -9559,6 +9629,23 @@ void SendDataload(uint32 Framehead)
 		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
 				}
 				else if(Event_Logging[0]<(4*(FaultRecordID-1)))
+				{
+					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else
+				{
+					{
+						i =FaultProcess(FaultRecordID,4,5);
+					}
+				}
+			}
+			else if(CurrentPageID==0x0032)
+			{
+				if(Event_Logging[0]==0)
+				{
+		  			for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
+				}
+				else if(DR_LOG[0]<(4*(FaultRecordID-1)))
 				{
 					for(i=0;i<48;i++){CommunWithDUGS.Databuff[i] =0x20;}
 				}
@@ -11035,6 +11122,7 @@ void DUGSProcess(void)//屏幕界面处理
 			break;
 		//记录信息
 		case	0x0030://故障记录
+		case  	0x0400://故障记录
 			if(FirstEnterWindowFlag ==0)
 			{	
 				//FaultRecordID=1;
@@ -11044,6 +11132,7 @@ void DUGSProcess(void)//屏幕界面处理
 			break;
 
 		case  0x0031://事件记录
+		case  0x0600://事件记录
 			if(FirstEnterWindowFlag ==0)
 			{
 				//FaultRecordID=1;
@@ -11059,9 +11148,9 @@ void DUGSProcess(void)//屏幕界面处理
 				DRLogWindowFlag =1;
 				FirstEnterWindowFlag =1;
 			}
-			break;
+			break;		
 
-
+		//参数
 		case	0x0040://用户参数8888
 			if(SaveOrReadFlag==1)
 			{
@@ -11252,22 +11341,7 @@ void DUGSProcess(void)//屏幕界面处理
 				FirstEnterWindowFlag =1;
 			}
 			break;
-		case  0x0400://故障记录
-			if(FirstEnterWindowFlag ==0)
-			{	
-				//FaultRecordID=1;
-				HistoryFaultWindowFlag =1;
-				FirstEnterWindowFlag =1;
-			}
-			break;
-		case  0x0600://事件记录
-			if(FirstEnterWindowFlag ==0)
-			{
-				//FaultRecordID=1;
-				EventLogWindowFlag =1;
-				FirstEnterWindowFlag =1;
-			}
-			break;
+		
 		case  0x0700://无源投切界面
 			if(SaveOrReadFlag==1)
 			{
@@ -12523,11 +12597,16 @@ uint8 FaultProcess(uint8 FaultPageNo,uint8 row,uint8 type)//参数：故障页面，当前
 	{
 		FaultMax =gz_dan[0];
 	}//故障总数
-	else if(CurrentPageID ==0x0600)	//主机故障
+	else if(CurrentPageID ==0x0600)	//
 	{
 		FaultMax =Event_Logging[0];
 	}//事件总数
+	else if(CurrentPageID ==0x0032)	//电容故障
+	{
+		FaultMax =DR_LOG[0];
+	}//事件总数
 	else FaultMax =SlaveFault[SlaveID][0];
+
 	Integer =FaultMax/type;									//整数
 	remainder =FaultMax%type;								//余数
 
@@ -12574,6 +12653,16 @@ uint8 FaultProcess(uint8 FaultPageNo,uint8 row,uint8 type)//参数：故障页面，当前
 		FaultCode.Hour  =Event_Logging[FaultAddr-4];
 		FaultCode.Min   =Event_Logging[FaultAddr-5];
 		FaultCode.Code  =Event_Logging[FaultAddr-6];	
+	}
+	else if(CurrentPageID ==0x0032)	//电容故障
+	{
+		FaultCode.No    =DR_LOG[FaultAddr];		
+		FaultCode.Year  =DR_LOG[FaultAddr-1];
+		FaultCode.Month =DR_LOG[FaultAddr-2];
+		FaultCode.Day   =DR_LOG[FaultAddr-3];
+		FaultCode.Hour  =DR_LOG[FaultAddr-4];
+		FaultCode.Min   =DR_LOG[FaultAddr-5];
+		FaultCode.Code  =DR_LOG[FaultAddr-6];
 	}
 	else
 	{
