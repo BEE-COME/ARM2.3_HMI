@@ -1632,10 +1632,6 @@ void RecvDataProcess(uint8 uart)
 					main_parameter[0]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1; 
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1650,13 +1646,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1009)
 				{
-					main_parameter[1]= TmpDataWord;
+					main_parameter[11]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1671,13 +1663,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100A)
 				{
-					main_parameter[2]= TmpDataWord;
+					main_parameter[12]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1692,13 +1680,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100B)
 				{
-					main_parameter[3]= TmpDataWord;
+					main_parameter[10]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1713,13 +1697,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100C)
 				{
-					main_parameter[4]= TmpDataWord;
+					main_parameter[18]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1734,13 +1714,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100D)
 				{
-					main_parameter[5]= TmpDataWord;
+					main_parameter[19]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1755,13 +1731,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100E)
 				{
-					main_parameter[6]= TmpDataWord;
+					main_parameter[15]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1776,13 +1748,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x100F)
 				{
-					main_parameter[7]= TmpDataWord;
+					main_parameter[5]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1797,13 +1765,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1010)
 				{
-					main_parameter[8]= TmpDataWord;
+					main_parameter[2]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					
 					j=0;
 					
@@ -1822,10 +1786,6 @@ void RecvDataProcess(uint8 uart)
 					main_parameter[9]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1840,13 +1800,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1012)
 				{
-					main_parameter[10]= TmpDataWord;
+					main_parameter[6]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1861,13 +1817,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1013)
 				{
-					main_parameter[11]= TmpDataWord;
+					main_parameter[17]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1882,13 +1834,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1014)
 				{
-					main_parameter[12]= TmpDataWord;
+					main_parameter[69]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1903,13 +1851,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1015)
 				{
-					main_parameter[13]= TmpDataWord;
+					main_parameter[93]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1924,13 +1868,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1016)
 				{
-					main_parameter[14]= TmpDataWord;
+					main_parameter[94]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1945,13 +1885,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1017)
 				{
-					main_parameter[15]= TmpDataWord;
+					main_parameter[95]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1966,13 +1902,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1018)
 				{
-					main_parameter[16]= TmpDataWord;
+					main_parameter[96]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -1987,13 +1919,9 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1019)
 				{
-					main_parameter[17]= TmpDataWord;
+					main_parameter[97]= TmpDataWord;
 
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -2006,65 +1934,65 @@ void RecvDataProcess(uint8 uart)
 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
 					I2C_read;													//读取I2C
 				}
-				else if(ReceStartAddr==0x101A)
-				{
-					main_parameter[20]= TmpDataWord;
+				// else if(ReceStartAddr==0x101A)
+				// {
+				// 	main_parameter[20]= TmpDataWord;
 
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
+				// 	WriteMainParameterFlag=1;
+				// 	WriteCorrectionParameterFlag=1;
+				// 	WriteCorrectionParameter2Flag=1;
+				// 	WriteCorrectionParameter3Flag=1;
+				// 	WritePassiveParameterFlag =1;
+				// 	j=0;
 					
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
+				// 	for(i=0;i<100;i++)
+				// 	{
+				// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+				// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+				// 	}
 					
-					I2C_write;													//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;													//读取I2C
-				}
-				else if(ReceStartAddr>=0x101B &&ReceStartAddr<=0x104C)
-				{
-					Selected_parameter[ReceStartAddr-0x101B] =TmpDataWord;
+				// 	I2C_write;													//写入I2C
+				//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+				// 	I2C_read;													//读取I2C
+				// }
+				// else if(ReceStartAddr>=0x101B &&ReceStartAddr<=0x104C)
+				// {
+				// 	Selected_parameter[ReceStartAddr-0x101B] =TmpDataWord;
 
-					j=0;
-					for(i=0;i<50;i++)
-					{
-						if(Selected_parameter[i]==1)
-						{
-							main_parameter[31+j] =i+1;
-							j++;
-						}
-						if(j>18)break;
-					}
-					main_parameter[30] =j;
-					for(i=0;i<19-j;i++)
-					{
-						main_parameter[31+j+i] =0;
-					}
+				// 	j=0;
+				// 	for(i=0;i<50;i++)
+				// 	{
+				// 		if(Selected_parameter[i]==1)
+				// 		{
+				// 			main_parameter[31+j] =i+1;
+				// 			j++;
+				// 		}
+				// 		if(j>18)break;
+				// 	}
+				// 	main_parameter[30] =j;
+				// 	for(i=0;i<19-j;i++)
+				// 	{
+				// 		main_parameter[31+j+i] =0;
+				// 	}
 
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
+				// 	WriteMainParameterFlag=1;
+				// 	WriteCorrectionParameterFlag=1;
+				// 	WriteCorrectionParameter2Flag=1;
+				// 	WriteCorrectionParameter3Flag=1;
+				// 	WritePassiveParameterFlag =1;
+				// 	j=0;
 					
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
+				// 	for(i=0;i<100;i++)
+				// 	{
+				// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+				// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+				// 	}
 					
-					I2C_write;													//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;
+				// 	I2C_write;													//写入I2C
+				//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+				// 	I2C_read;
 					
-				}
+				// }
 				else if(ReceStartAddr==0x104D)
 				{
 					LocalAddr 	 =TmpDataWord;
@@ -2126,79 +2054,79 @@ void RecvDataProcess(uint8 uart)
 				}
 				else if(ReceStartAddr==0x1056)
 				{
-					AlarmTime1[0] 	 =TmpDataWord;
+					CT_MAIN1 	 =TmpDataWord;
 					SaveARMParaProcess();	
 				}
 				else if(ReceStartAddr==0x1057)
 				{
-					AlarmTime1[1] 	 =TmpDataWord;
+					CT_MAIN2 	 =TmpDataWord;
 					SaveARMParaProcess();	
 				}
-				else if(ReceStartAddr==0x1058)
-				{
-					AlarmTime1[2] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1059)
-				{
-					AlarmTime1[3] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105A)
-				{
-					AlarmTime1[4] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105B)
-				{
-					AlarmTime2[0] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105C)
-				{
-					AlarmTime2[1] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105D)
-				{
-					AlarmTime2[2] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105E)
-				{
-					AlarmTime2[3] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x105F)
-				{
-					AlarmTime2[4] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1060)
-				{
-					AlarmTime3[0] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1061)
-				{
-					AlarmTime3[1] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1062)
-				{
-					AlarmTime3[2] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1063)
-				{
-					AlarmTime3[3] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
-				else if(ReceStartAddr==0x1064)
-				{
-					AlarmTime3[4] 	 =TmpDataWord;
-					SaveARMParaProcess();	
-				}
+				// else if(ReceStartAddr==0x1058)
+				// {
+				// 	AlarmTime1[2] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1059)
+				// {
+				// 	AlarmTime1[3] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105A)
+				// {
+				// 	AlarmTime1[4] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105B)
+				// {
+				// 	AlarmTime2[0] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105C)
+				// {
+				// 	AlarmTime2[1] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105D)
+				// {
+				// 	AlarmTime2[2] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105E)
+				// {
+				// 	AlarmTime2[3] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x105F)
+				// {
+				// 	AlarmTime2[4] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1060)
+				// {
+				// 	AlarmTime3[0] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1061)
+				// {
+				// 	AlarmTime3[1] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1062)
+				// {
+				// 	AlarmTime3[2] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1063)
+				// {
+				// 	AlarmTime3[3] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
+				// else if(ReceStartAddr==0x1064)
+				// {
+				// 	AlarmTime3[4] 	 =TmpDataWord;
+				// 	SaveARMParaProcess();	
+				// }
 				else if(ReceStartAddr==0x1065)
 				{
 					ntc_type 	 =TmpDataWord;
@@ -2296,18 +2224,11 @@ void RecvDataProcess(uint8 uart)
 					ProductionNo	=TmpDataWord;//项目号
 					SaveARMParaProcess();	
 				}
-				else if(ReceStartAddr==0x1078 || ReceStartAddr==0x1079)
+				else if(ReceStartAddr>=0x1078 && ReceStartAddr<0x10DC)
 				{
-					if(ReceStartAddr==0x1078)VolOnOffEnable	=TmpDataWord;
-					else if(ReceStartAddr==0x1079)CurOnOffEnable=TmpDataWord;
-					
-					main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;
-					SaveARMParaProcess();
+					i=ReceStartAddr-0x1078;					
+					main_parameter[i] =TmpDataWord;
 					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
 					j=0;
 					
 					for(i=0;i<100;i++)
@@ -2319,187 +2240,212 @@ void RecvDataProcess(uint8 uart)
 					I2C_write;													//写入I2C
 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
 					I2C_read;
-				}
-				else if(ReceStartAddr==0x107A || ReceStartAddr==0x107B || ReceStartAddr==0x107C||ReceStartAddr==0x107D || ReceStartAddr==0x107E)
-				{
-					if(ReceStartAddr==0x107A)MainCTLocation	=TmpDataWord;
-					else if(ReceStartAddr==0x107B)MainCTDirectionA	=TmpDataWord;
-					else if(ReceStartAddr==0x107C)MainCTDirectionB  =TmpDataWord;
-					else if(ReceStartAddr==0x107D)MainCTDirectionC  =TmpDataWord;
-					else if(ReceStartAddr==0x107E)MainCTPhase	=TmpDataWord;
-					
-					main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionB*1000+MainCTPhase*10000;
-					SaveARMParaProcess();
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
-					
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
-					
-					I2C_write;													//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;
-				}
-				
-				else if(ReceStartAddr==0x10BC || ReceStartAddr==0x10BD || ReceStartAddr==0x10BE || ReceStartAddr==0x107F)
-				{
-					if(ReceStartAddr==0x10BC)OutCTDirectionA	=TmpDataWord;
-					else if(ReceStartAddr==0x10BD)OutCTDirectionB	=TmpDataWord;
-					else if(ReceStartAddr==0x10BE)OutCTDirectionC	=TmpDataWord;
-					else if(ReceStartAddr==0x107F)OutCTPhase	=TmpDataWord;
-					//main_parameter[14] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;	
-					main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
-					SaveARMParaProcess();
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
-					
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
-					
-					I2C_write;													//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;
-				}
-				else if(ReceStartAddr==0x10BF)									//远程续费功能开关
-					Testtime_function =TmpDataWord;
-				else if(ReceStartAddr>=0x1080 &&ReceStartAddr<=0x1094)
-				{
-					if(ReceStartAddr==0x1080)Position[0] =TmpDataWord;
-					else if(ReceStartAddr==0x1081)Group[0] =TmpDataWord;
-					else if(ReceStartAddr==0x1082)Capacitance[0] =TmpDataWord;
-					else if(ReceStartAddr==0x1083)Position[1] =TmpDataWord;
-					else if(ReceStartAddr==0x1084)Group[1] =TmpDataWord;
-					else if(ReceStartAddr==0x1085)Capacitance[1] =TmpDataWord;
-					else if(ReceStartAddr==0x1086)Position[2] =TmpDataWord;
-					else if(ReceStartAddr==0x1087)Group[2] =TmpDataWord;
-					else if(ReceStartAddr==0x1088)Capacitance[2] =TmpDataWord;
-					else if(ReceStartAddr==0x1089)Position[3] =TmpDataWord;
-					else if(ReceStartAddr==0x108A)Group[3] =TmpDataWord;
-					else if(ReceStartAddr==0x108B)Capacitance[3] =TmpDataWord;
-					else if(ReceStartAddr==0x108C)Position[4] =TmpDataWord;
-					else if(ReceStartAddr==0x108D)Group[4] =TmpDataWord;
-					else if(ReceStartAddr==0x108E)Capacitance[4] =TmpDataWord;
-					else if(ReceStartAddr==0x108F)Position[5] =TmpDataWord;
-					else if(ReceStartAddr==0x1090)Group[5] =TmpDataWord;
-					else if(ReceStartAddr==0x1091)Capacitance[5] =TmpDataWord;
-					else if(ReceStartAddr==0x1092)Position[6] =TmpDataWord;
-					else if(ReceStartAddr==0x1093)Group[6] =TmpDataWord;
-					else if(ReceStartAddr==0x1094)Capacitance[6] =TmpDataWord;
-					else if(ReceStartAddr==0x1095)Position[7] =TmpDataWord;
-					else if(ReceStartAddr==0x1096)Group[7] =TmpDataWord;
-					else if(ReceStartAddr==0x1097)Capacitance[7] =TmpDataWord;
-					else if(ReceStartAddr==0x1098)Position[8] =TmpDataWord;
-					else if(ReceStartAddr==0x1099)Group[8] =TmpDataWord;
-					else if(ReceStartAddr==0x109A)Capacitance[8] =TmpDataWord;
-					
-					CabinProcess();
-					SaveARMParaProcess();
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
-					
-					I2C_write;													//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;
-					j=0;				
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(Passive_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(Passive_parameter[i]);
-					}
-					I2C_write;															//写入I2C
-					WriteEeprom(EepPassiveAddr,Eeptempbuff,200);   				//将出厂参数写到正式参数中
-					I2C_read;
-				}
-				else if(ReceStartAddr>=0x109B &&ReceStartAddr<0x10BB )
-				{
-					if(TmpDataWord !=1)TmpDataWord=0;
-					
-					if(ReceStartAddr==0x109B)ManualPassive_aisle[0] =TmpDataWord;
-					else if(ReceStartAddr==0x109C)ManualPassive_aisle[1] =TmpDataWord;
-					else if(ReceStartAddr==0x109D)ManualPassive_aisle[2] =TmpDataWord;
-					else if(ReceStartAddr==0x109E)ManualPassive_aisle[3] =TmpDataWord;
-					else if(ReceStartAddr==0x109F)ManualPassive_aisle[4] =TmpDataWord;
-					else if(ReceStartAddr==0x10A0)ManualPassive_aisle[5] =TmpDataWord;
-					else if(ReceStartAddr==0x10A1)ManualPassive_aisle[6] =TmpDataWord;
-					else if(ReceStartAddr==0x10A2)ManualPassive_aisle[7] =TmpDataWord;
-					else if(ReceStartAddr==0x10A3)ManualPassive_aisle[8] =TmpDataWord;
-					else if(ReceStartAddr==0x10A4)ManualPassive_aisle[9] =TmpDataWord;
-					else if(ReceStartAddr==0x10A5)ManualPassive_aisle[10] =TmpDataWord;
-					else if(ReceStartAddr==0x10A6)ManualPassive_aisle[11] =TmpDataWord;
-					else if(ReceStartAddr==0x10A7)ManualPassive_aisle[12] =TmpDataWord;
-					else if(ReceStartAddr==0x10A8)ManualPassive_aisle[13] =TmpDataWord;
-					else if(ReceStartAddr==0x10A9)ManualPassive_aisle[14] =TmpDataWord;
-					else if(ReceStartAddr==0x10AA)ManualPassive_aisle[15] =TmpDataWord;
-					else if(ReceStartAddr==0x10AB)ManualPassive_aisle[16] =TmpDataWord;
-					else if(ReceStartAddr==0x10AC)ManualPassive_aisle[17] =TmpDataWord;
-					else if(ReceStartAddr==0x10AD)ManualPassive_aisle[18] =TmpDataWord;
-					else if(ReceStartAddr==0x10AE)ManualPassive_aisle[19] =TmpDataWord;
-					else if(ReceStartAddr==0x10AF)ManualPassive_aisle[20] =TmpDataWord;
-					else if(ReceStartAddr==0x10B0)ManualPassive_aisle[21] =TmpDataWord;
-					else if(ReceStartAddr==0x10B1)ManualPassive_aisle[22] =TmpDataWord;
-					else if(ReceStartAddr==0x10B2)ManualPassive_aisle[23] =TmpDataWord;
-					else if(ReceStartAddr==0x10B3)ManualPassive_aisle[24] =TmpDataWord;
-					else if(ReceStartAddr==0x10B4)ManualPassive_aisle[25] =TmpDataWord;
-					else if(ReceStartAddr==0x10B5)ManualPassive_aisle[26] =TmpDataWord;
-					else if(ReceStartAddr==0x10B6)ManualPassive_aisle[27] =TmpDataWord;
-					else if(ReceStartAddr==0x10B7)ManualPassive_aisle[28] =TmpDataWord;
-					else if(ReceStartAddr==0x10B8)ManualPassive_aisle[29] =TmpDataWord;
-					else if(ReceStartAddr==0x10B9)ManualPassive_aisle[30] =TmpDataWord;
-					else if(ReceStartAddr==0x10BA)ManualPassive_aisle[31] =TmpDataWord;
-//					ManualPassiveSwitch =0;
-//					for(i=0;i<32;i++)
-//					{		
-//						ManualPassiveSwitch |= ManualPassive_aisle[i]<<i;
-//					}
-						lanya_flag=1;
-				}
-				else if(ReceStartAddr==0x10BB )
-				{
-					main_parameter[70]= TmpDataWord;			//应该为70
+				}					
 
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
-						
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
-						
-					I2C_write;													//写入I2C
-					WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-					I2C_read;
+// 				else if(ReceStartAddr==0x1078 || ReceStartAddr==0x1079)
+// 				{
+// 					if(ReceStartAddr==0x1078)VolOnOffEnable	=TmpDataWord;
+// 					else if(ReceStartAddr==0x1079)CurOnOffEnable=TmpDataWord;
 					
-				}
-			}
-			else if(ReceStartAddr>0x10BF &&ReceStartAddr<0x10FF )
+// 					main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;
+// 					SaveARMParaProcess();
+// 					WriteMainParameterFlag=1;
+// 					WriteCorrectionParameterFlag=1;
+// 					WriteCorrectionParameter2Flag=1;
+// 					WriteCorrectionParameter3Flag=1;
+// 					WritePassiveParameterFlag =1;
+// 					j=0;
+					
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+// 					}
+					
+// 					I2C_write;													//写入I2C
+// 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+// 					I2C_read;
+// 				}
+// 				else if(ReceStartAddr==0x107A || ReceStartAddr==0x107B || ReceStartAddr==0x107C||ReceStartAddr==0x107D || ReceStartAddr==0x107E)
+// 				{
+// 					if(ReceStartAddr==0x107A)MainCTLocation	=TmpDataWord;
+// 					else if(ReceStartAddr==0x107B)MainCTDirectionA	=TmpDataWord;
+// 					else if(ReceStartAddr==0x107C)MainCTDirectionB  =TmpDataWord;
+// 					else if(ReceStartAddr==0x107D)MainCTDirectionC  =TmpDataWord;
+// 					else if(ReceStartAddr==0x107E)MainCTPhase	=TmpDataWord;
+					
+// 					main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionB*1000+MainCTPhase*10000;
+// 					SaveARMParaProcess();
+// 					WriteMainParameterFlag=1;
+// 					WriteCorrectionParameterFlag=1;
+// 					WriteCorrectionParameter2Flag=1;
+// 					WriteCorrectionParameter3Flag=1;
+// 					WritePassiveParameterFlag =1;
+// 					j=0;
+					
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+// 					}
+					
+// 					I2C_write;													//写入I2C
+// 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+// 					I2C_read;
+// 				}
+				
+// 				else if(ReceStartAddr==0x10BC || ReceStartAddr==0x10BD || ReceStartAddr==0x10BE || ReceStartAddr==0x107F)
+// 				{
+// 					if(ReceStartAddr==0x10BC)OutCTDirectionA	=TmpDataWord;
+// 					else if(ReceStartAddr==0x10BD)OutCTDirectionB	=TmpDataWord;
+// 					else if(ReceStartAddr==0x10BE)OutCTDirectionC	=TmpDataWord;
+// 					else if(ReceStartAddr==0x107F)OutCTPhase	=TmpDataWord;
+// 					//main_parameter[14] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;	
+// 					main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
+// 					SaveARMParaProcess();
+// 					WriteMainParameterFlag=1;
+// 					WriteCorrectionParameterFlag=1;
+// 					WriteCorrectionParameter2Flag=1;
+// 					WriteCorrectionParameter3Flag=1;
+// 					WritePassiveParameterFlag =1;
+// 					j=0;
+					
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+// 					}
+					
+// 					I2C_write;													//写入I2C
+// 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+// 					I2C_read;
+// 				}
+// 				else if(ReceStartAddr==0x10BF)									//远程续费功能开关
+// 					Testtime_function =TmpDataWord;
+// 				else if(ReceStartAddr>=0x1080 &&ReceStartAddr<=0x1094)
+// 				{
+// 					if(ReceStartAddr==0x1080)Position[0] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1081)Group[0] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1082)Capacitance[0] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1083)Position[1] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1084)Group[1] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1085)Capacitance[1] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1086)Position[2] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1087)Group[2] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1088)Capacitance[2] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1089)Position[3] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108A)Group[3] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108B)Capacitance[3] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108C)Position[4] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108D)Group[4] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108E)Capacitance[4] =TmpDataWord;
+// 					else if(ReceStartAddr==0x108F)Position[5] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1090)Group[5] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1091)Capacitance[5] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1092)Position[6] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1093)Group[6] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1094)Capacitance[6] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1095)Position[7] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1096)Group[7] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1097)Capacitance[7] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1098)Position[8] =TmpDataWord;
+// 					else if(ReceStartAddr==0x1099)Group[8] =TmpDataWord;
+// 					else if(ReceStartAddr==0x109A)Capacitance[8] =TmpDataWord;
+					
+// 					CabinProcess();
+// 					SaveARMParaProcess();
+// 					WriteMainParameterFlag=1;
+// 					WriteCorrectionParameterFlag=1;
+// 					WriteCorrectionParameter2Flag=1;
+// 					WriteCorrectionParameter3Flag=1;
+// 					WritePassiveParameterFlag =1;
+// 					j=0;
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+// 					}
+					
+// 					I2C_write;													//写入I2C
+// 				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+// 					I2C_read;
+// 					j=0;				
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(Passive_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(Passive_parameter[i]);
+// 					}
+// 					I2C_write;															//写入I2C
+// 					WriteEeprom(EepPassiveAddr,Eeptempbuff,200);   				//将出厂参数写到正式参数中
+// 					I2C_read;
+// 				}
+// 				else if(ReceStartAddr>=0x109B &&ReceStartAddr<0x10BB )
+// 				{
+// 					if(TmpDataWord !=1)TmpDataWord=0;
+					
+// 					if(ReceStartAddr==0x109B)ManualPassive_aisle[0] =TmpDataWord;
+// 					else if(ReceStartAddr==0x109C)ManualPassive_aisle[1] =TmpDataWord;
+// 					else if(ReceStartAddr==0x109D)ManualPassive_aisle[2] =TmpDataWord;
+// 					else if(ReceStartAddr==0x109E)ManualPassive_aisle[3] =TmpDataWord;
+// 					else if(ReceStartAddr==0x109F)ManualPassive_aisle[4] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A0)ManualPassive_aisle[5] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A1)ManualPassive_aisle[6] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A2)ManualPassive_aisle[7] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A3)ManualPassive_aisle[8] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A4)ManualPassive_aisle[9] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A5)ManualPassive_aisle[10] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A6)ManualPassive_aisle[11] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A7)ManualPassive_aisle[12] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A8)ManualPassive_aisle[13] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10A9)ManualPassive_aisle[14] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AA)ManualPassive_aisle[15] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AB)ManualPassive_aisle[16] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AC)ManualPassive_aisle[17] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AD)ManualPassive_aisle[18] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AE)ManualPassive_aisle[19] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10AF)ManualPassive_aisle[20] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B0)ManualPassive_aisle[21] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B1)ManualPassive_aisle[22] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B2)ManualPassive_aisle[23] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B3)ManualPassive_aisle[24] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B4)ManualPassive_aisle[25] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B5)ManualPassive_aisle[26] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B6)ManualPassive_aisle[27] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B7)ManualPassive_aisle[28] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B8)ManualPassive_aisle[29] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10B9)ManualPassive_aisle[30] =TmpDataWord;
+// 					else if(ReceStartAddr==0x10BA)ManualPassive_aisle[31] =TmpDataWord;
+// //					ManualPassiveSwitch =0;
+// //					for(i=0;i<32;i++)
+// //					{		
+// //						ManualPassiveSwitch |= ManualPassive_aisle[i]<<i;
+// //					}
+// 						lanya_flag=1;
+// 				}
+// 				else if(ReceStartAddr==0x10BB )
+// 				{
+// 					main_parameter[70]= TmpDataWord;			//应该为70
+
+// 					WriteMainParameterFlag=1;
+// 					WriteCorrectionParameterFlag=1;
+// 					WriteCorrectionParameter2Flag=1;
+// 					WriteCorrectionParameter3Flag=1;
+// 					WritePassiveParameterFlag =1;
+// 					j=0;
+						
+// 					for(i=0;i<100;i++)
+// 					{
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+// 						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+// 					}
+						
+// 					I2C_write;													//写入I2C
+// 					WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+// 					I2C_read;
+					
+// 				}
+// 			}
+			else if((ReceStartAddr>0x10DC) && (ReceStartAddr<0x10FF))
 			{
 				ExceptionCode =WrongDatalimit;						//指令错误
 			}
@@ -2521,7 +2467,7 @@ void RecvDataProcess(uint8 uart)
 			}
 			else if(ReceStartAddr>=0x1100 &&ReceStartAddr<=0x1158 )	//159B
 			{
-				if(Remote_Password==7777)
+				//if(Remote_Password==7777)
 				{
 					if(uart==Uart0)
 					{
@@ -2536,22 +2482,31 @@ void RecvDataProcess(uint8 uart)
 						TmpDataWord = (uint16)((TmpDataHbyte<<8)|TmpDataLbyte);
 					}
 
-					if(ReceStartAddr==0x1100)
+					// if(ReceStartAddr==0x1100)
+					// {
+					// 	main_parameter[18]= TmpDataWord;
+					// }
+					// else if(ReceStartAddr==0x1101)
+					// {
+					// 	main_parameter[19]= TmpDataWord;
+					// }
+					// else if(ReceStartAddr==0x1102)
+					// {
+					// 	main_parameter[21]= TmpDataWord;
+					// }
+					// else if(ReceStartAddr==0x1133)					//增加智能或直控模式
+					// {
+					// 	SetupMode= TmpDataWord;
+					// 	SaveARMParaProcess();
+					// }
+					if(ReceStartAddr>=0x1100 &&ReceStartAddr<=0x113B )
 					{
-						main_parameter[18]= TmpDataWord;
-					}
-					else if(ReceStartAddr==0x1101)
-					{
-						main_parameter[19]= TmpDataWord;
-					}
-					else if(ReceStartAddr==0x1102)
-					{
-						main_parameter[21]= TmpDataWord;
-					}
-					else if(ReceStartAddr==0x1133)					//增加智能或直控模式
-					{
-						SetupMode= TmpDataWord;
-						SaveARMParaProcess();
+						
+						i=ReceStartAddr-0x1100;
+						spcial_parameter[i]=TmpDataWord;
+						if(main_parameter[94]==2)//为调度模式
+							WriteSpcialParameterFlag=1;
+
 					}
 					else if(ReceStartAddr==0x1151)					//电流畸变率修正
 					{
@@ -2593,43 +2548,44 @@ void RecvDataProcess(uint8 uart)
 						xiuzhen_dianyajibian= TmpDataWord;
 						SaveARMParaProcess();
 					}
-					else 
-					{
-						if(ReceStartAddr==0x110B&&TmpDataWord>18);
+					// else 
+					// {
+					// 	if(ReceStartAddr==0x110B&&TmpDataWord>18);
 						
-						else{
+					// 	else
+					// 	{
 						
-						main_parameter[ReceStartAddr-0x10ED]= TmpDataWord;
+					// 	main_parameter[ReceStartAddr-0x10ED]= TmpDataWord;
 					
-						j=main_parameter[30];
-						for(i=0;i<19-j;i++)
-						{
-							main_parameter[31+j+i]=0;
-						}
+					// 	j=main_parameter[30];
+					// 	for(i=0;i<19-j;i++)
+					// 	{
+					// 		main_parameter[31+j+i]=0;
+					// 	}
 				  	
-			   	}
-				 }
-					WriteMainParameterFlag=1;
-					WriteCorrectionParameterFlag=1;
-					WriteCorrectionParameter2Flag=1;
-					WriteCorrectionParameter3Flag=1;
-					WritePassiveParameterFlag =1;
-					j=0;
+			   		// 	}
+					// }
+					// WriteMainParameterFlag=1;
+					// WriteCorrectionParameterFlag=1;
+					// WriteCorrectionParameter2Flag=1;
+					// WriteCorrectionParameter3Flag=1;
+					// WritePassiveParameterFlag =1;
+					// j=0;
 					
-					for(i=0;i<100;i++)
-					{
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-						Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-					}
+					// for(i=0;i<100;i++)
+					// {
+					// 	Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 	Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// }
 					
-					I2C_write;															//写入I2C
-				   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   					//将出厂参数写到正式参数中
-					I2C_read;
+					// I2C_write;															//写入I2C
+				   	// WriteEeprom(EepParameterAddr,Eeptempbuff,200);   					//将出厂参数写到正式参数中
+					// I2C_read;
 				}
-				else
-				{
-					ExceptionCode =WrongDatalimit;										//指令错误
-				}
+				// else
+				// {
+				// 	ExceptionCode =WrongDatalimit;										//指令错误
+				// }
 			}
 			else if(ReceStartAddr>=0x1159 &&ReceStartAddr<=0x11B4 )
 			{
@@ -3523,7 +3479,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1009)
 					{
-						main_parameter[1]= TmpDataWord;
+						main_parameter[11]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3543,7 +3499,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100A)
 					{
-						main_parameter[2]= TmpDataWord;
+						main_parameter[12]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3563,7 +3519,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100B)
 					{
-						main_parameter[3]= TmpDataWord;
+						main_parameter[10]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3583,7 +3539,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100C)
 					{
-						main_parameter[4]= TmpDataWord;
+						main_parameter[18]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3603,7 +3559,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100D)
 					{
-						main_parameter[5]= TmpDataWord;
+						main_parameter[19]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3623,7 +3579,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100E)
 					{
-						main_parameter[6]= TmpDataWord;
+						main_parameter[15]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3643,7 +3599,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x100F)
 					{
-						main_parameter[7]= TmpDataWord;
+						main_parameter[5]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3663,7 +3619,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1010)
 					{
-						main_parameter[8]= TmpDataWord;
+						main_parameter[2]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3703,7 +3659,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1012)
 					{
-						main_parameter[10]= TmpDataWord;
+						main_parameter[6]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3723,7 +3679,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1013)
 					{
-						main_parameter[11]= TmpDataWord;
+						main_parameter[17]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3743,7 +3699,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1014)
 					{
-						main_parameter[12]= TmpDataWord;
+						main_parameter[69]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3763,7 +3719,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1015)
 					{
-						main_parameter[13]= TmpDataWord;
+						main_parameter[93]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3783,7 +3739,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1016)
 					{
-						main_parameter[14]= TmpDataWord;
+						main_parameter[94]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3803,7 +3759,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1017)
 					{
-						main_parameter[15]= TmpDataWord;
+						main_parameter[95]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3823,7 +3779,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1018)
 					{
-						main_parameter[16]= TmpDataWord;
+						main_parameter[96]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3843,7 +3799,7 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1019)
 					{
-						main_parameter[17]= TmpDataWord;
+						main_parameter[97]= TmpDataWord;
 
 						WriteMainParameterFlag=1;
 						WriteCorrectionParameterFlag=1;
@@ -3861,63 +3817,63 @@ void RecvDataProcess(uint8 uart)
 					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
 						I2C_read;													//读取I2C
 					}
-					else if(ultmp==0x101A)
-					{
-						main_parameter[20]= TmpDataWord;
+					// else if(ultmp==0x101A)
+					// {
+					// 	main_parameter[20]= TmpDataWord;
 
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						j=0;
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	j=0;
 						
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
 						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;													//读取I2C
-					}
-					else if(ultmp>=0x101B &&ultmp<=0x104C)
-					{
-						Selected_parameter[ultmp-0x101B] =TmpDataWord;
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;													//读取I2C
+					// }
+					// else if(ultmp>=0x101B &&ultmp<=0x104C)
+					// {
+					// 	Selected_parameter[ultmp-0x101B] =TmpDataWord;
 
-						j=0;
-						for(i=0;i<50;i++)
-						{
-							if(Selected_parameter[i]==1)
-							{
-								main_parameter[31+j] =i+1;
-								j++;
-							}
-							if(j>18)break;
-						}
-						main_parameter[30] =j;
-						for(i=0;i<19-j;i++)
-						{
-							main_parameter[31+j+i] =0;
-						}
+					// 	j=0;
+					// 	for(i=0;i<50;i++)
+					// 	{
+					// 		if(Selected_parameter[i]==1)
+					// 		{
+					// 			main_parameter[31+j] =i+1;
+					// 			j++;
+					// 		}
+					// 		if(j>18)break;
+					// 	}
+					// 	main_parameter[30] =j;
+					// 	for(i=0;i<19-j;i++)
+					// 	{
+					// 		main_parameter[31+j+i] =0;
+					// 	}
 
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						j=0;
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	j=0;
 						
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
 						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
 						
-					}
+					// }
 					else if(ultmp==0x104D)
 					{
 						LocalAddr 	 =TmpDataWord;
@@ -3979,79 +3935,79 @@ void RecvDataProcess(uint8 uart)
 					}
 					else if(ultmp==0x1056)
 					{
-						AlarmTime1[0] 	 =TmpDataWord;
+						CT_MAIN1 	 =TmpDataWord;
 						SaveARMParaProcess();	
 					}
 					else if(ultmp==0x1057)
 					{
-						AlarmTime1[1] 	 =TmpDataWord;
+						CT_MAIN2 	 =TmpDataWord;
 						SaveARMParaProcess();	
 					}
-					else if(ultmp==0x1058)
-					{
-						AlarmTime1[2] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1059)
-					{
-						AlarmTime1[3] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105A)
-					{
-						AlarmTime1[4] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105B)
-					{
-						AlarmTime2[0] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105C)
-					{
-						AlarmTime2[1] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105D)
-					{
-						AlarmTime2[2] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105E)
-					{
-						AlarmTime2[3] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x105F)
-					{
-						AlarmTime2[4] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1060)
-					{
-						AlarmTime3[0] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1061)
-					{
-						AlarmTime3[1] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1062)
-					{
-						AlarmTime3[2] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1063)
-					{
-						AlarmTime3[3] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
-					else if(ultmp==0x1064)
-					{
-						AlarmTime3[4] 	 =TmpDataWord;
-						SaveARMParaProcess();	
-					}
+					// else if(ultmp==0x1058)
+					// {
+					// 	AlarmTime1[2] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1059)
+					// {
+					// 	AlarmTime1[3] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105A)
+					// {
+					// 	AlarmTime1[4] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105B)
+					// {
+					// 	AlarmTime2[0] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105C)
+					// {
+					// 	AlarmTime2[1] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105D)
+					// {
+					// 	AlarmTime2[2] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105E)
+					// {
+					// 	AlarmTime2[3] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x105F)
+					// {
+					// 	AlarmTime2[4] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1060)
+					// {
+					// 	AlarmTime3[0] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1061)
+					// {
+					// 	AlarmTime3[1] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1062)
+					// {
+					// 	AlarmTime3[2] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1063)
+					// {
+					// 	AlarmTime3[3] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
+					// else if(ultmp==0x1064)
+					// {
+					// 	AlarmTime3[4] 	 =TmpDataWord;
+					// 	SaveARMParaProcess();	
+					// }
 					else if(ultmp==0x1065)
 					{
 						ntc_type 	 =TmpDataWord;
@@ -4149,18 +4105,11 @@ void RecvDataProcess(uint8 uart)
 						ProductionNo	=TmpDataWord;//项目号
 						SaveARMParaProcess();	
 					}
-					else if(ultmp==0x1078 || ultmp==0x1079)
+					else if(ultmp>=0x1078 && ultmp<0x10DC)
 					{
-						if(ultmp==0x1078)VolOnOffEnable	=TmpDataWord;
-						else if(ultmp==0x1079)CurOnOffEnable=TmpDataWord;
-						
-						main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;
-						SaveARMParaProcess();
+						i=ultmp-0x1078;					
+						main_parameter[i] =TmpDataWord;
 						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
 						j=0;
 						
 						for(i=0;i<100;i++)
@@ -4169,183 +4118,207 @@ void RecvDataProcess(uint8 uart)
 							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
 						}
 						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;
-					}
-					else if(ultmp==0x107A || ultmp==0x107B || ultmp==0x107C||ultmp==0x107D || ultmp==0x107E)
-					{
-						if(ultmp==0x107A)MainCTLocation	=TmpDataWord;
-						else if(ultmp==0x107B)MainCTDirectionA	=TmpDataWord;
-						else if(ultmp==0x107C)MainCTDirectionB  =TmpDataWord;
-						else if(ultmp==0x107D)MainCTDirectionC  =TmpDataWord;
-						else if(ultmp==0x107E)MainCTPhase	=TmpDataWord;
-						
-						main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionB*1000+MainCTPhase*10000;
-						SaveARMParaProcess();
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
-						j=0;
-						
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
-						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;
-					}
-					
-					else if(ultmp==0x10AC || ultmp==0x10AD || ultmp==0x10AE || ultmp==0x107F)
-					{
-						if(ultmp==0x10AC)OutCTDirectionA	=TmpDataWord;
-						else if(ultmp==0x10AD)OutCTDirectionB	=TmpDataWord;
-						else if(ultmp==0x10AE)OutCTDirectionC	=TmpDataWord;
-						else if(ultmp==0x107F)OutCTPhase	=TmpDataWord;
-						main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
-						SaveARMParaProcess();
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
-						j=0;
-						
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
-						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;
-					}
-					else if(ultmp>=0x1080 &&ultmp<=0x1094)
-					{
-						if(ultmp==0x1080)Position[0] =TmpDataWord;
-						else if(ultmp==0x1081)Group[0] =TmpDataWord;
-						else if(ultmp==0x1082)Capacitance[0] =TmpDataWord;
-						else if(ultmp==0x1083)Position[1] =TmpDataWord;
-						else if(ultmp==0x1084)Group[1] =TmpDataWord;
-						else if(ultmp==0x1085)Capacitance[1] =TmpDataWord;
-						else if(ultmp==0x1086)Position[2] =TmpDataWord;
-						else if(ultmp==0x1087)Group[2] =TmpDataWord;
-						else if(ultmp==0x1088)Capacitance[2] =TmpDataWord;
-						else if(ultmp==0x1089)Position[3] =TmpDataWord;
-						else if(ultmp==0x108A)Group[3] =TmpDataWord;
-						else if(ultmp==0x108B)Capacitance[3] =TmpDataWord;
-						else if(ultmp==0x108C)Position[4] =TmpDataWord;
-						else if(ultmp==0x108D)Group[4] =TmpDataWord;
-						else if(ultmp==0x108E)Capacitance[4] =TmpDataWord;
-						else if(ultmp==0x108F)Position[5] =TmpDataWord;
-						else if(ultmp==0x1090)Group[5] =TmpDataWord;
-						else if(ultmp==0x1091)Capacitance[5] =TmpDataWord;
-						else if(ultmp==0x1092)Position[6] =TmpDataWord;
-						else if(ultmp==0x1093)Group[6] =TmpDataWord;
-						else if(ultmp==0x1094)Capacitance[6] =TmpDataWord;
-						else if(ultmp==0x1095)Position[7] =TmpDataWord;
-						else if(ultmp==0x1096)Group[7] =TmpDataWord;
-						else if(ultmp==0x1097)Capacitance[7] =TmpDataWord;
-						else if(ultmp==0x1098)Position[8] =TmpDataWord;
-						else if(ultmp==0x1099)Group[8] =TmpDataWord;
-						else if(ultmp==0x109A)Capacitance[8] =TmpDataWord;
-						CabinProcess();
-						SaveARMParaProcess();
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
-						j=0;
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
-						
-						I2C_write;													//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
-						I2C_read;
-						j=0;				
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(Passive_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(Passive_parameter[i]);
-						}
-						I2C_write;															//写入I2C
-						WriteEeprom(EepPassiveAddr,Eeptempbuff,200);   				//将出厂参数写到正式参数中
-						I2C_read;
-					}
-					else if(ultmp>=0x109B &&ultmp<0x10BB )
-					{
-						if(TmpDataWord !=0)TmpDataWord=1;
-						
-						if(ultmp==0x109B)ManualPassive_aisle[0] =TmpDataWord;
-						else if(ultmp==0x109C)ManualPassive_aisle[1] =TmpDataWord;
-						else if(ultmp==0x109D)ManualPassive_aisle[2] =TmpDataWord;
-						else if(ultmp==0x109E)ManualPassive_aisle[3] =TmpDataWord;
-						else if(ultmp==0x109F)ManualPassive_aisle[4] =TmpDataWord;
-						else if(ultmp==0x10A0)ManualPassive_aisle[5] =TmpDataWord;
-						else if(ultmp==0x10A1)ManualPassive_aisle[6] =TmpDataWord;
-						else if(ultmp==0x10A2)ManualPassive_aisle[7] =TmpDataWord;
-						else if(ultmp==0x10A3)ManualPassive_aisle[8] =TmpDataWord;
-						else if(ultmp==0x10A4)ManualPassive_aisle[9] =TmpDataWord;
-						else if(ultmp==0x10A5)ManualPassive_aisle[10] =TmpDataWord;
-						else if(ultmp==0x10A6)ManualPassive_aisle[11] =TmpDataWord;
-						else if(ultmp==0x10A7)ManualPassive_aisle[12] =TmpDataWord;
-						else if(ultmp==0x10A8)ManualPassive_aisle[13] =TmpDataWord;
-						else if(ultmp==0x10A9)ManualPassive_aisle[14] =TmpDataWord;
-						else if(ultmp==0x10AA)ManualPassive_aisle[15] =TmpDataWord;
-						else if(ultmp==0x10AB)ManualPassive_aisle[16] =TmpDataWord;
-						else if(ultmp==0x10AC)ManualPassive_aisle[17] =TmpDataWord;
-						else if(ultmp==0x10AD)ManualPassive_aisle[18] =TmpDataWord;
-						else if(ultmp==0x10AE)ManualPassive_aisle[19] =TmpDataWord;
-						else if(ultmp==0x10AF)ManualPassive_aisle[20] =TmpDataWord;
-						else if(ultmp==0x10B0)ManualPassive_aisle[21] =TmpDataWord;
-						else if(ultmp==0x10B1)ManualPassive_aisle[22] =TmpDataWord;
-						else if(ultmp==0x10B2)ManualPassive_aisle[23] =TmpDataWord;
-						else if(ultmp==0x10B3)ManualPassive_aisle[24] =TmpDataWord;
-						else if(ultmp==0x10B4)ManualPassive_aisle[25] =TmpDataWord;
-						else if(ultmp==0x10B5)ManualPassive_aisle[26] =TmpDataWord;
-						else if(ultmp==0x10B6)ManualPassive_aisle[27] =TmpDataWord;
-						else if(ultmp==0x10B7)ManualPassive_aisle[28] =TmpDataWord;
-						else if(ultmp==0x10B8)ManualPassive_aisle[29] =TmpDataWord;
-						else if(ultmp==0x10B9)ManualPassive_aisle[30] =TmpDataWord;
-						else if(ultmp==0x10BA)ManualPassive_aisle[31] =TmpDataWord;
-						ManualPassiveSwitch =0;
-						for(i=0;i<32;i++)
-						{		
-							ManualPassiveSwitch |= ManualPassive_aisle[i]<<i;
-						}
-					}
-					else if(ultmp==0x10BB )
-					{
-						main_parameter[70]= TmpDataWord;//改成70
-
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						WritePassiveParameterFlag =1;
-						j=0;
-							
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
-							
 						I2C_write;													//写入I2C
 						WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
 						I2C_read;
+					}	
+					// else if(ultmp==0x1078 || ultmp==0x1079)
+					// {
+					// 	if(ultmp==0x1078)VolOnOffEnable	=TmpDataWord;
+					// 	else if(ultmp==0x1079)CurOnOffEnable=TmpDataWord;
 						
-					}
+					// 	main_parameter[73] =VolOnOffEnable+CurOnOffEnable*10;
+					// 	SaveARMParaProcess();
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+					// 	j=0;
+						
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
+						
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
+					// }
+					// else if(ultmp==0x107A || ultmp==0x107B || ultmp==0x107C||ultmp==0x107D || ultmp==0x107E)
+					// {
+					// 	if(ultmp==0x107A)MainCTLocation	=TmpDataWord;
+					// 	else if(ultmp==0x107B)MainCTDirectionA	=TmpDataWord;
+					// 	else if(ultmp==0x107C)MainCTDirectionB  =TmpDataWord;
+					// 	else if(ultmp==0x107D)MainCTDirectionC  =TmpDataWord;
+					// 	else if(ultmp==0x107E)MainCTPhase	=TmpDataWord;
+						
+					// 	main_parameter[10] =MainCTLocation+MainCTDirectionA*10+MainCTDirectionB*100+MainCTDirectionB*1000+MainCTPhase*10000;
+					// 	SaveARMParaProcess();
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+					// 	j=0;
+						
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
+						
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
+					// }
+					
+					// else if(ultmp==0x10AC || ultmp==0x10AD || ultmp==0x10AE || ultmp==0x107F)
+					// {
+					// 	if(ultmp==0x10AC)OutCTDirectionA	=TmpDataWord;
+					// 	else if(ultmp==0x10AD)OutCTDirectionB	=TmpDataWord;
+					// 	else if(ultmp==0x10AE)OutCTDirectionC	=TmpDataWord;
+					// 	else if(ultmp==0x107F)OutCTPhase	=TmpDataWord;
+					// 	main_parameter[15] =OutCTDirectionA*10+OutCTDirectionB*100+OutCTDirectionC*1000+OutCTPhase*10000;
+					// 	SaveARMParaProcess();
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+					// 	j=0;
+						
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
+						
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
+					// }
+					// else if(ultmp>=0x1080 &&ultmp<=0x1094)
+					// {
+					// 	if(ultmp==0x1080)Position[0] =TmpDataWord;
+					// 	else if(ultmp==0x1081)Group[0] =TmpDataWord;
+					// 	else if(ultmp==0x1082)Capacitance[0] =TmpDataWord;
+					// 	else if(ultmp==0x1083)Position[1] =TmpDataWord;
+					// 	else if(ultmp==0x1084)Group[1] =TmpDataWord;
+					// 	else if(ultmp==0x1085)Capacitance[1] =TmpDataWord;
+					// 	else if(ultmp==0x1086)Position[2] =TmpDataWord;
+					// 	else if(ultmp==0x1087)Group[2] =TmpDataWord;
+					// 	else if(ultmp==0x1088)Capacitance[2] =TmpDataWord;
+					// 	else if(ultmp==0x1089)Position[3] =TmpDataWord;
+					// 	else if(ultmp==0x108A)Group[3] =TmpDataWord;
+					// 	else if(ultmp==0x108B)Capacitance[3] =TmpDataWord;
+					// 	else if(ultmp==0x108C)Position[4] =TmpDataWord;
+					// 	else if(ultmp==0x108D)Group[4] =TmpDataWord;
+					// 	else if(ultmp==0x108E)Capacitance[4] =TmpDataWord;
+					// 	else if(ultmp==0x108F)Position[5] =TmpDataWord;
+					// 	else if(ultmp==0x1090)Group[5] =TmpDataWord;
+					// 	else if(ultmp==0x1091)Capacitance[5] =TmpDataWord;
+					// 	else if(ultmp==0x1092)Position[6] =TmpDataWord;
+					// 	else if(ultmp==0x1093)Group[6] =TmpDataWord;
+					// 	else if(ultmp==0x1094)Capacitance[6] =TmpDataWord;
+					// 	else if(ultmp==0x1095)Position[7] =TmpDataWord;
+					// 	else if(ultmp==0x1096)Group[7] =TmpDataWord;
+					// 	else if(ultmp==0x1097)Capacitance[7] =TmpDataWord;
+					// 	else if(ultmp==0x1098)Position[8] =TmpDataWord;
+					// 	else if(ultmp==0x1099)Group[8] =TmpDataWord;
+					// 	else if(ultmp==0x109A)Capacitance[8] =TmpDataWord;
+					// 	CabinProcess();
+					// 	SaveARMParaProcess();
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+					// 	j=0;
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
+						
+					// 	I2C_write;													//写入I2C
+					//    	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
+					// 	j=0;				
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(Passive_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(Passive_parameter[i]);
+					// 	}
+					// 	I2C_write;															//写入I2C
+					// 	WriteEeprom(EepPassiveAddr,Eeptempbuff,200);   				//将出厂参数写到正式参数中
+					// 	I2C_read;
+					// }
+					// else if(ultmp>=0x109B &&ultmp<0x10BB )
+					// {
+					// 	if(TmpDataWord !=0)TmpDataWord=1;
+						
+					// 	if(ultmp==0x109B)ManualPassive_aisle[0] =TmpDataWord;
+					// 	else if(ultmp==0x109C)ManualPassive_aisle[1] =TmpDataWord;
+					// 	else if(ultmp==0x109D)ManualPassive_aisle[2] =TmpDataWord;
+					// 	else if(ultmp==0x109E)ManualPassive_aisle[3] =TmpDataWord;
+					// 	else if(ultmp==0x109F)ManualPassive_aisle[4] =TmpDataWord;
+					// 	else if(ultmp==0x10A0)ManualPassive_aisle[5] =TmpDataWord;
+					// 	else if(ultmp==0x10A1)ManualPassive_aisle[6] =TmpDataWord;
+					// 	else if(ultmp==0x10A2)ManualPassive_aisle[7] =TmpDataWord;
+					// 	else if(ultmp==0x10A3)ManualPassive_aisle[8] =TmpDataWord;
+					// 	else if(ultmp==0x10A4)ManualPassive_aisle[9] =TmpDataWord;
+					// 	else if(ultmp==0x10A5)ManualPassive_aisle[10] =TmpDataWord;
+					// 	else if(ultmp==0x10A6)ManualPassive_aisle[11] =TmpDataWord;
+					// 	else if(ultmp==0x10A7)ManualPassive_aisle[12] =TmpDataWord;
+					// 	else if(ultmp==0x10A8)ManualPassive_aisle[13] =TmpDataWord;
+					// 	else if(ultmp==0x10A9)ManualPassive_aisle[14] =TmpDataWord;
+					// 	else if(ultmp==0x10AA)ManualPassive_aisle[15] =TmpDataWord;
+					// 	else if(ultmp==0x10AB)ManualPassive_aisle[16] =TmpDataWord;
+					// 	else if(ultmp==0x10AC)ManualPassive_aisle[17] =TmpDataWord;
+					// 	else if(ultmp==0x10AD)ManualPassive_aisle[18] =TmpDataWord;
+					// 	else if(ultmp==0x10AE)ManualPassive_aisle[19] =TmpDataWord;
+					// 	else if(ultmp==0x10AF)ManualPassive_aisle[20] =TmpDataWord;
+					// 	else if(ultmp==0x10B0)ManualPassive_aisle[21] =TmpDataWord;
+					// 	else if(ultmp==0x10B1)ManualPassive_aisle[22] =TmpDataWord;
+					// 	else if(ultmp==0x10B2)ManualPassive_aisle[23] =TmpDataWord;
+					// 	else if(ultmp==0x10B3)ManualPassive_aisle[24] =TmpDataWord;
+					// 	else if(ultmp==0x10B4)ManualPassive_aisle[25] =TmpDataWord;
+					// 	else if(ultmp==0x10B5)ManualPassive_aisle[26] =TmpDataWord;
+					// 	else if(ultmp==0x10B6)ManualPassive_aisle[27] =TmpDataWord;
+					// 	else if(ultmp==0x10B7)ManualPassive_aisle[28] =TmpDataWord;
+					// 	else if(ultmp==0x10B8)ManualPassive_aisle[29] =TmpDataWord;
+					// 	else if(ultmp==0x10B9)ManualPassive_aisle[30] =TmpDataWord;
+					// 	else if(ultmp==0x10BA)ManualPassive_aisle[31] =TmpDataWord;
+					// 	ManualPassiveSwitch =0;
+					// 	for(i=0;i<32;i++)
+					// 	{		
+					// 		ManualPassiveSwitch |= ManualPassive_aisle[i]<<i;
+					// 	}
+					// }
+					// else if(ultmp==0x10BB )
+					// {
+					// 	main_parameter[70]= TmpDataWord;//改成70
+
+					// 	WriteMainParameterFlag=1;
+					// 	WriteCorrectionParameterFlag=1;
+					// 	WriteCorrectionParameter2Flag=1;
+					// 	WriteCorrectionParameter3Flag=1;
+					// 	WritePassiveParameterFlag =1;
+					// 	j=0;
+							
+					// 	for(i=0;i<100;i++)
+					// 	{
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+					// 		Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+					// 	}
+							
+					// 	I2C_write;													//写入I2C
+					// 	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   			//将出厂参数写到正式参数中
+					// 	I2C_read;
+						
+					// }
 					else if(ultmp ==0x10FF)
 					{
 						Remote_Password = TmpDataWord;
@@ -4355,7 +4328,7 @@ void RecvDataProcess(uint8 uart)
 			}
 			else if(ReceStartAddr>=0x1100 &&ReceStartAddr<=0x1150 )	//159B
 			{
-				if(Remote_Password==7777)
+				//if(Remote_Password==7777)
 				{
 					if(uart== Uart0)
 					{
@@ -4383,52 +4356,63 @@ void RecvDataProcess(uint8 uart)
 						}
 						TmpDataWord = (uint16)((TmpDataHbyte<<8)|TmpDataLbyte);
 						k =k+2;
-						ultmp =ReceStartAddr+l;	
-						if(ultmp==0x1100)
+						ultmp =ReceStartAddr+l;
+
+						if(ultmp>=0x1100 &&ultmp<=0x113B )
 						{
-							main_parameter[18]= TmpDataWord;
+							
+							i=ultmp-0x1100;
+							spcial_parameter[i]=TmpDataWord;
+							if(main_parameter[94]==2)//为调度模式
+								WriteSpcialParameterFlag=1;
+
 						}
-						else if(ultmp==0x1101)
-						{
-							main_parameter[19]= TmpDataWord;
-						}
-						else if(ultmp==0x1102)
-						{
-							main_parameter[21]= TmpDataWord;
-						}
-						else 
-						{
-							main_parameter[ultmp-0x10ED]= TmpDataWord;
-						  j=0;
-						if(main_parameter[0x001E]>18)
-								main_parameter[0x001E]=0;
-					     j=main_parameter[0x001E];
-						for(i=0;i<19-j;i++)
-						{
-							main_parameter[0x001F+j+i]=0;
-						}							
-						}
-						WriteMainParameterFlag=1;
-						WriteCorrectionParameterFlag=1;
-						WriteCorrectionParameter2Flag=1;
-						WriteCorrectionParameter3Flag=1;
-						j=0;
+
+						// if(ultmp==0x1100)
+						// {
+						// 	main_parameter[18]= TmpDataWord;
+						// }
+						// else if(ultmp==0x1101)
+						// {
+						// 	main_parameter[19]= TmpDataWord;
+						// }
+						// else if(ultmp==0x1102)
+						// {
+						// 	main_parameter[21]= TmpDataWord;
+						// }
+						// else 
+						// {
+						// 	main_parameter[ultmp-0x10ED]= TmpDataWord;
+						//  	 j=0;
+						// 	if(main_parameter[0x001E]>18)
+						// 		main_parameter[0x001E]=0;
+					    //  	j=main_parameter[0x001E];
+						// 	for(i=0;i<19-j;i++)
+						// 	{
+						// 		main_parameter[0x001F+j+i]=0;
+						// 	}							
+						// }
+						// WriteMainParameterFlag=1;
+						// WriteCorrectionParameterFlag=1;
+						// WriteCorrectionParameter2Flag=1;
+						// WriteCorrectionParameter3Flag=1;
+						// j=0;
 						
-						for(i=0;i<100;i++)
-						{
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
-							Eeptempbuff[j++] =(uint8)(main_parameter[i]);
-						}
+						// for(i=0;i<100;i++)
+						// {
+						// 	Eeptempbuff[j++] =(uint8)(main_parameter[i]>>8);
+						// 	Eeptempbuff[j++] =(uint8)(main_parameter[i]);
+						// }
 						
-						I2C_write;															//写入I2C
-					   	WriteEeprom(EepParameterAddr,Eeptempbuff,200);   					//将出厂参数写到正式参数中
-						I2C_read;
+						// I2C_write;															//写入I2C
+					   	// WriteEeprom(EepParameterAddr,Eeptempbuff,200);   					//将出厂参数写到正式参数中
+						// I2C_read;
 					}
 				}
-				else
-				{
-					ExceptionCode =WrongDatalimit;										//指令错误
-				}
+				// else
+				// {
+				// 	ExceptionCode =WrongDatalimit;										//指令错误
+				// }
 			}
 			else if(ReceStartAddr>=0x11B5 &&ReceStartAddr<=0x159C )
 			{
