@@ -414,17 +414,18 @@
 #define EepSlave3FaultAddr		EepSlave2FaultAddr+104  //3536	从机故障(从机3)
 #define EepSlave4FaultAddr		EepSlave3FaultAddr+104	//3640	从机故障(从机4)
 #define EepSlave5FaultAddr		EepSlave4FaultAddr+104	//3744	从机故障(从机5)
-#define EepSlave6FaultAddr		EepSlave5FaultAddr+104	//3848	从机故障(从机6)
-#define EepSlave7FaultAddr		EepSlave6FaultAddr+104	//3952	从机故障(从机7)
-#define EepSlave8FaultAddr		EepSlave7FaultAddr+104	//4056	从机故障(从机8)
-#define EepSlave9FaultAddr		EepSlave8FaultAddr+104	//4160	从机故障(从机9)
-#define EepSlave10FaultAddr		EepSlave9FaultAddr+104	//4264	从机故障(从机10)
-#define EepSlave11FaultAddr		EepSlave10FaultAddr+104	//4368	从机故障(从机11)	//7个修正参数，使用
-#define EepSlave12FaultAddr		EepSlave11FaultAddr+104	//4472	从机故障(从机12)
-#define EepSlave13FaultAddr		EepSlave12FaultAddr+104	//4576	从机故障(从机13)
-#define EepSlave14FaultAddr		EepSlave13FaultAddr+104	//4680	从机故障(从机14)
-#define EepSlave15FaultAddr		EepSlave14FaultAddr+104	//4784	从机故障(从机15)
-#define EepSlave16FaultAddr		EepSlave15FaultAddr+104	//4888	从机故障(从机16)
+
+// #define EepSlave6FaultAddr		EepSlave5FaultAddr+104	//3848	从机故障(从机6)
+// #define EepSlave7FaultAddr		EepSlave6FaultAddr+104	//3952	从机故障(从机7)
+// #define EepSlave8FaultAddr		EepSlave7FaultAddr+104	//4056	从机故障(从机8)
+// #define EepSlave9FaultAddr		EepSlave8FaultAddr+104	//4160	从机故障(从机9)
+// #define EepSlave10FaultAddr		EepSlave9FaultAddr+104	//4264	从机故障(从机10)
+// #define EepSlave11FaultAddr		EepSlave10FaultAddr+104	//4368	从机故障(从机11)	
+// #define EepSlave12FaultAddr		EepSlave11FaultAddr+104	//4472	从机故障(从机12)
+// #define EepSlave13FaultAddr		EepSlave12FaultAddr+104	//4576	从机故障(从机13)
+// #define EepSlave14FaultAddr		EepSlave13FaultAddr+104	//4680	从机故障(从机14)
+// #define EepSlave15FaultAddr		EepSlave14FaultAddr+104	//4784	从机故障(从机15)
+// #define EepSlave16FaultAddr		EepSlave15FaultAddr+104	//4888	从机故障(从机16)
 
 
 #define SingleFaultNum			104						//单台从机故障 104 = 1+7*14 +1 +4

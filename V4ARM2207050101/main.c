@@ -71,8 +71,10 @@ __align(4) uint8 Parameter[ParameterNumMax],ParameterBak[ParameterInitNumMax];//
 extern uint32_t SystemFrequency;										//系统频率
 uint8 	led2_flag,led3_flag,led4_flag;									//Led闪烁标志位
 uint8 	gz_dan[160];													//故障
-uint8 	SlaveFault[16][100];											//从机故障
+uint8 	SlaveFault[5][100];											//从机故障
 uint8 	Event_Logging[160];												//事件记录
+uint8   DR_LOG[800];
+uint8   capa_bak;
 
 double  pclock;															//系统时钟
 uint8	RemoteEnable;													//远程使能
@@ -101,7 +103,7 @@ volatile uint8 DatalogReset;											//数据变量复位
 uint8  	time_1us,time_10us,time_100us,time_1ms,time_10ms,time_100ms,time_1s;
 uint8	time_SpiDelay;
 uint16  TimeCount[4];
-RTCTime local_time, alarm_time, current_time,Event_time;   				//RTC结构体
+RTCTime local_time, alarm_time, current_time,Event_time,DR_time;   				//RTC结构体
 /***********************Uart0变量区*****************************/
 extern volatile uint8		RecvBTFlag;                               	// 串口接收数据标志位
 extern uint8        		RecvSciBuf[150];                         	// 串口接收数据缓存
@@ -1035,6 +1037,9 @@ void Parameter_init(void)
 	//ProductionNo =1;
 	
 //ARM参数初始化	
+
+	for(i=0;i<100;i++) tmp[i]=0;//清零
+
 	tmp[0] = LocalAddr;				//0564
 	tmp[1] = UART_BPS;				//0565
 	tmp[2] =RemoteEnable;			//0566
@@ -1046,8 +1051,8 @@ void Parameter_init(void)
 	
 	tmp[8] =OnOffStatus;			//056C
 	
-	tmp[9] =AlarmTime1[0];			//056D
-	tmp[10] =AlarmTime1[1];			//056E
+	tmp[9] = CT_MAIN1;			//056D
+	tmp[10] =CT_MAIN2;			//056E
 	tmp[11] =AlarmTime1[2];			//056F
 	tmp[12] =AlarmTime1[3];			//0570
 	tmp[13] =AlarmTime1[4];			//0571
@@ -1070,17 +1075,17 @@ void Parameter_init(void)
 	tmp[27] =0;			//057F
 	tmp[28] =0;			//0580
 
-	HarmonicBal =main_parameter[6]/100;tmp16 =main_parameter[6]%100;
-	ReactiveBal =tmp16/10;			   tmp16 =main_parameter[6]%10;
-	ActiveBal	=tmp16;
-	if(ReactiveBal==1||HarmonicBal==1)ApparentBal=1;
+	// HarmonicBal =main_parameter[6]/100;tmp16 =main_parameter[6]%100;
+	// ReactiveBal =tmp16/10;			   tmp16 =main_parameter[6]%10;
+	// ActiveBal	=tmp16;
+	// if(ReactiveBal==1||HarmonicBal==1)ApparentBal=1;
 	
-	tmp[29] =ActiveBal;			//0581
-	tmp[30] =ReactiveBal;		//0582
-	tmp[31] =HarmonicBal;		//0583
-	tmp[32] =ApparentBal;		//0584
-	tmp[33] =SetupMode;		//0585
-	tmp[34] =enhance;		//0586
+	// tmp[29] =ActiveBal;			//0581
+	// tmp[30] =ReactiveBal;		//0582
+	// tmp[31] =HarmonicBal;		//0583
+	// tmp[32] =ApparentBal;		//0584
+	// tmp[33] =SetupMode;		//0585
+	// tmp[34] =enhance;		//0586
 	tmp[35] =0;		//0587
 	tmp[36] =0;		//0588
 	tmp[37] =0;		//0589
@@ -1092,93 +1097,93 @@ void Parameter_init(void)
 	tmp[42] =ProductionNo;			//058E
 
 	//VolOnOffEnable =main_parameter[73]%10;
-	tmp[43] =0;						//电压开机使能//058F
-	CurOnOffEnable =main_parameter[73]/10;
-	tmp[44] =CurOnOffEnable;		//电流开机使能//0590
+	// tmp[43] =0;						//电压开机使能//058F
+	// CurOnOffEnable =main_parameter[73]/10;
+	// tmp[44] =CurOnOffEnable;		//电流开机使能//0590
 
-	MainCTPhase =main_parameter[10]/10000;tmp16 =main_parameter[10]%10000;
-	MainCTDirectionC=tmp16/1000;tmp16 =main_parameter[10]%1000;
-	MainCTDirectionB=tmp16/100;tmp16 =main_parameter[10]%100;
-	MainCTDirectionA=tmp16/10;tmp16 =main_parameter[10]%10;
-	MainCTLocation  =tmp16;
+	// MainCTPhase =main_parameter[10]/10000;tmp16 =main_parameter[10]%10000;
+	// MainCTDirectionC=tmp16/1000;tmp16 =main_parameter[10]%1000;
+	// MainCTDirectionB=tmp16/100;tmp16 =main_parameter[10]%100;
+	// MainCTDirectionA=tmp16/10;tmp16 =main_parameter[10]%10;
+	// MainCTLocation  =tmp16;
 	
-	tmp[45] =MainCTLocation;		//主互感器位置//0591
-	tmp[46] =MainCTDirectionA;		//主互感器方向A//0592
-	tmp[47] =MainCTDirectionB;		//主互感器方向B//0593
-	tmp[48] =MainCTDirectionC;		//主互感器方向C//0594
-	tmp[49] =MainCTPhase; 			//主互感器相序//0595
+	// tmp[45] =MainCTLocation;		//主互感器位置//0591
+	// tmp[46] =MainCTDirectionA;		//主互感器方向A//0592
+	// tmp[47] =MainCTDirectionB;		//主互感器方向B//0593
+	// tmp[48] =MainCTDirectionC;		//主互感器方向C//0594
+	// tmp[49] =MainCTPhase; 			//主互感器相序//0595
 	
-	OutCTPhase =main_parameter[15]/10000;tmp16 =main_parameter[15]%10000;
-	OutCTDirectionC=tmp16/1000;tmp16 =main_parameter[15]%1000;
-	OutCTDirectionB=tmp16/100;tmp16 =main_parameter[15]%100;
-	OutCTDirectionA=tmp16/10;tmp16 =main_parameter[15]%10;
+	// OutCTPhase =main_parameter[15]/10000;tmp16 =main_parameter[15]%10000;
+	// OutCTDirectionC=tmp16/1000;tmp16 =main_parameter[15]%1000;
+	// OutCTDirectionB=tmp16/100;tmp16 =main_parameter[15]%100;
+	// OutCTDirectionA=tmp16/10;tmp16 =main_parameter[15]%10;
 	
-	tmp[50] =OutCTPhase; 			//辅助互感器相序//0596
+	// tmp[50] =OutCTPhase; 			//辅助互感器相序//0596
 	
-	tmp[51] =Position[0];			//仓位2	
-	tmp[52] =Group[0];				//组2
-	tmp[53] =Capacitance[0];		//容值2
+	// tmp[51] =Position[0];			//仓位2	
+	// tmp[52] =Group[0];				//组2
+	// tmp[53] =Capacitance[0];		//容值2
 
-	tmp[54] =Position[1];			//仓位3	
-	tmp[55] =Group[1];				//组3
-	tmp[56] =Capacitance[1];		//容值3
+	// tmp[54] =Position[1];			//仓位3	
+	// tmp[55] =Group[1];				//组3
+	// tmp[56] =Capacitance[1];		//容值3
 
-	tmp[57] =Position[2];			//仓位4	
-	tmp[58] =Group[2];				//组4
-	tmp[59] =Capacitance[2];		//容值4
+	// tmp[57] =Position[2];			//仓位4	
+	// tmp[58] =Group[2];				//组4
+	// tmp[59] =Capacitance[2];		//容值4
 
-	tmp[60] =Position[3];			//仓位5	
-	tmp[61] =Group[3];				//组5
-	tmp[62] =Capacitance[3];		//容值5
+	// tmp[60] =Position[3];			//仓位5	
+	// tmp[61] =Group[3];				//组5
+	// tmp[62] =Capacitance[3];		//容值5
 
-	tmp[63] =Position[4];			//仓位6	
-	tmp[64] =Group[4];				//组6
-	tmp[65] =Capacitance[4];		//容值6
+	// tmp[63] =Position[4];			//仓位6	
+	// tmp[64] =Group[4];				//组6
+	// tmp[65] =Capacitance[4];		//容值6
 
-	tmp[66] =Position[5];			//仓位7	
-	tmp[67] =Group[5];				//组7
-	tmp[68] =Capacitance[5];		//容值7
+	// tmp[66] =Position[5];			//仓位7	
+	// tmp[67] =Group[5];				//组7
+	// tmp[68] =Capacitance[5];		//容值7
 
-	tmp[69] =Position[6];			//仓位8	
-	tmp[70] =Group[6];				//组8
-	tmp[71] =Capacitance[6];		//容值8
+	// tmp[69] =Position[6];			//仓位8	
+	// tmp[70] =Group[6];				//组8
+	// tmp[71] =Capacitance[6];		//容值8
 
-	tmp[72] =Position[7];			//仓位9	
-	tmp[73] =Group[7];				//组9
-	tmp[74] =Capacitance[7];		//容值9
+	// tmp[72] =Position[7];			//仓位9	
+	// tmp[73] =Group[7];				//组9
+	// tmp[74] =Capacitance[7];		//容值9
 
-	tmp[75] =Position[8];			//仓位10	
-	tmp[76] =Group[8];				//组10
-	tmp[77] =Capacitance[8];		//容值10
+	// tmp[75] =Position[8];			//仓位10	
+	// tmp[76] =Group[8];				//组10
+	// tmp[77] =Capacitance[8];		//容值10
 
-	tmp[78] =OutCTDirectionA;		//输出互感器方向A
-	tmp[79] =OutCTDirectionB;		//输出互感器方向B
-	tmp[80] =OutCTDirectionC;		//输出互感器方向C
+	// tmp[78] =OutCTDirectionA;		//输出互感器方向A
+	// tmp[79] =OutCTDirectionB;		//输出互感器方向B
+	// tmp[80] =OutCTDirectionC;		//输出互感器方向C
 
-	tmp[81] =Position[9];			//仓位11	
-	tmp[82] =Group[9];				//组11
-	tmp[83] =Capacitance[9];		//容值11
+	// tmp[81] =Position[9];			//仓位11	
+	// tmp[82] =Group[9];				//组11
+	// tmp[83] =Capacitance[9];		//容值11
 
-	tmp[84] =Position[10];			//仓位12	
-	tmp[85] =Group[10];				//组12
-	tmp[86] =Capacitance[10];		//容值12
+	// tmp[84] =Position[10];			//仓位12	
+	// tmp[85] =Group[10];				//组12
+	// tmp[86] =Capacitance[10];		//容值12
 
-	tmp[87] =Position[11];			//仓位13	
-	tmp[88] =Group[11];				//组13
-	tmp[89] =Capacitance[11];		//容值13
+	// tmp[87] =Position[11];			//仓位13	
+	// tmp[88] =Group[11];				//组13
+	// tmp[89] =Capacitance[11];		//容值13
 
-	tmp[90] =Position[12];			//仓位14	
-	tmp[91] =Group[12];				//组14
-	tmp[92] =Capacitance[12];		//容值14
+	// tmp[90] =Position[12];			//仓位14	
+	// tmp[91] =Group[12];				//组14
+	// tmp[92] =Capacitance[12];		//容值14
 
-	tmp[93] =Position[13];			//仓位15	
-	tmp[94] =Group[13];				//组15
-	tmp[95] =Capacitance[13];		//容值15
+	// tmp[93] =Position[13];			//仓位15	
+	// tmp[94] =Group[13];				//组15
+	// tmp[95] =Capacitance[13];		//容值15
 
-	tmp[96] =Position[14];			//仓位16
-	tmp[97] =Group[14];				//组16
-	tmp[98] =Capacitance[14];		//组16
-	tmp[99] =0;						//预留
+	// tmp[96] =Position[14];			//仓位16
+	// tmp[97] =Group[14];				//组16
+	// tmp[98] =Capacitance[14];		//组16
+	// tmp[99] =0;						//预留
 	
 	for(i=0; i<100; i++)	
 	{
@@ -1256,18 +1261,24 @@ void GZ_init(void)
 		SlaveFault[2][i] =tmp[i+208];
 		SlaveFault[3][i] =tmp[i+312];
 		SlaveFault[4][i] =tmp[i+416];
-		SlaveFault[5][i] =tmp[i+520];
-		SlaveFault[6][i] =tmp[i+624];
-		SlaveFault[7][i] =tmp[i+728];
-		SlaveFault[8][i] =tmp[i+832];
-		SlaveFault[9][i] =tmp[i+936];
-		SlaveFault[10][i] =tmp[i+1040];
-		SlaveFault[11][i] =tmp[i+1144];
-		SlaveFault[12][i] =tmp[i+1248];
-		SlaveFault[13][i] =tmp[i+1352];
-		SlaveFault[14][i] =tmp[i+1456];
-		SlaveFault[15][i] =tmp[i+1560];
+		// SlaveFault[5][i] =tmp[i+520];
+		// SlaveFault[6][i] =tmp[i+624];
+		// SlaveFault[7][i] =tmp[i+728];
+		// SlaveFault[8][i] =tmp[i+832];
+		// SlaveFault[9][i] =tmp[i+936];
+		// SlaveFault[10][i] =tmp[i+1040];
+		// SlaveFault[11][i] =tmp[i+1144];
+		// SlaveFault[12][i] =tmp[i+1248];
+		// SlaveFault[13][i] =tmp[i+1352];
+		// SlaveFault[14][i] =tmp[i+1456];
+		// SlaveFault[15][i] =tmp[i+1560];
 	}
+
+	for(i=0;i<800;i++)
+	{
+		DR_LOG[i]=tmp[i+520];//获取电容记录
+	}
+
 	ReadEeprom(EepEventLogAddr,Event_Logging,EventLogNumMax);                        //读取故障记录
 
 	if(Event_Logging[159] !=0)
@@ -1904,6 +1915,20 @@ void Event_handle(void)
 {
 	uint16 i,FaultNum,FaultCode;
 	//uint8 /*Tmp_Fault[104],*/temp[2];
+	uint8 fault_flag;
+
+	//判断电容的故障地址
+	fault_flag=0;
+	if(capa[3]>0)//存在故障
+	{
+		if(capa_bak!=capa[3])//这次故障与上次故障不一样
+		{
+			fault_flag=1;
+			capa_bak=capa[3];
+		}
+	}
+
+	DR_Logging[0]++;
 
 	if(RecordEventFlag ==1)
 	{
@@ -1917,7 +1942,7 @@ void Event_handle(void)
 				for(i=1; i<141; i++)
 				{
 					if(i%7!=0) Event_Logging[i] = Event_Logging[7+i];					//往前覆盖	
-				} 	   
+				}
 				Event_Logging[140] = 1;	                                  	//序号
 				Event_Logging[139] = Event_time.RTC_Year - 2000;				//年
 				Event_Logging[138] = Event_time.RTC_Mon;	                    //月

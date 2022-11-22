@@ -1181,380 +1181,380 @@ void RecvDataProcess(uint8 uart)
 					ExceptionCode =WrongDatalong;
 				}
 			}
-			else if(ReceStartAddr>0x34FF && ReceStartAddr<=0x3564)    //从机6故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// else if(ReceStartAddr>0x34FF && ReceStartAddr<=0x3564)    //从机6故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3565))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3500;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[5][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3565))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3500;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[5][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x35FF && ReceStartAddr<=0x3664)    //从机7故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x35FF && ReceStartAddr<=0x3664)    //从机7故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3665))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3600;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[6][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3665))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3600;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[6][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x36FF && ReceStartAddr<=0x3764)    //从机8故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x36FF && ReceStartAddr<=0x3764)    //从机8故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3765))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3700;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[7][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3765))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3700;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[7][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x37FF && ReceStartAddr<=0x3864)    //从机9故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x37FF && ReceStartAddr<=0x3864)    //从机9故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3865))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3800;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[8][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3865))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3800;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[8][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x38FF && ReceStartAddr<=0x3964)    //从机10故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x38FF && ReceStartAddr<=0x3964)    //从机10故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3965))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3900;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[9][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3965))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3900;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[9][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x39FF && ReceStartAddr<=0x3A64)    //从机11故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x39FF && ReceStartAddr<=0x3A64)    //从机11故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3A65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3A00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[10][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3A65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3A00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[10][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3AFF && ReceStartAddr<=0x3B64)    //从机12故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3AFF && ReceStartAddr<=0x3B64)    //从机12故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3B65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3B00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[11][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3B65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3B00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[11][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3BFF && ReceStartAddr<=0x3C64)    //从机13故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3BFF && ReceStartAddr<=0x3C64)    //从机13故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3C65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3C00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[12][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3C65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3C00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[12][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3CFF && ReceStartAddr<=0x3D64)    //从机14故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3CFF && ReceStartAddr<=0x3D64)    //从机14故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3D65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3D00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[13][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3D65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3D00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[13][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3DFF && ReceStartAddr<=0x3E64)    //从机15故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3DFF && ReceStartAddr<=0x3E64)    //从机15故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3E65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3E00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[14][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3E65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3E00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[14][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3EFF && ReceStartAddr<=0x3F64)    //从机16故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3EFF && ReceStartAddr<=0x3F64)    //从机16故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3F65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3F00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[15][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3F65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3F00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[15][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
 			else
 			{
 				ExceptionCode =WrongStartaddr;
@@ -5330,380 +5330,380 @@ void RecvDataProcess(uint8 uart)
 					ExceptionCode =WrongDatalong;
 				}
 			}
-			else if(ReceStartAddr>0x34FF && ReceStartAddr<=0x3564)    //从机6故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// else if(ReceStartAddr>0x34FF && ReceStartAddr<=0x3564)    //从机6故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3565))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3500;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[5][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3565))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3500;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[5][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x35FF && ReceStartAddr<=0x3664)    //从机7故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x35FF && ReceStartAddr<=0x3664)    //从机7故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3665))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3600;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[6][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3665))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3600;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[6][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x36FF && ReceStartAddr<=0x3764)    //从机8故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x36FF && ReceStartAddr<=0x3764)    //从机8故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3765))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3700;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[7][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3765))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3700;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[7][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x37FF && ReceStartAddr<=0x3864)    //从机9故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x37FF && ReceStartAddr<=0x3864)    //从机9故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3865))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3800;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[8][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3865))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3800;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[8][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x38FF && ReceStartAddr<=0x3964)    //从机10故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x38FF && ReceStartAddr<=0x3964)    //从机10故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3965))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3900;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[9][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3965))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3900;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[9][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x39FF && ReceStartAddr<=0x3A64)    //从机11故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x39FF && ReceStartAddr<=0x3A64)    //从机11故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3A65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3A00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[10][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3A65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3A00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[10][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3AFF && ReceStartAddr<=0x3B64)    //从机12故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3AFF && ReceStartAddr<=0x3B64)    //从机12故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3B65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3B00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[11][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3B65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3B00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[11][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3BFF && ReceStartAddr<=0x3C64)    //从机13故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3BFF && ReceStartAddr<=0x3C64)    //从机13故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3C65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3C00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[12][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3C65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3C00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[12][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3CFF && ReceStartAddr<=0x3D64)    //从机14故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3CFF && ReceStartAddr<=0x3D64)    //从机14故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3D65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3D00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[13][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3D65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3D00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[13][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3DFF && ReceStartAddr<=0x3E64)    //从机15故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3DFF && ReceStartAddr<=0x3E64)    //从机15故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3E65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3E00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[14][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3E65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3E00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[14][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
-			else if(ReceStartAddr>0x3EFF && ReceStartAddr<=0x3F64)    //从机15故障
-			{
-				if(uart== Uart0)
-				{	
-					ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
-				}
-				else
-				{
-					ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
-				}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
+			// else if(ReceStartAddr>0x3EFF && ReceStartAddr<=0x3F64)    //从机15故障
+			// {
+			// 	if(uart== Uart0)
+			// 	{	
+			// 		ReceDataLengh =((RecvSciBuf[4]<<8)|RecvSciBuf[5]);
+			// 	}
+			// 	else
+			// 	{
+			// 		ReceDataLengh =((RecvSci3Buf[4]<<8)|RecvSci3Buf[5]);
+			// 	}
 				
-				if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3F65))   //Starting address + Lengh of Data
-				{
-					ReceDataLengh = ReceDataLengh <<1;
-					ReceStartAddr = ReceStartAddr-0x3F00;
-					for(j=0;j<ReceDataLengh;j++)
-					{
-						SendBuff[3+i] =0x00;
-						i++;
-						SendBuff[3+i] =SlaveFault[15][ReceStartAddr+j];
-						i++;
-					}
-					SendBuff[0] = LocalAddr;
-					SendBuff[1] = ReceFunCode;
-					SendBuff[2] = ReceDataLengh;
+			// 	if((ReceDataLengh<=100)&&(ReceStartAddr+ReceDataLengh <=0x3F65))   //Starting address + Lengh of Data
+			// 	{
+			// 		ReceDataLengh = ReceDataLengh <<1;
+			// 		ReceStartAddr = ReceStartAddr-0x3F00;
+			// 		for(j=0;j<ReceDataLengh;j++)
+			// 		{
+			// 			SendBuff[3+i] =0x00;
+			// 			i++;
+			// 			SendBuff[3+i] =SlaveFault[15][ReceStartAddr+j];
+			// 			i++;
+			// 		}
+			// 		SendBuff[0] = LocalAddr;
+			// 		SendBuff[1] = ReceFunCode;
+			// 		SendBuff[2] = ReceDataLengh;
 					
-					SendCount =SendBuff[2] +3;
+			// 		SendCount =SendBuff[2] +3;
 					
-				}
-				else
-				{
-					ExceptionCode =WrongDatalong;
-				}
-			}
+			// 	}
+			// 	else
+			// 	{
+			// 		ExceptionCode =WrongDatalong;
+			// 	}
+			// }
 			else
 			{
 				ExceptionCode =WrongStartaddr;
