@@ -12288,6 +12288,7 @@ void RestoreProcess(void)
 					SlaveFault[i][j]=0;																//¥”ª˙π ’œ«Â¡„
 				}
 			}
+			for(i=0;i<800;i++){DR_LOG[i]=0;}	
 			for(i=0;i<SlaveFaultNumMax;i++)
 			{
 				tmp8[i] =0;

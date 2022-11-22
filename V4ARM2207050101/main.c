@@ -74,7 +74,7 @@ uint8 	gz_dan[160];													//故障
 uint8 	SlaveFault[5][100];											//从机故障
 uint8 	Event_Logging[160];												//事件记录
 uint8   DR_LOG[800];
-uint8   capa_bak;
+uint8   capa_bak=0;
 
 double  pclock;															//系统时钟
 uint8	RemoteEnable;													//远程使能
@@ -1924,11 +1924,55 @@ void Event_handle(void)
 		if(capa_bak!=capa[3])//这次故障与上次故障不一样
 		{
 			fault_flag=1;
+			DR_time=RTCGetTime();
 			capa_bak=capa[3];
 		}
 	}
 
-	DR_Logging[0]++;
+	//电容故障记录
+	if(fault_flag>0)
+	{		
+		if(capa_bak !=0)	
+		{
+			FaultNum =DR_LOG[0];
+			FaultCode =capa_bak;
+			if(FaultNum==100)		   									//主设备最大记录140条故障
+			{ 
+				for(i=1; i<701; i++)
+				{
+					if(i%7!=0) DR_LOG[i] = DR_LOG[7+i];					//往前覆盖	
+				}
+				DR_LOG[700] = 1;	                                  	//序号
+				DR_LOG[699] = DR_time.RTC_Year - 2000;				//年
+				DR_LOG[698] = DR_time.RTC_Mon;	                    //月
+				DR_LOG[697] = DR_time.RTC_Mday;	                //日
+				DR_LOG[696] = DR_time.RTC_Hour;                   	//时
+				DR_LOG[695] = DR_time.RTC_Min;                     //分
+				DR_LOG[694] = FaultCode;                             	//故障代码										
+			}
+			else
+			{
+				DR_LOG[0]++;
+				FaultNum =DR_LOG[0];  
+				DR_LOG[7*FaultNum] = FaultNum;	                    	//序号
+				DR_LOG[7*FaultNum-1] = DR_time.RTC_Year - 2000;   	//年
+				DR_LOG[7*FaultNum-2] = DR_time.RTC_Mon;	        //月
+				DR_LOG[7*FaultNum-3] = DR_time.RTC_Mday;	        //日
+				DR_LOG[7*FaultNum-4] = DR_time.RTC_Hour;          	//时
+				DR_LOG[7*FaultNum-5] = DR_time.RTC_Min;           	//分
+				DR_LOG[7*FaultNum-6] = FaultCode;                     	//故障代码
+				for(i=0; i<FaultNum; i++)
+				{
+					DR_LOG[(i+1)*7] = FaultNum-i;						//序号调整		
+				}
+			}
+			I2C_write;                                                  //写入I2C	   
+			WriteEeprom(EepSlaveFaultAddr+520,DR_LOG,800);       //保存记录到I2C						    
+			I2C_read;
+ 
+			ReadEeprom(EepSlaveFaultAddr+520,DR_LOG,800);       //保存记录到I2C						    
+		}
+	}	
 
 	if(RecordEventFlag ==1)
 	{
