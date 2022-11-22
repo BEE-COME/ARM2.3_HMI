@@ -12689,81 +12689,53 @@ uint8 FaultProcess(uint8 FaultPageNo,uint8 row,uint8 type)//参数：故障页面，当前
 	}
 	else
 	{
+		
 		tmp[0]=FaultCode.No/100+0x30;			   
 		tmp[1]=(FaultCode.No%100)/10+0x30;	
 		tmp[2]=FaultCode.No%10+0x30; 		   
 		tmp[3]='.';	
 		tmp[4]=' ';
-		tmp[5]=' ';
-		tmp[6]='2';
-		tmp[7]='0';	
-		tmp[8]=FaultCode.Year/10+0x30;
-		tmp[9]=FaultCode.Year%10+0x30;			   
-		tmp[10]='-'; 			
-		tmp[11]=FaultCode.Month/10+0x30;
-		tmp[12]=FaultCode.Month%10+0x30;						   
-		tmp[13]='-'; 					   
-		tmp[14]=FaultCode.Day/10+0x30;
-		tmp[15]=FaultCode.Day%10+0x30;			   
-		tmp[16]='-'; 					   
-		tmp[17]=FaultCode.Hour/10+0x30;
-		tmp[18]=FaultCode.Hour%10+0x30;				 
-		tmp[19]='-'; 					   
-		tmp[20]=FaultCode.Min/10+0x30;
-		tmp[21]=FaultCode.Min%10+0x30;
+		tmp[5]='2';
+		tmp[6]='0';	
+		tmp[7]=FaultCode.Year/10+0x30;
+		tmp[8]=FaultCode.Year%10+0x30;			   
+		tmp[9]='-'; 			
+		tmp[10]=FaultCode.Month/10+0x30;
+		tmp[11]=FaultCode.Month%10+0x30;						   
+		tmp[12]='-'; 					   
+		tmp[13]=FaultCode.Day/10+0x30;
+		tmp[14]=FaultCode.Day%10+0x30;			   
+		tmp[15]=' '; 					   
+		tmp[16]=FaultCode.Hour/10+0x30;
+		tmp[17]=FaultCode.Hour%10+0x30;				 
+		tmp[18]=':'; 					   
+		tmp[19]=FaultCode.Min/10+0x30;
+		tmp[20]=FaultCode.Min%10+0x30;
+		tmp[21]=' ';
 		tmp[22]=' ';
-		tmp[23]=' ';
-		tmp[24]=' ';
-		tmp[25]=' ';
-		tmp[26]=' ';
-		tmp[27]=' ';//0xB4;
-		tmp[28]=' ';//0xFA;
-		tmp[29]=' ';//0xC2;
-		tmp[30]=' ';//0xEB;
-		tmp[31]=' ';//0x3a;
 		if(FaultCode.Code>99)
 		{
 			tmpValH =FaultCode.Code/100;
 			tmpValL =FaultCode.Code%100;
 			
-			tmp[32]=tmpValH+0x30;
-			tmp[33]=tmpValL/10+0x30;
-			tmp[34]=tmpValL%10+0x30;
-			tmp[35]=' ';
-			tmp[36]=' ';
-			tmp[37]=' ';
-			tmp[38]=' ';
-			tmp[39]=' ';
-			tmp[40]=' ';
-			tmp[41]=' ';
+			tmp[23]=tmpValH+0x30;
+			tmp[24]=tmpValL/10+0x30;
+			tmp[25]=tmpValL%10+0x30;			
+			tmp[26]=' ';
 		}
 		else 
 		{
 			if(FaultCode.Code>9)
 			{
-				tmp[32]=FaultCode.Code/10+0x30;
-				tmp[33]=FaultCode.Code%10+0x30;
-				tmp[34]=' ';
-				tmp[35]=' ';
-				tmp[36]=' ';
-				tmp[37]=' ';
-				tmp[38]=' ';
-				tmp[39]=' ';
-				tmp[40]=' ';
-				tmp[41]=' ';
+				tmp[23]=FaultCode.Code/10+0x30;
+				tmp[24]=FaultCode.Code%10+0x30;
+				tmp[25]=' ';
 			}
 			else 
 			{
-				tmp[32]=FaultCode.Code+0x30;
-				tmp[33]=' ';
-				tmp[34]=' ';
-				tmp[35]=' ';
-				tmp[36]=' ';
-				tmp[37]=' ';
-				tmp[38]=' ';
-				tmp[39]=' ';
-				tmp[40]=' ';
-				tmp[41]=' ';
+				tmp[23]=FaultCode.Code+0x30;
+				tmp[24]=' ';
+				tmp[25]=' ';
 			}
 		}
 	}
